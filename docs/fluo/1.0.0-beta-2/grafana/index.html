@@ -150,7 +150,7 @@ the instructions below were written using InfluxDB v0.9.4.2 and Grafana v2.5.0.<
 in Graphite format from Fluo.  The configuration below contains templates that
 transform the Graphite metrics into a format that is usable in InfluxDB.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>[[graphite]]
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[graphite]]
   bind-address = ":2003"
   enabled = true
   database = "fluo_metrics"
@@ -165,20 +165,18 @@ transform the Graphite metrics into a format that is usable in InfluxDB.</p>
     "io.fluo.*.*.*.*.* ..app.host.measurement.measurement.field",
     "io.fluo.*.*.*.* ..app.host.measurement.measurement",
   ]
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Configure <code class="highlighter-rouge">fluo.properties</code> in your Fluo app configuration to send Graphite 
 metrics to InfluxDB.  Below is example configuration. Remember to replace
 <code class="highlighter-rouge">&lt;INFLUXDB_HOST&gt;</code> with the actual host.</p>
 
-    <p><code class="highlighter-rouge">
- io.fluo.metrics.reporter.graphite.enable=true
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> io.fluo.metrics.reporter.graphite.enable=true
  io.fluo.metrics.reporter.graphite.host=&lt;INFLUXDB_HOST&gt;
  io.fluo.metrics.reporter.graphite.port=2003
  io.fluo.metrics.reporter.graphite.frequency=10
-</code></p>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Grafana needs to be configured to load dashboard JSON templates from a
@@ -187,11 +185,10 @@ distribution that is located in the directory <code class="highlighter-rouge">co
 restarting Grafana, you should copy the template from your Fluo installation
 to you the <code class="highlighter-rouge">dashboards/</code> directory configured below.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>[dashboards.json]
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[dashboards.json]
 enabled = true
 path = &lt;GRAFANA_HOME&gt;/dashboards
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>If you restart Grafana, you will see the Fluo dashboard configured but all of its charts will 

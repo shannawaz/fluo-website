@@ -123,7 +123,7 @@ rerun the collision exercise on the previous page.</p>
 <p>With this configuration change, you should see output like the following.
 Notice the logging shows what was read, set, and the collision information.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Starting MiniFluo ... started.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting MiniFluo ... started.
 TRACE: txid: 3 begin() thread: 10
 TRACE: txid: 3 set(kerbalnaut0001, name last , Kerma)
 TRACE: txid: 3 commit() -&gt; SUCCESSFUL commitTs: 4
@@ -148,8 +148,7 @@ TRACE: txid: 8 get(kerbalnaut0001, name last ) -&gt; Kerman
 Kerman
 TRACE: txid: 8 close()
 TRACE: txid: 8 thread : 10 time: ... #ret: 1 #set: 0 #collisions: 0 waitTime: 0 committed: false class: N/A
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>More information about configuring logging is available in <a href="/docs/fluo/1.1.0-incubating/applications/#debugging-applications">the logging
 documentation</a>.</p>

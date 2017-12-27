@@ -178,9 +178,8 @@ specifically for it. For the links columns below, <code class="highlighter-rouge
   <li>
     <p>Create a branch in the local clone of your fork. An example branch name is <code class="highlighter-rouge">fluo-301</code> which describes the repo and issue number.</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>git checkout -b fluo-301
-</code></pre>
-    </div>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> fluo-301
+</code></pre></div>    </div>
   </li>
   <li>Do work and commit to your branch.</li>
   <li>Ensure you works satisfies the guidelines laid out in the <code class="highlighter-rouge">CONTRIBUTING.md</code> file.</li>
@@ -188,10 +187,9 @@ specifically for it. For the links columns below, <code class="highlighter-rouge
   <li>
     <p><a href="https://help.github.com/articles/pushing-to-a-remote/">Push</a> your branch to your fork.</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># Push work in local branch fluo-301 to fork</span>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Push work in local branch fluo-301 to fork</span>
 git push origin fluo-301
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>Create a <a href="https://help.github.com/articles/about-pull-requests/">Pull Request</a> in the appropriate repository.  If the work is not complete and the Pull Request is for feedback, please put <code class="highlighter-rouge">[WIP]</code> in the subject.</li>
   <li>At least one committer (and others in the community) will review your pull request and add any comments to your code.</li>
@@ -206,14 +204,13 @@ git push origin fluo-301
 
 <p>To properly organize imports, make sure your imports look like the block below:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>java.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.
 javax.
 &lt;blank line&gt;
 &lt;all other non-static imports in alphabetical order&gt;
 &lt;blank line&gt;
 &lt;static imports in alphabetical order&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This can be configured by common IDEs:</p>
 

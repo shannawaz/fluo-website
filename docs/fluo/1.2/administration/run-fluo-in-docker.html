@@ -207,9 +207,8 @@
 <p>To obtain the docker image created by this project, you can either pull it from DockerHub at
 <code class="highlighter-rouge">apache/fluo</code> or build it yourself. To pull the image from DockerHub, run the command below:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>docker pull apache/fluo
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull apache/fluo
+</code></pre></div></div>
 
 <p>While it is easier to pull from DockerHub, the image will default to the software versions below:</p>
 
@@ -249,14 +248,13 @@ your own image</a> with matching versions.</p>
 case for this image is to start an oracle or worker, you can run other commands in the
 <code class="highlighter-rouge">fluo</code> script to test out the image:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># No arguments prints Fluo command usage</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># No arguments prints Fluo command usage</span>
 docker run apache/fluo
 <span class="c"># Print Fluo version</span>
 docker run apache/fluo version
 <span class="c"># Print Fluo classpath</span>
 docker run apache/fluo classpath
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="run-application-in-docker">Run application in Docker</h2>
 
@@ -272,9 +270,8 @@ application is named <code class="highlighter-rouge">myapp</code> and was initia
   <li>
     <p>Start a Fluo oracle for <code class="highlighter-rouge">myapp</code> application connecting to a Zookeeper at <code class="highlighter-rouge">zkhost</code>.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> docker run -d --network="host" apache/fluo oracle -a myapp -o fluo.connection.zookeepers=zkhost/fluo
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker run -d --network="host" apache/fluo oracle -a myapp -o fluo.connection.zookeepers=zkhost/fluo
+</code></pre></div>    </div>
 
     <p>The command above uses <code class="highlighter-rouge">-d</code> to run the container in the background and <code class="highlighter-rouge">--network="host"</code> to run the container
  on the host’s network stack.</p>
@@ -282,9 +279,8 @@ application is named <code class="highlighter-rouge">myapp</code> and was initia
   <li>
     <p>Start Fluo worker(s). Execute this command multiple times to start multiple workers.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> docker run -d --network="host" apache/fluo worker -a myapp -o fluo.connection.zookeepers=zkhost/fluo
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker run -d --network="host" apache/fluo worker -a myapp -o fluo.connection.zookeepers=zkhost/fluo
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -294,43 +290,41 @@ application is named <code class="highlighter-rouge">myapp</code> and was initia
 
 <p>The JSON below can be used to start a Fluo oracle.</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myapp-fluo-oracle"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fluo oracle -a myapp -o fluo.connection.zookeepers=zkhost/fluo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cpus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mem"</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"disk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"instances"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"container"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"docker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache/fluo"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOST"</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myapp-fluo-oracle"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fluo oracle -a myapp -o fluo.connection.zookeepers=zkhost/fluo"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cpus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mem"</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"disk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instances"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"container"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"docker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache/fluo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOST"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOCKER"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOCKER"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p>The JSON below can be used to start Fluo worker(s). Modify instances to start multiple workers.</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myapp-fluo-worker"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fluo worker -a myapp -o fluo.connection.zookeepers=zkhost/fluo"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cpus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"mem"</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"disk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"instances"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"container"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"docker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache/fluo"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOST"</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myapp-fluo-worker"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fluo worker -a myapp -o fluo.connection.zookeepers=zkhost/fluo"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cpus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mem"</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"disk"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instances"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"container"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"docker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apache/fluo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOST"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOCKER"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOCKER"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <h2 id="next-steps">Next Steps</h2>
 

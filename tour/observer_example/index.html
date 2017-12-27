@@ -118,7 +118,7 @@
   <p>The following code shows how to setup and trigger an observer.  The observer is triggered when the
 column <em>obs:data</em> is changed.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Column</span> <span class="n">OBSERVED_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"obs"</span><span class="o">,</span> <span class="s">"data"</span><span class="o">);</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Column</span> <span class="n">OBSERVED_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"obs"</span><span class="o">,</span> <span class="s">"data"</span><span class="o">);</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Column</span> <span class="n">INVERT_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"inv"</span><span class="o">,</span> <span class="s">"data"</span><span class="o">);</span>
 
   <span class="c1">// This class is responsible for registering Observers for all observed columns.</span>
@@ -162,17 +162,15 @@ column <em>obs:data</em> is changed.</p>
       <span class="n">snap</span><span class="o">.</span><span class="na">scanner</span><span class="o">().</span><span class="na">build</span><span class="o">().</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
     <span class="o">}</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The code above prints :</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Bill inv data  kerbalnaut0002
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bill inv data  kerbalnaut0002
 Jebediah inv data  kerbalnaut0001
 kerbalnaut0001 obs data  Jebediah
 kerbalnaut0002 obs data  Bill
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The following events happen when this code is run.</p>
 

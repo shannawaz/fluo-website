@@ -189,7 +189,7 @@ Collision Free Map.</p>
 
 <p>The following snippet shows how to setup a collision free map.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
 
   <span class="kt">int</span> <span class="n">numBuckets</span> <span class="o">=</span> <span class="mi">119</span><span class="o">;</span>
 
@@ -197,14 +197,13 @@ Collision Free Map.</p>
 
   <span class="c1">//initialize Fluo using fluoConfig</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Assume the following observer is triggered when a documents contents are
 updated.  It examines new and old document content and determines changes in
 word counts.  These changes are pushed to a collision free map.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DocumentObserver</span> <span class="kd">extends</span> <span class="n">TypedObserver</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DocumentObserver</span> <span class="kd">extends</span> <span class="n">TypedObserver</span> <span class="o">{</span>
 
   <span class="n">CollisionFreeMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">wcm</span><span class="o">;</span>
 
@@ -262,8 +261,7 @@ word counts.  These changes are pushed to a collision free map.</p>
   <span class="o">}</span>
 
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Each collision free map has two extension points, a combiner and an update
 observer.  These two extension points are defined below as <code class="highlighter-rouge">WordCountCombiner</code>
@@ -279,7 +277,7 @@ updated.  In <code class="highlighter-rouge">WordCountObserver</code>, updates a
 database.  The export is given the new and old value allowing it to delete the
 old value if needed.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="cm">/**
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
  * This class exists to provide a single place to put all code related to the
  * word count map.
  */</span>
@@ -337,8 +335,7 @@ old value if needed.</p>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="guarantees">Guarantees</h2>
 

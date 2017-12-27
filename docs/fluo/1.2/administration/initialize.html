@@ -242,9 +242,8 @@ initialize an application using Fluo’s Java API.</p>
   <li>
     <p>Create a copy of <a href="https://github.com/apache/fluo/blob/master/modules/distribution/src/main/config/fluo-app.properties">fluo-app.properties</a> for your Fluo application.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> cp $FLUO_HOME/conf/fluo-app.properties /path/to/myapp/fluo-app.properties
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cp $FLUO_HOME/conf/fluo-app.properties /path/to/myapp/fluo-app.properties
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Edit your copy of <a href="https://github.com/apache/fluo/blob/master/modules/distribution/src/main/config/fluo-app.properties">fluo-app.properties</a> and make sure to set the following:</p>
@@ -264,9 +263,8 @@ be idle when started.</p>
   <li>
     <p>Run the command below to initialize your Fluo application. Change <code class="highlighter-rouge">myapp</code> to your application name:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> fluo init myapp /path/to/myapp/fluo-app.properties
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> fluo init myapp /path/to/myapp/fluo-app.properties
+</code></pre></div>    </div>
 
     <p>A Fluo application only needs to be initialized once. After initialization, the Fluo application
 name is used to start/stop the application and scan the Fluo table.</p>

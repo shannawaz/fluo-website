@@ -141,11 +141,10 @@ also has handling for real world problems like high cardinality phrases.</p>
 
 <p>Using Maven, you can build Fluo with the following steps.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/fluo-io/fluo.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/fluo-io/fluo.git
 cd fluo
 mvn package
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Running <code class="highlighter-rouge">mvn package</code> will build a tar ball that contains all of the
 dependencies needed at runtime.  Currently the tar ball is targeted towards
@@ -154,16 +153,14 @@ your cluster, you can try passing the following options to maven package.
 Other versions of Hadoop and Accumulo may not work, please open a bug if you
 run into problems.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mvn package -Daccumulo.version=1.6.1-SNAPSHOT -Dhadoop.version=2.4.0
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn package -Daccumulo.version=1.6.1-SNAPSHOT -Dhadoop.version=2.4.0
+</code></pre></div></div>
 
 <p>Once the tarball is built, deploy it using the command below which can be modified
 to a directory of your choice (rather than <code class="highlighter-rouge">/opt</code>).</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>tar -C /opt -xvzf modules/distribution/target/fluo-1.0.0-alpha-1-SNAPSHOT-bin.tar.gz
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tar -C /opt -xvzf modules/distribution/target/fluo-1.0.0-alpha-1-SNAPSHOT-bin.tar.gz
+</code></pre></div></div>
 
 <h2 id="configuring-fluo">Configuring Fluo</h2>
 
@@ -173,30 +170,27 @@ jar, you can build an observer jar using the <a href="https://github.com/fluo-io
 
 <p>First, copy the example configuration files and modify them for you environment.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cd fluo-1.0.0-alpha-1-SNAPSHOT/conf
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd fluo-1.0.0-alpha-1-SNAPSHOT/conf
 cp examples/* .
 vim fluo-env.sh
 vim fluo.properties
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Copy your observer jar to Fluo and set up notifications to your observer in
  <code class="highlighter-rouge">fluo.properties</code>.  Check out <a href="https://github.com/fluo-io/phrasecount">phrasecount</a> to build an example observer
  jar and find instructions for configuring <code class="highlighter-rouge">fluo.properties</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>OBSERVER_JAR=&lt;location of observer jar&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OBSERVER_JAR=&lt;location of observer jar&gt;
 cd fluo-1.0.0-alpha-1-SNAPSHOT/
 cp $OBSERVER_JAR lib/observers
 vim conf/fluo.properties
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Finally, initialize your instance which only needs to be called once and stores
  configuration in zookeeper.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>./bin/initialize.sh
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/initialize.sh
+</code></pre></div></div>
 
 <h2 id="running-fluo">Running Fluo</h2>
 
@@ -208,10 +202,9 @@ machine.</p>
 up multiple workers as configured in <code class="highlighter-rouge">fluo.properties</code>.  To start a Fluo cluster 
 in YARN, run following commands:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>./bin/oracle.sh start-yarn
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/oracle.sh start-yarn
 ./bin/worker.sh start-yarn
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">start-yarn</code> commands above submit your Fluo applications to YARN.  Therefore, 
 they work for a single-node or a large cluster.  By using YARN, you no longer need 
@@ -226,20 +219,18 @@ found using the list command.</p>
 <p>If you do not have YARN set up, you can start a local Fluo process using
 the following commands:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>./bin/oracle.sh start-local
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/oracle.sh start-local
 ./bin/worker.sh start-local
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In a distributed environment, you will need to deploy the Fluo binary to 
 every node and start each process individually.</p>
 
 <p>To stop Fluo processes, run the following commands:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>./bin/worker.sh stop-local
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/worker.sh stop-local
 ./bin/oracle.sh stop-local
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="tuning-accumulo">Tuning Accumulo</h2>
 

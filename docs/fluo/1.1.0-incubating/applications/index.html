@@ -123,7 +123,7 @@ consist of clients and observers.</p>
 
 <p>For both clients and observers, you will need to include the following in your Maven pom:</p>
 
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>org.apache.fluo<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>fluo-api<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.x.x-incubating<span class="nt">&lt;/version&gt;</span>
@@ -134,8 +134,7 @@ consist of clients and observers.</p>
   <span class="nt">&lt;version&gt;</span>1.x.x-incubating<span class="nt">&lt;/version&gt;</span>
   <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Fluo provides a classpath command to help users build a runtime classpath. This command along with
 the <code class="highlighter-rouge">hadoop jar</code> command is useful when writing scripts to run Fluo client code. These commands
@@ -150,25 +149,22 @@ configured to connect to your Fluo instance.</p>
 can use it to build a <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object with all necessary properties which are all
 properties with the <code class="highlighter-rouge">fluo.client.*</code> prefix in <a href="https://github.com/apache/fluo/blob/rel/fluo-1.1.0-incubating/modules/distribution/src/main/config/fluo.properties">fluo.properties</a>:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"fluo.properties"</span><span class="o">));</span>
-</code></pre>
-</div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"fluo.properties"</span><span class="o">));</span>
+</code></pre></div></div>
 
 <p>You can also create an empty <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object and set properties using Java:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">();</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">();</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setAccumuloUser</span><span class="o">(</span><span class="s">"user"</span><span class="o">);</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setAccumuloPassword</span><span class="o">(</span><span class="s">"pass"</span><span class="o">);</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setAccumuloInstance</span><span class="o">(</span><span class="s">"instance"</span><span class="o">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Once you have <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object, pass it to the <code class="highlighter-rouge">newClient()</code> method of <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/FluoFactory.html">FluoFactory</a> to
 create a <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/FluoClient.html">FluoClient</a>:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">FluoFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">(</span><span class="n">config</span><span class="o">)</span>
-</code></pre>
-</div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">FluoFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">(</span><span class="n">config</span><span class="o">)</span>
+</code></pre></div></div>
 
 <p>It may help to reference the <a href="https://fluo.apache.org/apidocs/">API javadocs</a> while you are learning the Fluo API.</p>
 
@@ -180,7 +176,7 @@ of the application. When the class is run, Fluo classes and dependencies will be
 The <code class="highlighter-rouge">fluo exec</code> command can inject the applications configuration if the class is written in the
 following way. Defining the injection point is optional.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppCommand</span> <span class="o">{</span>
 
@@ -194,8 +190,7 @@ following way. Defining the injection point is optional.</p>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="creating-a-fluo-observer">Creating a Fluo observer</h2>
 
@@ -207,7 +202,7 @@ following way. Defining the injection point is optional.</p>
 any logging in observers as <a href="http://www.slf4j.org/">slf4j</a> supports multiple logging implementations. This is
 necessary as Fluo applications have a hard requirement on <a href="http://logback.qos.ch/">logback</a> when running in YARN.</p>
 
-    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InvertObserver</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InvertObserver</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
 
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="n">TransactionBase</span> <span class="n">tx</span><span class="o">,</span> <span class="n">Bytes</span> <span class="n">row</span><span class="o">,</span> <span class="n">Column</span> <span class="n">col</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
@@ -217,15 +212,14 @@ necessary as Fluo applications have a hard requirement on <a href="http://logbac
     <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"inv"</span><span class="o">,</span> <span class="s">"data"</span><span class="o">),</span> <span class="n">row</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Create a class that implements <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/observer/ObserverProvider.html">ObserverProvider</a> like the example below.  The purpose of this
 class is associate a set Observers with columns that trigger the observers.  The class can
 register multiple observers.</p>
 
-    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">AppObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">AppObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">provide</span><span class="o">(</span><span class="n">Registry</span> <span class="n">or</span><span class="o">,</span> <span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">//setup InvertObserver to be triggered when the column obs:data is modified</span>
@@ -240,8 +234,7 @@ register multiple observers.</p>
        <span class="o">});</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>Build a jar containing these classes and include this jar in the <code class="highlighter-rouge">lib/</code> directory of your Fluo
 application.</li>
@@ -300,7 +293,7 @@ by setting the following loggers to TRACE:</p>
 <p>Below is an example log after setting <code class="highlighter-rouge">fluo.tx</code> to TRACE. The number following <code class="highlighter-rouge">txid: </code> is the
 transactions start timestamp from the Oracle.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>2015-02-11 18:24:05,341 [fluo.tx ] TRACE: txid: 3 begin() thread: 198
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2015-02-11 18:24:05,341 [fluo.tx ] TRACE: txid: 3 begin() thread: 198
 2015-02-11 18:24:05,343 [fluo.tx ] TRACE: txid: 3 class: com.SimpleLoader
 2015-02-11 18:24:05,357 [fluo.tx ] TRACE: txid: 3 get(4333, stat count ) -&gt; null
 2015-02-11 18:24:05,357 [fluo.tx ] TRACE: txid: 3 set(4333, stat count , 1)
@@ -312,8 +305,7 @@ transactions start timestamp from the Oracle.</p>
 2015-02-11 18:24:05,357 [fluo.tx ] TRACE: txid: 5 set(4333, stat count , 2)
 2015-02-11 18:24:05,441 [fluo.tx ] TRACE: txid: 5 commit() -&gt; SUCCESSFUL commitTs: 6
 2015-02-11 18:24:05,442 [fluo.tx ] TRACE: txid: 5 close()
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The log above traces the following sequence of events.</p>
 
@@ -334,10 +326,9 @@ trace information when a collision occurs. Unlike the previous example, what the
 and wrote is not logged. This shows that a transaction with a start timestamp of <code class="highlighter-rouge">106</code> and a class
 name of <code class="highlighter-rouge">com.SimpleLoader</code> collided with another transaction on row <code class="highlighter-rouge">r1</code> and column <code class="highlighter-rouge">fam1 qual1</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>2015-02-11 18:17:02,639 [tx.collisions] TRACE: txid: 106 class: com.SimpleLoader
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2015-02-11 18:17:02,639 [tx.collisions] TRACE: txid: 106 class: com.SimpleLoader
 2015-02-11 18:17:02,639 [tx.collisions] TRACE: txid: 106 collisions: {r1=[fam1 qual1 ]}
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>When applications read and write arbitrary binary data, this does not log so well. In order to make
 the trace logs human readable, non ASCII chars are escaped using hex. The convention used it <code class="highlighter-rouge">\xDD</code>

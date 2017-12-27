@@ -140,7 +140,7 @@ content, and use <em>w:</em> for word counts.</li>
 
 <p>The class below is a simple POJO for documents.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">com.google.common.hash.Hashing</span><span class="o">;</span>
 
@@ -158,8 +158,7 @@ content, and use <em>w:</em> for word counts.</li>
     <span class="k">return</span> <span class="n">Hashing</span><span class="o">.</span><span class="na">sha1</span><span class="o">().</span><span class="na">hashString</span><span class="o">(</span><span class="n">content</span><span class="o">).</span><span class="na">toString</span><span class="o">().</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">7</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The following code loads documents into Fluo.  It should do the following :</p>
 
@@ -178,7 +177,7 @@ column.</li>
 
 <p>Some of this is implemented below, but not all. The parts that are not done have TODOs.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">org.apache.fluo.api.client.Loader</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.fluo.api.client.TransactionBase</span><span class="o">;</span>
@@ -218,12 +217,11 @@ column.</li>
     <span class="c1">// from 0 to 1.  Do this for row "d:"+newHash</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Add the following to the ft.Main class.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="c1">// some test data</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// some test data</span>
   <span class="kd">private</span> <span class="kd">static</span> <span class="n">Document</span><span class="o">[]</span> <span class="n">docs1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Document</span><span class="o">[]</span> <span class="o">{</span>
       <span class="k">new</span> <span class="nf">Document</span><span class="o">(</span><span class="s">"http://news.com/a23"</span><span class="o">,</span>
           <span class="s">"Jebediah orbits Mun for 35 days.  No power, forgot solar panels."</span><span class="o">),</span>
@@ -263,12 +261,11 @@ column.</li>
     <span class="n">loadAndPrint</span><span class="o">(</span><span class="n">mini</span><span class="o">,</span> <span class="n">client</span><span class="o">,</span> <span class="n">docs2</span><span class="o">);</span>
     <span class="n">loadAndPrint</span><span class="o">(</span><span class="n">mini</span><span class="o">,</span> <span class="n">client</span><span class="o">,</span> <span class="n">docs3</span><span class="o">);</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Once the TODOs in the DocLoader class are implemented, running Main should print out the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>== fluo start ==
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>== fluo start ==
 d:a6c4d1f doc content	Jebediah orbits Mun for 35 days.  No power, forgot solar panels.
 d:a6c4d1f doc refc	1
 d:a6c4d1f doc refs	referenced
@@ -308,8 +305,7 @@ u:http://news.com/a23 uri hash	6658252
 u:http://news.com/a24 uri hash	2732ebc
 u:http://oldnews.com/a23 uri hash	a6c4d1f
 === fluo end ===
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="part-2--computing-word-counts">Part 2 : Computing word counts.</h2>
 
@@ -363,7 +359,7 @@ incremented.</p>
 
 <p>Below is a skeleton for an observer to compute word counts.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -412,8 +408,7 @@ incremented.</p>
     <span class="c1">// TODO if status is unreferenced and document was processed, then adjust counts by -1</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Something to think about: why observe the reference status column instead of the reference count
 column?</p>
@@ -421,7 +416,7 @@ column?</p>
 <p>When you are ready to run the observer, modify the <code class="highlighter-rouge">preInit()</code> method in <code class="highlighter-rouge">ft.Main</code> to configure the
 observer as follows.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">TourObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">TourObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">provide</span><span class="o">(</span><span class="n">Registry</span> <span class="n">obsRegistry</span><span class="o">,</span> <span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">obsRegistry</span><span class="o">.</span><span class="na">forColumn</span><span class="o">(</span><span class="n">DocLoader</span><span class="o">.</span><span class="na">REF_STATUS_COL</span><span class="o">,</span> <span class="n">NotificationType</span><span class="o">.</span><span class="na">STRONG</span><span class="o">)</span>
@@ -432,12 +427,11 @@ observer as follows.</p>
   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">preInit</span><span class="o">(</span><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">fluoConfig</span><span class="o">.</span><span class="na">setObserverProvider</span><span class="o">(</span><span class="n">TourObserverProvider</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After implementing the Observer, the output of the program should look like the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>== fluo start ==
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>== fluo start ==
 d:a6c4d1f doc content	Jebediah orbits Mun for 35 days.  No power, forgot solar panels.
 d:a6c4d1f doc processed	true
 d:a6c4d1f doc refc	1
@@ -538,8 +532,7 @@ w:power word docCount	2
 w:solar word docCount	3
 w:stuck word docCount	1
 === fluo end ===
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="part-3--using-fluo-recipes">Part 3 : Using Fluo Recipes</h2>
 
@@ -552,7 +545,7 @@ you provide.  One function combines updates for a key and the other consumes cha
 <p>To try using a CombineQueue, first add the following class.  This class handles changes to word
 counts by updating an inverted index of word counts.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">org.apache.fluo.api.client.TransactionBase</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.fluo.recipes.core.combine.ChangeObserver</span><span class="o">;</span>
@@ -588,12 +581,11 @@ counts by updating an inverted index of word counts.</p>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"== end processing word count changes =="</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Then modify <code class="highlighter-rouge">preInit()</code> in <code class="highlighter-rouge">Main</code> to the following.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">TourObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">TourObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">provide</span><span class="o">(</span><span class="n">Registry</span> <span class="n">obsRegistry</span><span class="o">,</span> <span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">CombineQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">wordCQ</span> <span class="o">=</span> <span class="n">CombineQueue</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"wc"</span><span class="o">,</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getAppConfiguration</span><span class="o">());</span>
@@ -614,13 +606,12 @@ counts by updating an inverted index of word counts.</p>
     <span class="n">CombineQueue</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">"wc"</span><span class="o">).</span><span class="na">keyType</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">valueType</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">buckets</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
         <span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">fluoConfig</span><span class="o">);</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Add a constructor to <code class="highlighter-rouge">ContentObserver</code> and modify <code class="highlighter-rouge">adjustCounts()</code> to the
 following.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
   <span class="kd">private</span> <span class="n">CombineQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">wordCQ</span><span class="o">;</span>
 
   <span class="kd">public</span> <span class="nf">ContentObserver</span><span class="o">(</span><span class="n">CombineQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">wordCQ</span><span class="o">)</span> <span class="o">{</span>
@@ -632,8 +623,7 @@ following.</p>
     <span class="n">words</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">word</span> <span class="o">-&gt;</span> <span class="n">wcUpdates</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span> <span class="n">delta</span><span class="o">));</span>
     <span class="n">wordCQ</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">tx</span><span class="o">,</span> <span class="n">wcUpdates</span><span class="o">);</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>A CombineQueue  groups key values into buckets for efficiency and processes entire buckets in
 a single transaction.  When you run this code, that is why <code class="highlighter-rouge">== begin processing word count changes ==</code> is seen 
@@ -656,7 +646,7 @@ instance.  <a href="https://github.com/astralway/uno">Uno</a> can be used to qui
 
 <p>The following two helper classes will be needed to run on a real instance.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">org.apache.fluo.api.config.FluoConfiguration</span><span class="o">;</span>
 
@@ -670,10 +660,9 @@ instance.  <a href="https://github.com/astralway/uno">Uno</a> can be used to qui
     <span class="n">conf</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ft</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.nio.file.*</span><span class="o">;</span>
@@ -704,13 +693,12 @@ instance.  <a href="https://github.com/astralway/uno">Uno</a> can be used to qui
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The following command will run this application on a Fluo instance, assuming
 <code class="highlighter-rouge">$FLUO_HOME</code> is set and <code class="highlighter-rouge">fluo</code> is on the path.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> &lt;your fluo tour dir&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;your fluo tour dir&gt;
 
 <span class="c">#create a new Fluo application named wordCount</span>
 fluo new wordCount
@@ -718,10 +706,10 @@ fluo new wordCount
 <span class="c">#populate applications lib directory</span>
 mvn clean package
 cp target/fluo-tour-0.0.1-SNAPSHOT.jar <span class="nv">$FLUO_HOME</span>/apps/wordCount/lib
-mvn dependency:copy-dependencies -DincludeArtifactIds<span class="o">=</span><span class="s2">"fluo-recipes-core,fluo-recipes-accumulo,fluo-recipes-kryo,kryo,minlog,reflectasm,objenesis"</span> -DoutputDirectory<span class="o">=</span><span class="nv">$FLUO_HOME</span>/apps/wordCount/lib
+mvn dependency:copy-dependencies <span class="nt">-DincludeArtifactIds</span><span class="o">=</span><span class="s2">"fluo-recipes-core,fluo-recipes-accumulo,fluo-recipes-kryo,kryo,minlog,reflectasm,objenesis"</span> <span class="nt">-DoutputDirectory</span><span class="o">=</span><span class="nv">$FLUO_HOME</span>/apps/wordCount/lib
 
 <span class="c">#add app specific config to properties file that Fluo init will use</span>
-fluo <span class="nb">exec </span>wordCount ft.GenConfig &gt;&gt; <span class="nv">$FLUO_HOME</span>/apps/wordCount/conf/fluo.properties
+fluo <span class="nb">exec </span>wordCount ft.GenConfig <span class="o">&gt;&gt;</span> <span class="nv">$FLUO_HOME</span>/apps/wordCount/conf/fluo.properties
 
 <span class="c">#initialize and start Fluo application</span>
 fluo init wordCount
@@ -736,14 +724,13 @@ fluo <span class="nb">wait </span>wordCount
 
 <span class="c">#scan data in Fluo</span>
 fluo scan wordCount
-fluo scan wordCount -p ic:
+fluo scan wordCount <span class="nt">-p</span> ic:
 
 <span class="c">#Could try changing a file and reloading it</span>
 
 <span class="c">#stop Fluo application</span>
 fluo stop wordCount
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 </div>

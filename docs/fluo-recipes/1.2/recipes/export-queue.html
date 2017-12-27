@@ -246,7 +246,7 @@ Redis, Elasticsearch, MySQL, etc.</p>
 To understand what can go wrong consider the following example observer
 transaction.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyObserver</span> <span class="kd">implements</span> <span class="n">StringObserver</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyObserver</span> <span class="kd">implements</span> <span class="n">StringObserver</span> <span class="o">{</span>
 
     <span class="kd">static</span> <span class="kd">final</span> <span class="n">Column</span> <span class="n">UPDATE_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"meta"</span><span class="o">,</span> <span class="s">"numUpdates"</span><span class="o">);</span>
     <span class="kd">static</span> <span class="kd">final</span> <span class="n">Column</span> <span class="n">COUNTER_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"meta"</span><span class="o">,</span> <span class="s">"counter1"</span><span class="o">);</span>
@@ -276,8 +276,7 @@ transaction.</p>
         <span class="n">querySystem</span><span class="o">.</span><span class="na">deleteRow</span><span class="o">(</span><span class="n">oldCountRow</span><span class="o">,</span> <span class="n">row</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The above example would keep the external index up to date beautifully as long
 as the following conditions are met.</p>
@@ -333,7 +332,7 @@ following elements:</p>
 <p>This example shows how to incrementally build an inverted index in an external query system using an
 export queue.  The class below is simple POJO used as the value for the export queue.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">CountUpdate</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">CountUpdate</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="kt">int</span> <span class="n">oldCount</span><span class="o">;</span>
   <span class="kd">public</span> <span class="kt">int</span> <span class="n">newCount</span><span class="o">;</span>
 
@@ -342,15 +341,14 @@ export queue.  The class below is simple POJO used as the value for the export q
     <span class="k">this</span><span class="o">.</span><span class="na">newCount</span> <span class="o">=</span> <span class="n">nc</span><span class="o">;</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The following code shows how to configure an export queue.  This code
 modifies the FluoConfiguration object with options needed for the export queue.
 This FluoConfiguration object should be used to initialize the fluo
 application.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FluoApp</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FluoApp</span> <span class="o">{</span>
 
   <span class="c1">// export queue id "ici" means inverted count index</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">EQ_ID</span> <span class="o">=</span> <span class="s">"ici"</span><span class="o">;</span>
@@ -390,12 +388,11 @@ application.</p>
     <span class="n">fluoConfig</span><span class="o">.</span><span class="na">setObserverProvider</span><span class="o">(</span><span class="n">AppObserverProvider</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Below is updated version of the observer from above that is now using an export queue.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyObserver</span> <span class="kd">implements</span> <span class="n">StringObserver</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyObserver</span> <span class="kd">implements</span> <span class="n">StringObserver</span> <span class="o">{</span>
 
   <span class="kd">private</span> <span class="n">ExportQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">CountUpdate</span><span class="o">&gt;</span> <span class="n">exportQueue</span><span class="o">;</span>
 
@@ -419,8 +416,7 @@ application.</p>
     <span class="n">exportQueue</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tx</span><span class="o">,</span> <span class="n">row</span><span class="o">,</span> <span class="k">new</span> <span class="n">CountUpdate</span><span class="o">(</span><span class="n">oldCount</span><span class="o">,</span> <span class="n">newCount</span><span class="o">));</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The export queue will call the <code class="highlighter-rouge">accept()</code> method on the class below to process entries queued for
 export.  It is possible the call to <code class="highlighter-rouge">accept()</code> can fail part way through and/or be called multiple
@@ -429,7 +425,7 @@ Its possible for the same export entry to be processed on multiple computers at 
 This can cause exports to arrive out of order.   The purpose of the sequence number is to help
 systems receiving out of order and redundant data.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountExporter</span> <span class="kd">implements</span> <span class="n">Exporter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">CountUpdate</span><span class="o">&gt;</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountExporter</span> <span class="kd">implements</span> <span class="n">Exporter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">CountUpdate</span><span class="o">&gt;</span> <span class="o">{</span>
   <span class="c1">// represents the external query system we want to update from Fluo</span>
   <span class="n">QuerySystem</span> <span class="n">querySystem</span><span class="o">;</span>
 
@@ -456,8 +452,7 @@ systems receiving out of order and redundant data.</p>
     <span class="n">batchUpdater</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="schema">Schema</h2>
 

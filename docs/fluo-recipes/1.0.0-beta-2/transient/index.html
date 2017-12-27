@@ -149,14 +149,13 @@ transient ranges when configured.  If you would like to register your own
 transient ranges, use <a href="https://static.javadoc.io/io.fluo/fluo-recipes-core/1.0.0-beta-2/io/fluo/recipes/common/TransientRegistry.html">TransientRegistry</a>.  Below is a simple example of
 using this.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
 <span class="n">TransientRegistry</span> <span class="n">transientRegistry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TransientRegistry</span><span class="o">(</span><span class="n">fluoConfig</span><span class="o">.</span><span class="na">getAppConfiguration</span><span class="o">());</span>
 <span class="n">transientRegistry</span><span class="o">.</span><span class="na">addTransientRange</span><span class="o">(</span><span class="k">new</span> <span class="n">RowRange</span><span class="o">(</span><span class="n">startRow</span><span class="o">,</span> <span class="n">endRow</span><span class="o">));</span>
 
 <span class="c1">//Initialize Fluo using fluoConfig. This will store the registered ranges in</span>
 <span class="c1">//zookeeper making them availiable on any node later.</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="compacting-transient-ranges">Compacting Transient Ranges</h2>
 
@@ -165,17 +164,15 @@ need to periodically compact transient ranges if using a recipe that registers
 them.  Using <a href="https://static.javadoc.io/io.fluo/fluo-recipes-accumulo/1.0.0-beta-2/io/fluo/recipes/accumulo/ops/TableOperations.html">TableOperations</a> this can be done with one line of Java code
 like the following.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
 <span class="n">TableOperations</span><span class="o">.</span><span class="na">compactTransient</span><span class="o">(</span><span class="n">fluoConfig</span><span class="o">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Fluo recipes provides and easy way to call <code class="highlighter-rouge">compactTransient()</code> from the
 command line using the <code class="highlighter-rouge">fluo exec</code> command as follows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fluo exec &lt;app name&gt; io.fluo.recipes.accumulo.cmds.CompactTransient [&lt;interval&gt; [&lt;count&gt;]]
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fluo exec &lt;app name&gt; io.fluo.recipes.accumulo.cmds.CompactTransient [&lt;interval&gt; [&lt;count&gt;]]
+</code></pre></div></div>
 
 <p>If no arguments are specified the command will call <code class="highlighter-rouge">compactTransient()</code> once.
 If only <code class="highlighter-rouge">&lt;interval&gt;</code> is specied the command will loop forever calling

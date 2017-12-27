@@ -138,7 +138,7 @@ the instructions below were written using InfluxDB v0.9.4.2 and Grafana v2.5.0.<
 format from Fluo. The configuration below contains templates that transform the Graphite
 metrics into a format that is usable in InfluxDB.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>[[graphite]]
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[graphite]]
   bind-address = ":2003"
   enabled = true
   database = "fluo_metrics"
@@ -156,8 +156,7 @@ metrics into a format that is usable in InfluxDB.</p>
     "fluo.app.*.*.* ..host.measurement.field",
     "fluo.app.*.* ..host.measurement",
   ]
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Fluo distributes a file called <code class="highlighter-rouge">fluo_metrics_setup.txt</code> that contains a list of commands that
@@ -165,20 +164,18 @@ setup InfluxDB. These commands will configure an InfluxDB user, retention polici
 continuous queries that downsample data for the historical dashboard in Grafana. Run the command
 below to execute the commands in this file:</p>
 
-    <p><code class="highlighter-rouge">
- $INFLUXDB_HOME/bin/influx -import -path $FLUO_HOME/contrib/influxdb/fluo_metrics_setup.txt
-</code></p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $INFLUXDB_HOME/bin/influx -import -path $FLUO_HOME/contrib/influxdb/fluo_metrics_setup.txt
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Configure <code class="highlighter-rouge">fluo.properties</code> in your Fluo app configuration to send Graphite metrics to InfluxDB.
 Below is example configuration. Remember to replace <code class="highlighter-rouge">&lt;INFLUXDB_HOST&gt;</code> with the actual host.</p>
 
-    <p><code class="highlighter-rouge">
- fluo.metrics.reporter.graphite.enable=true
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> fluo.metrics.reporter.graphite.enable=true
  fluo.metrics.reporter.graphite.host=&lt;INFLUXDB_HOST&gt;
  fluo.metrics.reporter.graphite.port=2003
  fluo.metrics.reporter.graphite.frequency=30
-</code></p>
+</code></pre></div>    </div>
 
     <p>The reporting frequency of 30 sec is required if you are using the provided Grafana dashboards
  that are configured in the next step.</p>
@@ -189,11 +186,10 @@ distributes two Grafana dashboard templates in its tarball distribution in the d
 <code class="highlighter-rouge">contrib/grafana</code>. Before restarting Grafana, you should copy the templates from your Fluo
 installation to the <code class="highlighter-rouge">dashboards/</code> directory configured below.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>[dashboards.json]
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[dashboards.json]
 enabled = true
 path = &lt;GRAFANA_HOME&gt;/dashboards
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>If you restart Grafana, you will see the Fluo dashboards configured but all of their charts will

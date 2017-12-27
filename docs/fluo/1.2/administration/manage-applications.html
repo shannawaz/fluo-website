@@ -221,7 +221,7 @@ jars configured at initialization. When the class is run, Fluo classes and depen
 the classpath. The <code class="highlighter-rouge">fluo exec</code> command can inject the applications configuration if the class is 
 written in the following way. Defining the injection point is optional.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.inject.Inject</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppCommand</span> <span class="o">{</span>
 
@@ -235,8 +235,7 @@ written in the following way. Defining the injection point is optional.</p>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="application-configuration">Application Configuration</h2>
 
@@ -285,7 +284,7 @@ by setting the following loggers to TRACE:</p>
 <p>Below is an example log after setting <code class="highlighter-rouge">fluo.tx</code> to TRACE. The number following <code class="highlighter-rouge">txid: </code> is the
 transactions start timestamp from the Oracle.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>2015-02-11 18:24:05,341 [fluo.tx ] TRACE: txid: 3 begin() thread: 198
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2015-02-11 18:24:05,341 [fluo.tx ] TRACE: txid: 3 begin() thread: 198
 2015-02-11 18:24:05,343 [fluo.tx ] TRACE: txid: 3 class: com.SimpleLoader
 2015-02-11 18:24:05,357 [fluo.tx ] TRACE: txid: 3 get(4333, stat count ) -&gt; null
 2015-02-11 18:24:05,357 [fluo.tx ] TRACE: txid: 3 set(4333, stat count , 1)
@@ -297,8 +296,7 @@ transactions start timestamp from the Oracle.</p>
 2015-02-11 18:24:05,357 [fluo.tx ] TRACE: txid: 5 set(4333, stat count , 2)
 2015-02-11 18:24:05,441 [fluo.tx ] TRACE: txid: 5 commit() -&gt; SUCCESSFUL commitTs: 6
 2015-02-11 18:24:05,442 [fluo.tx ] TRACE: txid: 5 close()
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The log above traces the following sequence of events.</p>
 
@@ -319,10 +317,9 @@ trace information when a collision occurs. Unlike the previous example, what the
 and wrote is not logged. This shows that a transaction with a start timestamp of <code class="highlighter-rouge">106</code> and a class
 name of <code class="highlighter-rouge">com.SimpleLoader</code> collided with another transaction on row <code class="highlighter-rouge">r1</code> and column <code class="highlighter-rouge">fam1 qual1</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>2015-02-11 18:17:02,639 [tx.collisions] TRACE: txid: 106 class: com.SimpleLoader
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2015-02-11 18:17:02,639 [tx.collisions] TRACE: txid: 106 class: com.SimpleLoader
 2015-02-11 18:17:02,639 [tx.collisions] TRACE: txid: 106 collisions: {r1=[fam1 qual1 ]}
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>When applications read and write arbitrary binary data, this does not log so well. In order to make
 the trace logs human readable, non ASCII chars are escaped using hex. The convention used it <code class="highlighter-rouge">\xDD</code>

@@ -132,7 +132,7 @@ Spark creates.  One way to do this is with Spark’s <code class="highlighter-ro
 execute code locally at each RDD partition. Within each partition, a <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/LoaderExecutor.html">LoaderExecutor</a>
 can be created.  That’s what the example below shows.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code> 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dedupeAndLoad</span><span class="o">(</span><span class="n">JavaRDD</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span> <span class="n">docRdd</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numPartitions</span><span class="o">)</span> <span class="o">{</span>  
 
   <span class="c1">// Remove duplicate documents.</span>
@@ -152,15 +152,13 @@ can be created.  That’s what the example below shows.</p>
     <span class="o">}</span>
   <span class="o">});</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The example above requires that <code class="highlighter-rouge">fluo.properties</code> is available locally for each
 partition.  This can be accomplished with <code class="highlighter-rouge">--files</code> option when launching a Spark job.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>spark-submit --class myApp.Load --files &lt;fluo props dir&gt;/fluo.properties myApp.jar
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spark-submit --class myApp.Load --files &lt;fluo props dir&gt;/fluo.properties myApp.jar
+</code></pre></div></div>
 
 <p>If FluoConfiguration were serializable, then Spark could automatically serialize and make a
 FluoConfiguration object available for each partition.  However, FluoConfiguration is not
@@ -215,7 +213,7 @@ shaded jars is to make the scope of these dependencies <code class="highlighter-
 You may also want to consider excluding other libraries that are provided in the Spark env like
 Guava, log4j, etc.</p>
 
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
 <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
 <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
@@ -313,12 +311,11 @@ Guava, log4j, etc.</p>
     <span class="nt">&lt;/dependency&gt;</span>
   <span class="nt">&lt;/dependencies&gt;</span>
 <span class="nt">&lt;/project&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The following bash script can use the pom above to build a shaded jar.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># Get the versions of Accumulo and Fluo running on the system.  Could let the</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Get the versions of Accumulo and Fluo running on the system.  Could let the</span>
 <span class="c"># user of your Fluo application configure this and have this script read that</span>
 <span class="c"># config.</span>
 <span class="nv">ACCUMULO_VERSION</span><span class="o">=</span><span class="sb">`</span>accumulo version<span class="sb">`</span>
@@ -326,14 +323,13 @@ Guava, log4j, etc.</p>
 
 <span class="c"># Could not find an easy way to get zookeeper version automatically</span>
 <span class="nv">ZOOKEEPER_SERVER</span><span class="o">=</span>localhost
-<span class="nv">ZOOKEEPER_VERSION</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo </span>status | nc <span class="nv">$ZOOKEEPER_SERVER</span> 2181 | grep version: | sed <span class="s1">'s/.*version: \([0-9.]*\).*/\1/'</span><span class="sb">`</span>
+<span class="nv">ZOOKEEPER_VERSION</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo </span>status | nc <span class="nv">$ZOOKEEPER_SERVER</span> 2181 | <span class="nb">grep </span>version: | sed <span class="s1">'s/.*version: \([0-9.]*\).*/\1/'</span><span class="sb">`</span>
 
 <span class="c"># Build the shaded jar</span>
-mvn package -Daccumulo.version<span class="o">=</span><span class="nv">$ACCUMULO_VERSION</span> <span class="se">\</span>
-            -Dfluo.version<span class="o">=</span><span class="nv">$FLUO_VERSION</span> <span class="se">\</span>
-            -Dzookeeper.version<span class="o">=</span><span class="nv">$ZOOKEEPER_VERSION</span>
-</code></pre>
-</div>
+mvn package <span class="nt">-Daccumulo</span>.version<span class="o">=</span><span class="nv">$ACCUMULO_VERSION</span> <span class="se">\</span>
+            <span class="nt">-Dfluo</span>.version<span class="o">=</span><span class="nv">$FLUO_VERSION</span> <span class="se">\</span>
+            <span class="nt">-Dzookeeper</span>.version<span class="o">=</span><span class="nv">$ZOOKEEPER_VERSION</span>
+</code></pre></div></div>
 
 <p>There are other possible ways to package and run your Fluo application for Spark.  This section
 suggested one possible way.  The core concept of this method is late binding of the Accumulo, Fluo,

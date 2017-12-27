@@ -260,18 +260,16 @@ memory plots below.</p>
 <p>Twill reserved memory was set by adding the following to yarn-site.xml.
 <a href="https://github.com/fluo-io/fluo/issues/671">fluo-671</a> was opened to investigate a better way of setting this.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  &lt;property&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &lt;property&gt;
     &lt;name&gt;twill.java.reserved.memory.mb&lt;/name&gt;
     &lt;value&gt;1536&lt;/value&gt;
   &lt;/property&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The following was set in fluo.properties.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  io.fluo.worker.max.memory.mb=5632
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  io.fluo.worker.max.memory.mb=5632
+</code></pre></div></div>
 
 <p>This resulted in workers running with a max heap size of 4096M.  The processes
 will grow larger than 4096M, but will not be killed by YARN unless exceeding
@@ -327,7 +325,7 @@ Observers.</p>
 <p>The following were executed in the Accumulo shell after initializing Fluo but
 before starting the first Spark load job.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>config -t webindex -s table.compaction.major.ratio=1.75
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config -t webindex -s table.compaction.major.ratio=1.75
 config -t webindex -s table.file.compress.blocksize.index=256K
 config -t webindex -s table.file.compress.blocksize=64K
 config -t webindex -s table.file.compress.type=snappy
@@ -337,8 +335,7 @@ config -t accumulo.metadata -s table.durability=flush
 config -t accumulo.root -s table.durability=flush
 config -s tserver.wal.replication=2
 config -s table.file.replication=2
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Fluo used the <code class="highlighter-rouge">webindex</code> table.  A blocksize of 64k was selected to speed up
 random lookups a bit.  A compaction ratio of 1.75 was chosen so that the Fluo
@@ -369,18 +366,16 @@ compactions use most of them could be disruptive.</p>
 determines the maximum amount of transactions that will be held in memory to
 commit asynchronously.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>io.fluo.impl.tx.commit.memory=104857600
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>io.fluo.impl.tx.commit.memory=104857600
+</code></pre></div></div>
 
 <h2 id="webindex-settings">Webindex settings</h2>
 
 <p>Webindex was configured with the following settings.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>numTablets: 60
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numTablets: 60
 numBuckets: 1020
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Each type of data started with 60 tablets.  The types of data are page data,
 url inlink counts, domain url counts, and the export queue.  1,020 is multiple
@@ -393,12 +388,11 @@ types split as the test ran.</p>
 <p>After loading all of the data the two tables were compacted.  The size of the
 tables is shown below.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>root@instance16&gt; du webindex
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@instance16&gt; du webindex
          291,525,943,501 [webindex]
 root@instance16&gt; du webindex_search
          271,106,371,976 [webindex_search]
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Postmortem analysis of the RFiles from this test run lead to work on
 <a href="https://issues.apache.org/jira/browse/ACCUMULO-1124">ACCUMULO-1124</a> and <a href="https://issues.apache.org/jira/browse/ACCUMULO-4314">ACCUMULO-4314</a>.</p>

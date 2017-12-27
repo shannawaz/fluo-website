@@ -161,7 +161,7 @@ This single class can register lambdas to observe a column.  This new API makes 
 applications faster and easier.  Below is an example of using the new API to register two observers
 that compute the number of URLs that reference a document.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Column</span> <span class="n">DOC_CURR_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"doc"</span><span class="o">,</span> <span class="s">"curr"</span><span class="o">);</span>
   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Column</span> <span class="n">DOC_NEW_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"doc"</span><span class="o">,</span> <span class="s">"new"</span><span class="o">);</span>
@@ -230,17 +230,15 @@ that compute the number of URLs that reference a document.</p>
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Before initializing a Fluo App, the ObserverProvider above would be added to configuration as follows.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">fluoConf</span> <span class="o">=</span> <span class="o">...</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">fluoConf</span> <span class="o">=</span> <span class="o">...</span>
 <span class="n">fluoConf</span><span class="o">.</span><span class="na">setObserverProvider</span><span class="o">(</span><span class="n">AppObserverProvider</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
 <span class="c1">// initialize Fluo app using fluoConf</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The old API is still present but has been deprecated and may be removed in the future.</p>
 

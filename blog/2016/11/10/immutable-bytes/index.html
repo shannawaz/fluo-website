@@ -138,15 +138,14 @@ about this at first.  However a simple truth became apparent.  If the API took a
 all boundary points between the user and Fluo would require defensive copies.  For example assume
 Fluo’s API took byte arrays and consider the following code.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">//A Fluo transaction</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//A Fluo transaction</span>
 <span class="n">Transaction</span> <span class="n">tx</span> <span class="o">=</span> <span class="o">...</span>
 <span class="kt">byte</span><span class="o">[]</span> <span class="n">row</span> <span class="o">=</span> <span class="o">...</span>
 
 <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">column1</span><span class="o">,</span> <span class="n">value1</span><span class="o">);</span>
 <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">column2</span><span class="o">,</span> <span class="n">value2</span><span class="o">);</span>
 <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">column3</span><span class="o">,</span> <span class="n">value3</span><span class="o">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Fluo will buffer changes until a transaction is committed.  In the example above since Fluo accepts
 a mutable row, it would be prudent to do a defensive copy each time <code class="highlighter-rouge">set()</code> is called above.</p>
@@ -155,15 +154,14 @@ a mutable row, it would be prudent to do a defensive copy each time <code class=
 do a defensive copy.  So when comparing the two examples, the immutable byte wrapper results in less
 defensive copies.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">//A Fluo transaction</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//A Fluo transaction</span>
 <span class="n">Transaction</span> <span class="n">tx</span> <span class="o">=</span> <span class="o">...</span>
 <span class="n">Bytes</span> <span class="n">row</span> <span class="o">=</span> <span class="o">...</span>
 
 <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">column1</span><span class="o">,</span> <span class="n">value1</span><span class="o">);</span>
 <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">column2</span><span class="o">,</span> <span class="n">value2</span><span class="o">);</span>
 <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">column3</span><span class="o">,</span> <span class="n">value3</span><span class="o">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We really did not want to create Bytes and BytesBuilder types, however we could not find what we
 needed in Java’s standard libraries.  The following sections discuss some of the options we
@@ -176,22 +174,21 @@ String, Java must decode the byte array using a character set.  Some sequences o
 in some characters sets.  Therefore, trying to stuff arbitrary binary data in a String can corrupt
 the data.  The following little program shows this, it will print <code class="highlighter-rouge">false</code>.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kt">byte</span> <span class="n">bytes1</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">256</span><span class="o">];</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kt">byte</span> <span class="n">bytes1</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">256</span><span class="o">];</span>
     <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">255</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
       <span class="n">bytes1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">i</span><span class="o">;</span>
 
     <span class="kt">byte</span> <span class="n">bytes2</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">bytes1</span><span class="o">).</span><span class="na">getBytes</span><span class="o">();</span>
 
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">bytes1</span><span class="o">,</span> <span class="n">bytes2</span><span class="o">));</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>String can be made to work by specifying an appropriate character set. The following program will
 print <code class="highlighter-rouge">true</code>.  However, this is error prone and inefficient.  It’s error prone in the case where the
 character set is wrong or omitted.  It’s inefficient because it results in copying from byte arrays
 to char arrays and visa versa.  Also, char arrays use twice as much memory.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kt">byte</span> <span class="n">bytes1</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">256</span><span class="o">];</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kt">byte</span> <span class="n">bytes1</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">256</span><span class="o">];</span>
     <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">255</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
       <span class="n">bytes1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">i</span><span class="o">;</span>
 
@@ -199,8 +196,7 @@ to char arrays and visa versa.  Also, char arrays use twice as much memory.</p>
     <span class="kt">byte</span> <span class="n">bytes2</span><span class="o">[]</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">StandardCharsets</span><span class="o">.</span><span class="na">ISO_8859_1</span><span class="o">);</span>
 
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">bytes1</span><span class="o">,</span> <span class="n">bytes2</span><span class="o">));</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="why-not-use-bytebuffer">Why not use ByteBuffer?</h2>
 
@@ -208,7 +204,7 @@ to char arrays and visa versa.  Also, char arrays use twice as much memory.</p>
 However, the following program shows two ways that ByteBuffer falls short.  ByteBuffers are great
 for I/O, but it would not be prudent to use them when immutability is desired.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">250</span><span class="o">};</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">,(</span><span class="kt">byte</span><span class="o">)</span><span class="mi">250</span><span class="o">};</span>
     <span class="n">ByteBuffer</span> <span class="n">bb1</span> <span class="o">=</span> <span class="n">ByteBuffer</span><span class="o">.</span><span class="na">wrap</span><span class="o">(</span><span class="n">bytes1</span><span class="o">).</span><span class="na">asReadOnlyBuffer</span><span class="o">();</span>
 
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bb1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
@@ -216,16 +212,14 @@ for I/O, but it would not be prudent to use them when immutability is desired.</
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bb1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
     <span class="n">bb1</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bb1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The program above prints the following, which is less than ideal :</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>747721
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>747721
 830367
 26786
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This little program shows two things.  First, the only guarantee we are getting from
 <code class="highlighter-rouge">asReadOnlyBuffer()</code> is that <code class="highlighter-rouge">bb1</code> can not be used to modify <code class="highlighter-rouge">bytes1</code>.  However, the originator of

@@ -115,7 +115,7 @@
   <p class="text-muted">Tour page 22 of 26</p>
 </div>
 <div id="tour-content">
-  <div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">static</span> <span class="n">Column</span> <span class="n">NC</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"ntyf"</span><span class="o">,</span> <span class="s">"sum"</span><span class="o">);</span>
+  <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">static</span> <span class="n">Column</span> <span class="n">NC</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"ntyf"</span><span class="o">,</span> <span class="s">"sum"</span><span class="o">);</span>
   <span class="kd">static</span> <span class="n">Column</span> <span class="n">TOTAL_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"sum"</span><span class="o">,</span> <span class="s">"total"</span><span class="o">);</span>
   <span class="kd">static</span> <span class="n">Column</span> <span class="n">UPDATE_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"sum"</span><span class="o">,</span> <span class="s">"update"</span><span class="o">);</span>
 
@@ -153,7 +153,7 @@
         <span class="c1">// The Loader interface only has one function and can therefore be written as a lambda</span>
         <span class="c1">// below.</span>
         <span class="n">le</span><span class="o">.</span><span class="na">execute</span><span class="o">((</span><span class="n">tx</span><span class="o">,</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
-          <span class="n">String</span> <span class="n">row</span> <span class="o">=</span> <span class="s">"counter001/"</span> <span class="o">+</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%07d"</span><span class="o">,</span> <span class="n">r</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">10</span><span class="n">_000_000</span><span class="o">));</span>
+          <span class="n">String</span> <span class="n">row</span> <span class="o">=</span> <span class="s">"counter001/"</span> <span class="o">+</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%07d"</span><span class="o">,</span> <span class="n">r</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">10_000_000</span><span class="o">));</span>
           <span class="kt">int</span> <span class="n">curVal</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">tx</span><span class="o">.</span><span class="na">gets</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">UPDATE_COL</span><span class="o">,</span> <span class="s">"0"</span><span class="o">));</span>
           <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">UPDATE_COL</span><span class="o">,</span> <span class="n">curVal</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="s">""</span><span class="o">);</span>
           <span class="n">tx</span><span class="o">.</span><span class="na">setWeakNotification</span><span class="o">(</span><span class="s">"counter001"</span><span class="o">,</span> <span class="n">NC</span><span class="o">);</span>
@@ -167,13 +167,12 @@
       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"final sum : "</span> <span class="o">+</span> <span class="n">snap</span><span class="o">.</span><span class="na">gets</span><span class="o">(</span><span class="s">"counter001"</span><span class="o">,</span> <span class="n">TOTAL_COL</span><span class="o">));</span>
     <span class="o">}</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The code above will print something like the following.  Every run will print something slightly
 different because it depends on when the observer runs.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ mvn -q clean compile exec:java
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mvn -q clean compile exec:java
 Starting MiniFluo ... started.
 sum : 526
 sum : 1465
@@ -182,8 +181,7 @@ sum : 3260
 sum : 4736
 sum : 5000
 final sum : 5000
-</code></pre>
-</div>
+</code></pre></div></div>
 
 </div>
 

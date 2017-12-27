@@ -115,7 +115,7 @@
   <p class="text-muted">Tour page 25 of 26</p>
 </div>
 <div id="tour-content">
-  <div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">static</span> <span class="n">Column</span> <span class="n">NC</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"ntyf"</span><span class="o">,</span> <span class="s">"sum"</span><span class="o">);</span>
+  <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">static</span> <span class="n">Column</span> <span class="n">NC</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"ntyf"</span><span class="o">,</span> <span class="s">"sum"</span><span class="o">);</span>
   <span class="kd">static</span> <span class="n">Column</span> <span class="n">TOTAL_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"sum"</span><span class="o">,</span> <span class="s">"total"</span><span class="o">);</span>
   <span class="kd">static</span> <span class="n">Column</span> <span class="n">UPDATE_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"sum"</span><span class="o">,</span> <span class="s">"update"</span><span class="o">);</span>
   <span class="kd">static</span> <span class="n">Column</span> <span class="n">CONTINUE_COL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"sum"</span><span class="o">,</span> <span class="s">"continue"</span><span class="o">);</span>
@@ -203,12 +203,11 @@
       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"final sum : "</span> <span class="o">+</span> <span class="n">snap</span><span class="o">.</span><span class="na">gets</span><span class="o">(</span><span class="s">"counter001"</span><span class="o">,</span> <span class="n">TOTAL_COL</span><span class="o">));</span>
     <span class="o">}</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The code above will print something like the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ mvn -q clean compile exec:java
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mvn -q clean compile exec:java
 Starting MiniFluo ... started.
 sum : 500  start: counter001/  processed: 500
 sum : 891  start: counter001/7945963  processed: 390
@@ -224,8 +223,7 @@ sum : 4899  start: counter001/4076664  processed: 500
 sum : 5000  start: counter001/6993690  processed: 101
 sum : 5000  start: counter001/  processed: 0
 final sum : 5000
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 </div>

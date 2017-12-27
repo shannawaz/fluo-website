@@ -133,7 +133,7 @@ anywhere by calling <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.
 config before initialization.  After initialization the configuration is accessed via
 FluoConfiguration.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">preInit</span><span class="o">(</span><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">preInit</span><span class="o">(</span><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">SimpleConfiguration</span> <span class="n">appConfig</span> <span class="o">=</span> <span class="n">fluoConfig</span><span class="o">.</span><span class="na">getAppConfiguration</span><span class="o">();</span>
     <span class="n">appConfig</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"exporterClass"</span><span class="o">,</span> <span class="s">"com.foo.MysqlExporter"</span><span class="o">);</span>
     <span class="n">appConfig</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"exporterDB"</span><span class="o">,</span> <span class="s">"db1"</span><span class="o">);</span>
@@ -146,16 +146,14 @@ FluoConfiguration.</p>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">appConfig</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"exporterDB"</span><span class="o">));</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">appConfig</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"exporterTable"</span><span class="o">));</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The code above prints out the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>com.foo.MysqlExporter
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>com.foo.MysqlExporter
 db1
 table5
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="observer-configuration">Observer Configuration</h2>
 
@@ -165,7 +163,7 @@ exporting rows to multiple mysql tables.  To do this, it creates an observers pe
 table. The observed column and export table for each observer is derived from application
 configuration.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">TourObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">TourObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">provide</span><span class="o">(</span><span class="n">Registry</span> <span class="n">obsRegistry</span><span class="o">,</span> <span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">SimpleConfiguration</span> <span class="n">appCfg</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="na">getAppConfiguration</span><span class="o">();</span>
@@ -229,19 +227,17 @@ configuration.</p>
 
     <span class="n">mini</span><span class="o">.</span><span class="na">waitForObservers</span><span class="o">();</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Running the code above prints the following.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Exporting val=777 from row=e:98 to db=db1 table=tinytable
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exporting val=777 from row=e:98 to db=db1 table=tinytable
 Exporting val=888 from row=e:98 to db=db1 table=tinytable
 Exporting val=999 from row=e:98 to db=db1 table=tinytable
 Exporting val=222 from row=e:99 to db=db1 table=bigtable
 Exporting val=444 from row=e:99 to db=db1 table=bigtable
 Exporting val=555 from row=e:99 to db=db1 table=bigtable
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 </div>

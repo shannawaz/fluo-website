@@ -200,7 +200,7 @@ previous versions, this would have been a cumbersome combination of
 configuration and Java code.   With the new APIs, using lambdas is now an
 option.  This was not an option with the old APIs.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
 
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">provide</span><span class="o">(</span><span class="n">Registry</span> <span class="n">obsRegistry</span><span class="o">,</span> <span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
@@ -279,8 +279,7 @@ option.  This was not an option with the old APIs.</p>
     <span class="n">exportQ</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">(</span><span class="n">obsRegistry</span><span class="o">,</span> <span class="n">exporter</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The code below does three things :</p>
 
@@ -290,7 +289,7 @@ option.  This was not an option with the old APIs.</p>
   <li>Adds some data to the 3D combine queue twice.  Between the adds, it waits for processing to finish.</li>
 </ul>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="n">FluoConfiguration</span> <span class="n">props</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">();</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">FluoConfiguration</span> <span class="n">props</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">();</span>
     <span class="n">props</span><span class="o">.</span><span class="na">setApplicationName</span><span class="o">(</span><span class="s">"dimensions"</span><span class="o">);</span>
     <span class="n">props</span><span class="o">.</span><span class="na">setMiniDataDir</span><span class="o">(</span><span class="s">"target/mini"</span><span class="o">);</span>
 
@@ -337,12 +336,11 @@ option.  This was not an option with the old APIs.</p>
       <span class="n">miniFluo</span><span class="o">.</span><span class="na">waitForObservers</span><span class="o">();</span>
       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n*** All notifications processed. ***\n"</span><span class="o">);</span>
     <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Below is the output of running this example.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>EXPORT x=3:y=5:t=23    old: - new: 1   seq: 8
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>EXPORT x=3:y=5:t=23    old: - new: 1   seq: 8
 EXPORT x=3:y=5:t=27    old: - new: 1   seq: 9
 EXPORT x=5:y=5:t=27    old: - new: 1   seq: 9
 EXPORT x=3:y=5         old: - new: 2   seq: 37
@@ -368,8 +366,7 @@ EXPORT x=5:y=5         old: 1 new: -   seq: 107
 EXPORT x=5:t=27        old: 1 new: -   seq: 106
 
 *** All notifications processed. ***
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 </div>

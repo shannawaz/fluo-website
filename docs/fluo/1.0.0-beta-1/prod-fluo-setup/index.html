@@ -148,23 +148,20 @@ different environment or one built from the master branch, follow these steps:</
 
 <p>First, clone Fluo:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/fluo-io/fluo.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/fluo-io/fluo.git
 cd fluo/
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Optionally, check out a stable tag (if you don’t want to build a release from master):</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git checkout 1.0.0-beta-1
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout 1.0.0-beta-1
+</code></pre></div></div>
 
 <p>Next, build a distribution for your environment. The tarball will be created in 
 <code class="highlighter-rouge">modules/distribution/target</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mvn package -Daccumulo.version=1.6.1 -Dhadoop.version=2.4.0
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn package -Daccumulo.version=1.6.1 -Dhadoop.version=2.4.0
+</code></pre></div></div>
 
 <h2 id="install-fluo">Install Fluo</h2>
 
@@ -173,23 +170,20 @@ to install Fluo.</p>
 
 <p>First, choose a directory with plenty of space and untar the distribution:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>tar -xvzf fluo-1.0.0-beta-1-bin.tar.gz
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tar -xvzf fluo-1.0.0-beta-1-bin.tar.gz
+</code></pre></div></div>
 
 <p>Verify that your distribution has the same versions of Hadoop &amp; Accumulo as your environment:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cd fluo-1.0.0-beta-1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd fluo-1.0.0-beta-1
 ls lib/hadoop-* lib/accumulo-*
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Next, copy the example configuration to the base of your configuration directory to create
 the default configuration for your Fluo install:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cp conf/examples/* conf/
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp conf/examples/* conf/
+</code></pre></div></div>
 
 <p>The default configuration will be used as the base configuration for each new application.
 Therefore, you should modify <a href="https://github.com/fluo-io/fluo/blob/1.0.0-beta-1/modules/distribution/src/main/config/fluo.properties">fluo.properties</a> for your environment.  However, you should not
@@ -207,22 +201,19 @@ commands are invoked by this script.</p>
 <p>Modify and add the following to your <code class="highlighter-rouge">~/.bashrc</code> if you want to be able to execute the
 fluo script from any directory:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>export PATH=/path/to/fluo-1.0.0-beta-1/bin:$PATH
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH=/path/to/fluo-1.0.0-beta-1/bin:$PATH
+</code></pre></div></div>
 
 <p>Source your <code class="highlighter-rouge">.bashrc</code> for the changes to take effect and test the script</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>source ~/.bashrc
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ~/.bashrc
 fluo
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Running the script without any arguments prints a description of all commands.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>./bin/fluo
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/fluo
+</code></pre></div></div>
 
 <h2 id="configure-a-fluo-application">Configure a Fluo application</h2>
 
@@ -230,9 +221,8 @@ fluo
 configuration necessary for a new application.  Feel free to pick a different name (other
 than <code class="highlighter-rouge">myapp</code>) for your application:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fluo new myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fluo new myapp
+</code></pre></div></div>
 
 <p>This command will create a directory for your application at <code class="highlighter-rouge">apps/myapp</code> of your Fluo
 install which will contain a <code class="highlighter-rouge">conf</code> and <code class="highlighter-rouge">lib</code>.</p>
@@ -240,9 +230,8 @@ install which will contain a <code class="highlighter-rouge">conf</code> and <co
 <p>The <code class="highlighter-rouge">apps/myapp/conf</code> directory contains a copy of the <code class="highlighter-rouge">fluo.properties</code> from your default
 configuration.  This should be configured for your application:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vim apps/myapp/fluo.properties
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim apps/myapp/fluo.properties
+</code></pre></div></div>
 
 <p>When configuring the observer section in fluo.properties, you can configure your instance
 for the <a href="https://github.com/fluo-io/phrasecount">phrasecount</a> application if you have not created your own application. See
@@ -257,9 +246,8 @@ observer classes to this directory.</p>
 
 <p>After your application has been configured, use the command below to initialize it:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fluo init myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fluo init myapp
+</code></pre></div></div>
 
 <p>This only needs to be called once and stores configuration in Zookeeper.</p>
 
@@ -272,9 +260,8 @@ in your <a href="https://github.com/fluo-io/fluo/blob/1.0.0-beta-1/modules/distr
 <p>When you are ready to start your Fluo application on your YARN cluster, run the
 command below:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fluo start myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fluo start myapp
+</code></pre></div></div>
 
 <p>The start command above will work for a single-node or a large cluster.  By
 using YARN, you do not need to deploy the Fluo binaries to every node on your
@@ -282,15 +269,13 @@ cluster or start processes on every node.</p>
 
 <p>You can use the following command to check the status of your instance:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fluo status myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fluo status myapp
+</code></pre></div></div>
 
 <p>For more detailed information on the YARN containers running Fluo:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fluo info myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fluo info myapp
+</code></pre></div></div>
 
 <p>You can also use <code class="highlighter-rouge">yarn application -list</code> to check the status of your Fluo instance
 in YARN.  Logs are viewable within YARN.</p>
@@ -303,15 +288,13 @@ through the data.</p>
 
 <p>Use the following command to stop your Fluo application:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fluo stop myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fluo stop myapp
+</code></pre></div></div>
 
 <p>If stop fails, there is also a kill command.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>fluo kill myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fluo kill myapp
+</code></pre></div></div>
 
 <h2 id="tuning-accumulo">Tuning Accumulo</h2>
 
@@ -334,17 +317,15 @@ were fixed.</p>
 <p>If you do not have YARN set up, you can start the oracle and worker as a local 
 Fluo process using the following commands:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>local-fluo start-oracle
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local-fluo start-oracle
 local-fluo start-worker
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Use the following commands to stop a local Fluo process:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>local-fluo stop-worker
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>local-fluo stop-worker
 local-fluo stop-oracle
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In a distributed environment, you will need to deploy and configure a Fluo 
 distribution on every node in your cluster.</p>

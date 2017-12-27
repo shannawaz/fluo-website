@@ -143,7 +143,7 @@ objects to Accumulo Mutations. For example, the <code class="highlighter-rouge">
 key/values and into mutations for Accumulo.  This step is optional, a lambda could
 be used in step 3 instead of creating a class.</p>
 
-    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleTranslator</span> <span class="kd">implements</span> <span class="n">AccumuloTranslator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleTranslator</span> <span class="kd">implements</span> <span class="n">AccumuloTranslator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
 
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">translate</span><span class="o">(</span><span class="n">SequencedExport</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">export</span><span class="o">,</span> <span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Mutation</span><span class="o">&gt;</span> <span class="n">consumer</span><span class="o">)</span> <span class="o">{</span>
@@ -153,13 +153,12 @@ be used in step 3 instead of creating a class.</p>
   <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Configure an <code class="highlighter-rouge">ExportQueue</code> and the export table prior to initializing Fluo.</p>
 
-    <div class="language-java highlighter-rouge"><pre class="highlight"><code>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
 
 <span class="n">String</span> <span class="n">instance</span> <span class="o">=</span>       <span class="c1">// Name of accumulo instance exporting to</span>
@@ -177,15 +176,14 @@ be used in step 3 instead of creating a class.</p>
     <span class="o">.</span><span class="na">buckets</span><span class="o">(</span><span class="mi">119</span><span class="o">).</span><span class="na">save</span><span class="o">(</span><span class="n">fluoConfig</span><span class="o">);</span>
 
 <span class="c1">// Initialize Fluo using fluoConfig</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>In the applications <code class="highlighter-rouge">ObserverProvider</code>, register an observer that will process exports and write
 them to Accumulo using <a href="https://static.javadoc.io/org.apache.fluo/fluo-recipes-accumulo/1.1.0-incubating/org/apache/fluo/recipes/accumulo/export/function/AccumuloExporter.html">AccumuloExporter</a>.  Also, register observers that add to the export
 queue.</p>
 
-    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
 
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">provide</span><span class="o">(</span><span class="n">Registry</span> <span class="n">obsRegistry</span><span class="o">,</span> <span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
@@ -210,8 +208,7 @@ queue.</p>
     <span class="o">});</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ol>
 

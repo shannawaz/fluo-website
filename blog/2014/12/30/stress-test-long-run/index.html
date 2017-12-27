@@ -135,19 +135,17 @@ everything finished, the test was a success. The number of unique integers
 computed independently by MapReduce matched the number computed by Fluo. Below
 is the output of the stress test count from Fluo.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> $ java -cp $STRESS_JAR io.fluo.stress.trie.Print $FLUO_PROPS
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ java -cp $STRESS_JAR io.fluo.stress.trie.Print $FLUO_PROPS
  Total at root : 1011489250
  Nodes Scanned : 59605
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Below are a few lines of output selected from the map reduce job.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> Map input records=1011999273
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Map input records=1011999273
  io.fluo.stress.trie.Unique$Stats 
     UNIQUE=1011489250
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This output shows that 1,011,999,273 random integers (between 0 and
 10<sup>12</sup>-1) were given to Fluo and map reduce.  Both computations
@@ -215,16 +213,15 @@ happened here.</p>
 
 <p>The test was run on 20 m1.large EC2 nodes using the script at the end of this
 <a href="https://github.com/fluo-io/fluo/blob/acf1ea7d8d6bc74eef7e311008e5e8fc0fd94d30/modules/stress/README.md">README</a>.  The parameters in the script were set as follows, the for loop
-was changed to <code class="highlighter-rouge"><span class="p">{</span><span class="err">1..120</span><span class="p">}</span></code>, and the sleep time was set to 120.</p>
+was changed to <code class="highlighter-rouge">{1..120}</code>, and the sleep time was set to 120.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>MAX=$((10**12))
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MAX=$((10**12))
 SPLITS=68
 MAPS=17
 REDUCES=17
 GEN_INIT=$((10**9))
 GEN_INCR=$((10**5))
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The following was used to run the test :</p>
 

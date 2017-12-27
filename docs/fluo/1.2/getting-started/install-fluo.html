@@ -249,11 +249,10 @@ or cluster:</p>
 you download the <a href="/download/">latest release</a>. You can also build a distribution from the master
 branch by following these steps which create a tarball in <code class="highlighter-rouge">modules/distribution/target</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/apache/fluo.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/apache/fluo.git
 cd fluo/
 mvn package
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="install-fluo">Install Fluo</h2>
 
@@ -263,10 +262,9 @@ mvn package
   <li>
     <p>Choose a directory with plenty of space and untar the distribution:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code>tar -xvzf fluo-1.2.0-bin.tar.gz
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tar -xvzf fluo-1.2.0-bin.tar.gz
 cd fluo-1.2.0
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>The distribution contains a <code class="highlighter-rouge">fluo</code> script in <code class="highlighter-rouge">bin/</code> that administers Fluo and the
 following configuration files in <code class="highlighter-rouge">conf/</code>:</p>
@@ -315,9 +313,8 @@ configure <a href="https://github.com/apache/fluo/blob/master/modules/distributi
 default versions set in <a href="https://github.com/apache/fluo/blob/master/modules/distribution/src/main/lib/ahz/pom.xml">lib/ahz/pom.xml</a>. If you are not using the default versions, you can
 override them:</p>
 
-        <div class="highlighter-rouge"><pre class="highlight"><code>  ./lib/fetch.sh ahz -Daccumulo.version=1.7.2 -Dhadoop.version=2.7.2 -Dzookeeper.version=3.4.8
-</code></pre>
-        </div>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ./lib/fetch.sh ahz -Daccumulo.version=1.7.2 -Dhadoop.version=2.7.2 -Dzookeeper.version=3.4.8
+</code></pre></div>        </div>
       </li>
     </ul>
   </li>
@@ -325,9 +322,8 @@ override them:</p>
     <p>Fluo needs more dependencies than what is available from Hadoop, Accumulo, and Zookeeper. These
 extra dependencies need to be downloaded to <code class="highlighter-rouge">lib/</code> using the command below:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> ./lib/fetch.sh extra
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ./lib/fetch.sh extra
+</code></pre></div>    </div>
   </li>
 </ol>
 
@@ -341,22 +337,19 @@ invoked by this script.</p>
 <p>Modify and add the following to your <code class="highlighter-rouge">~/.bashrc</code> if you want to be able to execute the fluo script
 from any directory:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>export PATH=/path/to/fluo-1.2.0/bin:$PATH
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH=/path/to/fluo-1.2.0/bin:$PATH
+</code></pre></div></div>
 
 <p>Source your <code class="highlighter-rouge">.bashrc</code> for the changes to take effect and test the script</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>source ~/.bashrc
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ~/.bashrc
 fluo
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Running the script without any arguments prints a description of all commands.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>./bin/fluo
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/fluo
+</code></pre></div></div>
 
 <h2 id="tuning-accumulo">Tuning Accumulo</h2>
 

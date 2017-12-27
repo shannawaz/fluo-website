@@ -141,35 +141,31 @@ These tests can be run using <code class="highlighter-rouge">mvn verify</code>.<
 <p>If you want to run the trie stress on the cluster, first set up HDFS, YARN, Zookeeper, 
 and Accumulo. Next, initialize Fluo with following observer:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>io.fluo.observer.0=io.fluo.stress.trie.NodeObserver
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>io.fluo.observer.0=io.fluo.stress.trie.NodeObserver
+</code></pre></div></div>
 
 <p>Next, build the module:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cd modules/stress
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd modules/stress
 mvn package assembly:single
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This will create two jars in target:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ ls target/fluo-stress-*
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls target/fluo-stress-*
 target/fluo-stress-1.0.0-alpha-1-SNAPSHOT.jar  
 target/fluo-stress-1.0.0-alpha-1-SNAPSHOT-jar-with-dependencies.jar
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Copy fluo-stress-1.0.0-alpha-1-SNAPSHOT.jar to lib/observers in your Fluo deployment:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cp target/fluo-stress-1.0.0-alpha-1-SNAPSHOT.jar $DEPLOY/lib/observers
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp target/fluo-stress-1.0.0-alpha-1-SNAPSHOT.jar $DEPLOY/lib/observers
+</code></pre></div></div>
 
 <p>Finally, on a node where Hadoop is set up, run the following command to ingest 
 data into Fluo using fluo-stress-1.0.0-alpha-1-SNAPSHOT-jar-with-dependencies.jar:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>yarn jar &lt;jarPath&gt; io.fluo.stress.trie.NumberIngest &lt;numMap&gt; &lt;numPerMap&gt; &lt;nodeSize&gt; &lt;fluoProps&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn jar &lt;jarPath&gt; io.fluo.stress.trie.NumberIngest &lt;numMap&gt; &lt;numPerMap&gt; &lt;nodeSize&gt; &lt;fluoProps&gt;
 
 where:
 
@@ -178,8 +174,7 @@ numMap = Number of ingest map tasks
 numPerMap = Number of integers ingested per map
 nodeSize = Size of node in bits which must be a divisor of 32/64
 fluoProps = Path to fluo.properties
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
   </article>

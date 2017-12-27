@@ -286,7 +286,7 @@ row range in the table.  Second, the ID is used in generating configuration keys
 
 <p>The following snippet shows how to configure a combine queue.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
 
 <span class="c1">// Set application properties for the combine queue.  These properties are read later by</span>
 <span class="c1">// the observers running on each worker.</span>
@@ -296,14 +296,13 @@ row range in the table.  Second, the ID is used in generating configuration keys
 <span class="n">fluoConfig</span><span class="o">.</span><span class="na">setObserverProvider</span><span class="o">(</span><span class="n">WcObserverProvider</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
 <span class="c1">// initialize Fluo using fluoConfig</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Assume the following observer is triggered when a documents is updated.  It examines new
 and old document content and determines changes in word counts.  These changes are pushed to a
 combine queue.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DocumentObserver</span> <span class="kd">implements</span> <span class="n">StringObserver</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DocumentObserver</span> <span class="kd">implements</span> <span class="n">StringObserver</span> <span class="o">{</span>
   <span class="c1">// word count combine queue</span>
   <span class="kd">private</span> <span class="n">CombineQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">wccq</span><span class="o">;</span>
 
@@ -360,8 +359,7 @@ combine queue.</p>
     <span class="k">return</span> <span class="n">changes</span><span class="o">;</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Each combine queue has two extension points, a <a href="https://static.javadoc.io/org.apache.fluo/fluo-recipes-core/1.1.0-incubating/org/apache/fluo/recipes/core/combine/Combiner.html">combiner</a> and a <a href="https://static.javadoc.io/org.apache.fluo/fluo-recipes-core/1.1.0-incubating/org/apache/fluo/recipes/core/combine/ChangeObserver.html">change
 observer</a>.  The combine queue configures a Fluo observer to process queued
@@ -372,7 +370,7 @@ how to use these extension points.</p>
 updates are queued for export to an external database.  The export is given the new and old value
 allowing it to delete the old value if needed.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WcObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WcObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
 
   <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ID</span> <span class="o">=</span> <span class="s">"wc"</span><span class="o">;</span>
 
@@ -410,8 +408,7 @@ allowing it to delete the old value if needed.</p>
     <span class="n">wcMap</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">(</span><span class="n">obsRegistry</span><span class="o">,</span> <span class="n">combiner</span><span class="o">,</span> <span class="n">changeObs</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="guarantees">Guarantees</h2>
 

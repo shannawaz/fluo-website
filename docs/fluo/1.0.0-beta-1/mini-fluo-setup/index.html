@@ -139,22 +139,19 @@ by following these steps:</p>
 
 <p>First, clone Fluo:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/fluo-io/fluo.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/fluo-io/fluo.git
 cd fluo/
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Optionally, check out a stable tag (if you don’t want to build a release from master):</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git checkout 1.0.0-beta-1
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout 1.0.0-beta-1
+</code></pre></div></div>
 
 <p>Next, build a distribution which will be created in <code class="highlighter-rouge">modules/distribution/target</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mvn package
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn package
+</code></pre></div></div>
 
 <h2 id="install-fluo-distribution">Install Fluo distribution</h2>
 
@@ -163,23 +160,20 @@ to install Fluo.</p>
 
 <p>First, choose a directory with plenty of space and untar the distribution:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>tar -xvzf fluo-1.0.0-beta-1-bin.tar.gz
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tar -xvzf fluo-1.0.0-beta-1-bin.tar.gz
+</code></pre></div></div>
 
 <p>Verify that your distribution has the same versions of Hadoop &amp; Accumulo as your environment:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cd fluo-1.0.0-beta-1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd fluo-1.0.0-beta-1
 ls lib/hadoop-* lib/accumulo-*
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Next, copy the example configuration to the base of your configuration directory to create
 the default configuration for your Fluo install:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cp conf/examples/* conf/
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp conf/examples/* conf/
+</code></pre></div></div>
 
 <p>The default configuration will be used as the base configuration for each new application. 
 Therefore, you should modify <a href="https://github.com/fluo-io/fluo/blob/1.0.0-beta-1/modules/distribution/src/main/config/fluo.properties">fluo.properties</a> for your environment. However, you should
@@ -200,16 +194,14 @@ MiniFluo commands are invoked by this script.</p>
 <p>Modify and add the following to your <code class="highlighter-rouge">~/.bashrc</code> if you want to be able to execute the
 <code class="highlighter-rouge">mini-fluo</code> script from any directory:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>export PATH=/path/to/fluo-1.0.0-beta-1/bin:$PATH
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export PATH=/path/to/fluo-1.0.0-beta-1/bin:$PATH
+</code></pre></div></div>
 
 <p>Source your <code class="highlighter-rouge">.bashrc</code> for the changes to take effect and test the script</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>source ~/.bashrc
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ~/.bashrc
 mini-fluo
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Running the script without any arguments prints a description of all commands.</p>
 
@@ -219,9 +211,8 @@ mini-fluo
 configuration necessary for a new application.  Feel free to pick a different name (other
 than <code class="highlighter-rouge">myapp</code>) for your application:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mini-fluo new myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mini-fluo new myapp
+</code></pre></div></div>
 
 <p>This command will create a directory for your application at <code class="highlighter-rouge">apps/myapp</code> of your Fluo
 install which will contain a <code class="highlighter-rouge">conf</code> and <code class="highlighter-rouge">lib</code>.</p>
@@ -229,9 +220,8 @@ install which will contain a <code class="highlighter-rouge">conf</code> and <co
 <p>The <code class="highlighter-rouge">apps/myapp/conf</code> directory contains a copy of the <code class="highlighter-rouge">fluo.properties</code> from your default
 configuration.  This should be configured for your application:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vim apps/myapp/fluo.properties
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim apps/myapp/fluo.properties
+</code></pre></div></div>
 
 <p>When configuring the observer section in <a href="https://github.com/fluo-io/fluo/blob/1.0.0-beta-1/modules/distribution/src/main/config/fluo.properties">fluo.properties</a>, you can configure your application
 to run the <a href="https://github.com/fluo-io/phrasecount">phrasecount</a> example if you have not developed your own application. See
@@ -246,9 +236,8 @@ observer classes this directory.</p>
 
 <p>A MiniFluo application can be started with the following command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mini-fluo start myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mini-fluo start myapp
+</code></pre></div></div>
 
 <p>The application will output its logs to <code class="highlighter-rouge">app/myapp/logs/</code> directory of your Fluo installation.</p>
 
@@ -269,9 +258,8 @@ through the data.</p>
 
 <p>A MiniFluo application can be stopped by running the following command:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mini-fluo stop myapp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mini-fluo stop myapp
+</code></pre></div></div>
 
 <p>If MiniFluo started its own Accumulo cluster, it will also remove the <code class="highlighter-rouge">mini/</code> data 
 directory and any data in your instance will be lost.</p>

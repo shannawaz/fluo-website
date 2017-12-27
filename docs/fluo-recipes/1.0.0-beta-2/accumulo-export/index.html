@@ -148,7 +148,7 @@ for Accumulo is provided in the Fluo Recipes Accumulo module.</p>
 <p>The following code shows how to configure an Export Queue that will write to an
 external Accumulo table.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="n">FluoConfiguration</span> <span class="n">fluoConfig</span> <span class="o">=</span> <span class="o">...;</span>
 
 <span class="c1">//Configure an export queue to use the classes Fluo Recipes provides for</span>
@@ -169,8 +169,7 @@ external Accumulo table.</p>
 
 <span class="c1">//initialize Fluo using fluoConfig</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After the export queue is initialized as specified above, any Object that
 implements <a href="https://static.javadoc.io/io.fluo/fluo-recipes-accumulo/1.0.0-beta-2/io/fluo/recipes/accumulo/export/AccumuloExport.html">AccumuloExport</a> can be added to the queue.  For the common

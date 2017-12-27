@@ -126,23 +126,20 @@
 (i.e GET, SET, or DELETE) to a <code class="highlighter-rouge">TxLog</code> object for later uses such as exporting data.  The code below
 shows how a RecordingTransaction is created by wrapping a Transaction object:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">RecordingTransactionBase</span> <span class="n">rtx</span> <span class="o">=</span> <span class="n">RecordingTransactionBase</span><span class="o">.</span><span class="na">wrap</span><span class="o">(</span><span class="n">tx</span><span class="o">);</span>
-</code></pre>
-</div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">RecordingTransactionBase</span> <span class="n">rtx</span> <span class="o">=</span> <span class="n">RecordingTransactionBase</span><span class="o">.</span><span class="na">wrap</span><span class="o">(</span><span class="n">tx</span><span class="o">);</span>
+</code></pre></div></div>
 
 <p>A predicate function can be passed to wrap method to select which log entries to record.  The code
 below only records log entries whose column family is <code class="highlighter-rouge">meta</code>:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">RecordingTransactionBase</span> <span class="n">rtx</span> <span class="o">=</span> <span class="n">RecordingTransactionBase</span><span class="o">.</span><span class="na">wrap</span><span class="o">(</span><span class="n">tx</span><span class="o">,</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">RecordingTransactionBase</span> <span class="n">rtx</span> <span class="o">=</span> <span class="n">RecordingTransactionBase</span><span class="o">.</span><span class="na">wrap</span><span class="o">(</span><span class="n">tx</span><span class="o">,</span>
                                <span class="n">le</span> <span class="o">-&gt;</span> <span class="n">le</span><span class="o">.</span><span class="na">getColumn</span><span class="o">().</span><span class="na">getFamily</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"meta"</span><span class="o">));</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After creating a RecordingTransaction, users can use it as they would use a Transaction object.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">Bytes</span> <span class="n">value</span> <span class="o">=</span> <span class="n">rtx</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Bytes</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"r1"</span><span class="o">),</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"cf1"</span><span class="o">,</span> <span class="s">"cq1"</span><span class="o">));</span>
-</code></pre>
-</div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Bytes</span> <span class="n">value</span> <span class="o">=</span> <span class="n">rtx</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Bytes</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"r1"</span><span class="o">),</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"cf1"</span><span class="o">,</span> <span class="s">"cq1"</span><span class="o">));</span>
+</code></pre></div></div>
 
 <p>While SET or DELETE operations are always recorded to the log, GET operations are only recorded if a
 value was found at the requested row/column.  Also, if a GET method returns an iterator, only the GET
@@ -151,16 +148,15 @@ necessary if you want to determine the changes made by the transaction.</p>
 
 <p>When you are done operating on the transaction, you can retrieve the TxLog using the following code:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">TxLog</span> <span class="n">myTxLog</span> <span class="o">=</span> <span class="n">rtx</span><span class="o">.</span><span class="na">getTxLog</span><span class="o">()</span>
-</code></pre>
-</div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TxLog</span> <span class="n">myTxLog</span> <span class="o">=</span> <span class="n">rtx</span><span class="o">.</span><span class="na">getTxLog</span><span class="o">()</span>
+</code></pre></div></div>
 
 <p>Below is example code of how a RecordingTransaction can be used in an observer to record all operations
 performed by the transaction in a TxLog.  In this example, a GET (if data exists) and SET operation
 will be logged.  This TxLog can be added to an export queue and later used to export updates from 
 Fluo.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyObserver</span> <span class="kd">extends</span> <span class="n">AbstractObserver</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyObserver</span> <span class="kd">extends</span> <span class="n">AbstractObserver</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">TYPEL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TypeLayer</span><span class="o">(</span><span class="k">new</span> <span class="n">StringEncoder</span><span class="o">());</span>
     
@@ -187,8 +183,7 @@ Fluo.</p>
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
   </article>
 

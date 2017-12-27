@@ -155,7 +155,7 @@ because Fluo clients batch a lot of operations related to committing.  To make
 the problem more apparent on a single node, the following code creates three
 clients and three loaders.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">EdgeLoader</span> <span class="kd">implements</span> <span class="n">Loader</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">EdgeLoader</span> <span class="kd">implements</span> <span class="n">Loader</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="n">String</span> <span class="n">node1</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">node2</span><span class="o">;</span>
@@ -199,19 +199,17 @@ clients and three loaders.</p>
 
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="o">);</span>
   <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Try running the code above and note the time.  Then change the load function to
 the following and run the code again.  You should see a significant decrease in
 the time it takes.  The change below spreads the edges over many rows.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="nd">@Override</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">load</span><span class="o">(</span><span class="n">TransactionBase</span> <span class="n">tx</span><span class="o">,</span> <span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
       <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">node1</span><span class="o">+</span><span class="s">":"</span><span class="o">+</span><span class="n">node2</span><span class="o">,</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"edge"</span><span class="o">,</span> <span class="s">""</span><span class="o">),</span> <span class="s">""</span><span class="o">);</span>
     <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
 </div>

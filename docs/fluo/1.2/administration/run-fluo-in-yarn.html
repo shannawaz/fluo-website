@@ -245,11 +245,10 @@ and worker processes if you are running in YARN.</p>
 recommended that you download the <a href="/download/">latest release</a>. You can also build a distribution from the
 master branch by following these steps which create a tarball in <code class="highlighter-rouge">distribution/target</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/apache/fluo-yarn.git
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/apache/fluo-yarn.git
 cd fluo-yarn/
 mvn package
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>After you obtain a Fluo YARN distribution tarball, follow these steps to install Fluo.</p>
 
@@ -257,11 +256,10 @@ mvn package
   <li>
     <p>Choose a directory with plenty of space, untar the distribution, and run <code class="highlighter-rouge">fetch.sh</code> to retrieve dependencies:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> tar -xvzf fluo-yarn-1.0.0-bin.tar.gz
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> tar -xvzf fluo-yarn-1.0.0-bin.tar.gz
  cd fluo-yarn-1.0.0
  ./lib/fetch.sh
-</code></pre>
-    </div>
+</code></pre></div>    </div>
 
     <p>The distribution contains a <code class="highlighter-rouge">fluo-yarn</code> script in <code class="highlighter-rouge">bin/</code> that administers Fluo and the
  following configuration files in <code class="highlighter-rouge">conf/</code>:</p>
@@ -323,9 +321,8 @@ your Fluo application</a> before following these instructions.</p>
   <li>
     <p>Run the commands below to start your Fluo application in YARN.</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code> fluo-yarn start myapp conf/fluo-yarn.properties
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> fluo-yarn start myapp conf/fluo-yarn.properties
+</code></pre></div>    </div>
 
     <p>The commands will retrieve your application configuration and observer jars (using your application name) before
 starting the application in YARN. The command will output a YARN application ID that can be used to find your

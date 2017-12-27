@@ -209,7 +209,7 @@ of <a href="/docs/fluo/1.2/getting-started/design">clients and observers</a>. Th
 
 <p>For both clients and observers, you will need to include the following in your Maven pom:</p>
 
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>org.apache.fluo<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>fluo-api<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.2.0<span class="nt">&lt;/version&gt;</span>
@@ -220,8 +220,7 @@ of <a href="/docs/fluo/1.2/getting-started/design">clients and observers</a>. Th
   <span class="nt">&lt;version&gt;</span>1.2.0<span class="nt">&lt;/version&gt;</span>
   <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Fluo provides a classpath command to help users build a runtime classpath. This command along with
 the <code class="highlighter-rouge">hadoop jar</code> command is useful when writing scripts to run Fluo client code. These commands
@@ -235,23 +234,21 @@ configured to connect to your Fluo instance.</p>
 <p>If you have access to the <a href="https://github.com/apache/fluo/blob/master/modules/distribution/src/main/config/fluo-conn.properties">fluo-conn.properties</a> file that was used to configure your Fluo instance, you
 can use it to build a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object with all necessary properties:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"fluo-conn.properties"</span><span class="o">));</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"fluo-conn.properties"</span><span class="o">));</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setApplicationName</span><span class="o">(</span><span class="s">"myapp"</span><span class="o">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>You can also create an empty <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object and set properties using Java:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">();</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">();</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setInstanceZookeepers</span><span class="o">(</span><span class="s">"localhost/fluo"</span><span class="o">);</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setApplicationName</span><span class="o">(</span><span class="s">"myapp"</span><span class="o">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Once you have <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object, pass it to the <code class="highlighter-rouge">newClient()</code> method of <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/FluoFactory.html">FluoFactory</a> to
 create a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/FluoClient.html">FluoClient</a>:</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">try</span><span class="o">(</span><span class="n">FluoClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">FluoFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">(</span><span class="n">config</span><span class="o">)){</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="o">(</span><span class="n">FluoClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">FluoFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">(</span><span class="n">config</span><span class="o">)){</span>
 
   <span class="k">try</span> <span class="o">(</span><span class="n">Transaction</span> <span class="n">tx</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newTransaction</span><span class="o">())</span> <span class="o">{</span>
     <span class="c1">// read and write some data</span>
@@ -262,8 +259,7 @@ create a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incub
     <span class="c1">//read some data</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>It may help to reference the <a href="https://fluo.apache.org/apidocs/">API javadocs</a> while you are learning the Fluo API.</p>
 
@@ -276,7 +272,7 @@ create a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incub
     <p>Create one or more classes that extend <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/observer/Observer.html">Observer</a> like the example below. It is a good idea to
 use <a href="http://www.slf4j.org/">slf4j</a> for any logging in observers as <a href="http://www.slf4j.org/">slf4j</a> supports multiple logging implementations.</p>
 
-    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InvertObserver</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InvertObserver</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
 
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="n">TransactionBase</span> <span class="n">tx</span><span class="o">,</span> <span class="n">Bytes</span> <span class="n">row</span><span class="o">,</span> <span class="n">Column</span> <span class="n">col</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
@@ -286,15 +282,14 @@ use <a href="http://www.slf4j.org/">slf4j</a> for any logging in observers as <a
     <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"inv"</span><span class="o">,</span> <span class="s">"data"</span><span class="o">),</span> <span class="n">row</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Create a class that implements <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/observer/ObserverProvider.html">ObserverProvider</a> like the example below.  The purpose of this
 class is associate a set Observers with columns that trigger the observers.  The class can
 register multiple observers.</p>
 
-    <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">AppObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">AppObserverProvider</span> <span class="kd">implements</span> <span class="n">ObserverProvider</span> <span class="o">{</span>
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">provide</span><span class="o">(</span><span class="n">Registry</span> <span class="n">reg</span><span class="o">,</span> <span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">//setup InvertObserver to be triggered when the column obs:data is modified</span>
@@ -309,8 +304,7 @@ register multiple observers.</p>
        <span class="o">});</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>Build a jar containing these classes. Put this jar and any other dependencies required for your
 application in a directory. Set <code class="highlighter-rouge">fluo.observer.init.dir</code> in <a href="https://github.com/apache/fluo/blob/master/modules/distribution/src/main/config/fluo-app.properties">fluo-app.properties</a> to the path of

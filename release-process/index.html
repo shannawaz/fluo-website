@@ -122,15 +122,14 @@ add it to the <a href="https://www.apache.org/dist/fluo/KEYS">KEYS</a> file.  Th
 following command to checkout the svn repository that contains the KEYS files.  Updates to this
 repository will eventually sync to the website.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>svn co https://dist.apache.org/repos/dist/release/fluo/
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>svn co https://dist.apache.org/repos/dist/release/fluo/
+</code></pre></div></div>
 
 <p>The maven release plugin will need credentials to stage artifacts.  You can provide the credentials
 by adding the following to your <code class="highlighter-rouge">~/.m2/settings.xml</code> file.  Maven offers documentation about <a href="https://maven.apache.org/guides/mini/guide-encryption.html">securing
 your credentials</a>.</p>
 
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;servers&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;servers&gt;</span>
   <span class="nt">&lt;server&gt;</span>
     <span class="c">&lt;!-- Project using the Apache parent pom use following ID --&gt;</span>
     <span class="nt">&lt;id&gt;</span>apache.releases.https<span class="nt">&lt;/id&gt;</span>
@@ -138,8 +137,7 @@ your credentials</a>.</p>
     <span class="nt">&lt;password&gt;</span>your-apache-password<span class="nt">&lt;/password&gt;</span>
   <span class="nt">&lt;/server&gt;</span>
 <span class="nt">&lt;/servers&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="release-fluo">Release Fluo</h3>
 
@@ -155,9 +153,8 @@ you start this depends on your environment.  The following command works in some
 Ensure gpg-agent is configured with a sufficiently long timeout so that the cached passphrase 
 do not expire during the build.</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>gpg-agent --daemon --use-standard-socket
-</code></pre>
-    </div>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg-agent <span class="nt">--daemon</span> <span class="nt">--use-standard-socket</span>
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -191,26 +188,23 @@ the vote passes.  Also, a signed tag should be created instead of the one create
 of an abundance of caution its best to delete it now and create the signed tag after the vote
 passes.</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>git tag -d rel/fluo-&lt;releaseVersion&gt;
-</code></pre>
-    </div>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="nt">-d</span> rel/fluo-&lt;releaseVersion&gt;
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Push the <code class="highlighter-rouge">&lt;releaseVersion&gt;-rc&lt;RCV&gt;-next</code> to apache.</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>git checkout &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next
 git push apache-remote &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Create the release candidate branch <code class="highlighter-rouge">&lt;releaseVersion&gt;-rc&lt;RCV&gt;</code> and push it.  This branch should
 be one commit behind <code class="highlighter-rouge">&lt;releaseVersion&gt;-rc&lt;RCV&gt;-next</code> and one commit ahead of the branch point.</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>git checkout -b &lt;releaseVersion&gt;-rc&lt;RCV&gt; &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next~1
-git push -u apache-remote &lt;releaseVersion&gt;-rc&lt;RCV&gt;
-</code></pre>
-    </div>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> &lt;releaseVersion&gt;-rc&lt;RCV&gt; &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next~1
+git push <span class="nt">-u</span> apache-remote &lt;releaseVersion&gt;-rc&lt;RCV&gt;
+</code></pre></div>    </div>
   </li>
   <li>Send a message to the devs to let them know a release is staged. This <a href="https://lists.apache.org/thread.html/8b6ec5f17e277ed2d01e8df61eb1f1f42266cd30b9e114cb431c1c17@%3Cdev.fluo.apache.org%3E">example</a>
 for the Fluo 1.0.0 release can be used as template.  The script
@@ -224,11 +218,10 @@ for the Fluo 1.0.0 release can be used as template.  The script
     <p>Merge your RC branch into the correct branch and push those commits upstream.  The example below
 assume <code class="highlighter-rouge">master</code> is the correct branch.  Afterwards, you can delete your RC branch.</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>git checkout master
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master
 git merge &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next
 git push apache-remote master
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Release the artifacts at https://repository.apache.org so that they get published in Maven
@@ -238,31 +231,28 @@ failed for Apache Fluo 1.1.0-rc3</code> when dropping or <code class="highlighte
   <li>
     <p>Create a signed tag for the release from the chosen RC tag and push to upstream repo:</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># This step is optional.  Some systems that have gpg and gpg2 may not function correctly.</span>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This step is optional.  Some systems that have gpg and gpg2 may not function correctly.</span>
 <span class="c"># See https://bugzilla.redhat.com/show_bug.cgi?id=568406</span>
-git config --global --get gpg.program <span class="o">||</span> git config --global --add gpg.program gpg2
-</code></pre>
-    </div>
+git config <span class="nt">--global</span> <span class="nt">--get</span> gpg.program <span class="o">||</span> git config <span class="nt">--global</span> <span class="nt">--add</span> gpg.program gpg2
+</code></pre></div>    </div>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># Create signed tag.</span>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create signed tag.</span>
 <span class="c"># You may need to use -u &lt;key-id&gt; to specify GPG key</span>
-git tag  -f -m <span class="s1">'Apache Fluo &lt;releaseVersion&gt;'</span> -s rel/fluo-&lt;releaseVersion&gt; &lt;releaseVersion&gt;-rc&lt;RCV&gt;
+git tag  <span class="nt">-f</span> <span class="nt">-m</span> <span class="s1">'Apache Fluo &lt;releaseVersion&gt;'</span> <span class="nt">-s</span> rel/fluo-&lt;releaseVersion&gt; &lt;releaseVersion&gt;-rc&lt;RCV&gt;
 <span class="c"># Verify the tag is the expected commit</span>
-git log -1 rel/fluo-&lt;releaseVersion&gt;
+git log <span class="nt">-1</span> rel/fluo-&lt;releaseVersion&gt;
 <span class="c"># Push signed tag to upstream repo</span>
 git push apache-remote rel/fluo-&lt;releaseVersion&gt;
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
   <li>
     <p>Delete all RC branches.</p>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>git push apache-remote --delete &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next
-git branch -d &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next
-git push apache-remote --delete &lt;releaseVersion&gt;-rc&lt;RCV&gt;
-git branch -d &lt;releaseVersion&gt;-rc&lt;RCV&gt;
-</code></pre>
-    </div>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push apache-remote <span class="nt">--delete</span> &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next
+git branch <span class="nt">-d</span> &lt;releaseVersion&gt;-rc&lt;RCV&gt;-next
+git push apache-remote <span class="nt">--delete</span> &lt;releaseVersion&gt;-rc&lt;RCV&gt;
+git branch <span class="nt">-d</span> &lt;releaseVersion&gt;-rc&lt;RCV&gt;
+</code></pre></div>    </div>
   </li>
   <li>
     <p>View the <a href="https://github.com/apache/fluo-website/blob/master/README.md">website README</a> for instructions on how to generate Javadocs and documentation using
