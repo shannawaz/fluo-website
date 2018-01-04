@@ -5,8 +5,8 @@
     <description>Mirror of Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 27 Dec 2017 14:42:41 +0000</pubDate>
-    <lastBuildDate>Wed, 27 Dec 2017 14:42:41 +0000</lastBuildDate>
+    <pubDate>Thu, 04 Jan 2018 23:17:24 +0000</pubDate>
+    <lastBuildDate>Thu, 04 Jan 2018 23:17:24 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
     
@@ -307,12 +307,12 @@ EXPORT x=5:t=27        old: 1 new: -   seq: 106
     &lt;table&gt;
       &lt;tbody&gt;
         &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-bin.tar.gz&quot;&gt;fluo-1.1.0-incubating-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-bin.tar.gz.md5&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-bin.tar.gz.sha&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-bin.tar.gz&quot;&gt;fluo-1.1.0-incubating-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-bin.tar.gz.md5&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-bin.tar.gz.sha&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-source-release.tar.gz&quot;&gt;fluo-1.1.0-incubating-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-source-release.tar.gz.md5&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-source-release.tar.gz.sha&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-source-release.tar.gz&quot;&gt;fluo-1.1.0-incubating-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-source-release.tar.gz.md5&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.1.0-incubating/fluo-1.1.0-incubating-source-release.tar.gz.sha&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
@@ -983,12 +983,12 @@ release for the project. Below are resources for this release:&lt;/p&gt;
     &lt;table&gt;
       &lt;tbody&gt;
         &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-bin.tar.gz&quot;&gt;fluo-1.0.0-incubating-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/MD5SUM&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/SHA1SUM&quot;&gt;SHA1&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-bin.tar.gz&quot;&gt;fluo-1.0.0-incubating-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/MD5SUM&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/SHA1SUM&quot;&gt;SHA1&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-source-release.tar.gz&quot;&gt;fluo-1.0.0-incubating-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/MD5SUM&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/SHA1SUM&quot;&gt;SHA1&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-source-release.tar.gz&quot;&gt;fluo-1.0.0-incubating-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/MD5SUM&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/SHA1SUM&quot;&gt;SHA1&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
