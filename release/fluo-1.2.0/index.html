@@ -139,7 +139,7 @@
       </tbody>
     </table>
   </li>
-  <li>View the <a href="/docs/fluo/1.2.0/">documentation</a> for this release.</li>
+  <li>View the <a href="/docs/fluo/1.2/">documentation</a> for this release.</li>
   <li>Read the <a href="https://javadoc.io/doc/org.apache.fluo/fluo-api/1.2.0/">Javadocs</a>.</li>
 </ul>
 
@@ -153,6 +153,27 @@ about adding it to the API.</p>
 
 <p>The major changes in 1.2.0 are highlighted here, for the complete list of changes, see the <a href="https://github.com/apache/fluo/milestone/6?closed=1">1.2.0
 Milestone</a> on Github.</p>
+
+<h3 id="fluo-now-supports-multiple-ways-for-running-fluo-applications">Fluo now supports multiple ways for running Fluo applications</h3>
+
+<p>Before 1.2.0, Fluo applications could only be run in YARN or as local processes. For 1.2.0, the Fluo tarball
+was refactored to support other ways of running Fluo applications such as Docker, Kubernetes &amp; Marathon. This
+refactoring has the following notable changes:</p>
+
+<ul>
+  <li>The Fluo tarball is now designed for only initializing Fluo and running local processes.</li>
+  <li>The <code class="highlighter-rouge">fluo.properties</code> configuration file was deprecated and was replaced by <code class="highlighter-rouge">fluo-conn.properties</code> and <code class="highlighter-rouge">fluo-app.properties</code>.
+    <ul>
+      <li><code class="highlighter-rouge">fluo-conn.properties</code> contains connection properties and is shared by Fluo applications</li>
+      <li><code class="highlighter-rouge">fluo-app.properites</code> contains application-specific properties and is only used during initialization of Fluo applications.</li>
+    </ul>
+  </li>
+  <li>Code for launching Fluo applications in YARN was moved to its <a href="https://github.com/apache/fluo-yarn">own project</a> that has its own
+<a href="https://fluo.apache.org/release/fluo-yarn-1.0.0">release</a> tarball. The Fluo tarball can still be used to launch Fluo applications
+in YARN if a <code class="highlighter-rouge">fluo.properties</code> is created from <code class="highlighter-rouge">fluo.properties.deprecated</code>.</li>
+</ul>
+
+<p>Read the <a href="https://fluo.apache.org/docs/fluo/1.2/getting-started/quick-start">quickstart documentation</a> to learn how to run Fluo applications using these new methods.</p>
 
 <h2 id="testing">Testing</h2>
 
