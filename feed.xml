@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apache Fluo</title>
-    <description>Mirror of Apache Fluo Website</description>
+    <description>Mirror of Apache Fluo Website (Incubator)</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 11 Jan 2018 22:46:01 +0000</pubDate>
-    <lastBuildDate>Thu, 11 Jan 2018 22:46:01 +0000</lastBuildDate>
+    <pubDate>Fri, 23 Feb 2018 17:09:12 +0000</pubDate>
+    <lastBuildDate>Fri, 23 Feb 2018 17:09:12 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
     
@@ -1160,7 +1160,7 @@ that does not last.&lt;/p&gt;
 
 &lt;h2 id=&quot;cpu-utilization&quot;&gt;CPU Utilization&lt;/h2&gt;
 
-&lt;p&gt;Inorder to get higher throughput changes were made to reduce CPU usage and
+&lt;p&gt;In order to get higher throughput changes were made to reduce CPU usage and
 evenly spread CPU usage across the cluster.  The following plot shows the CPU
 usage of all nodes across the cluster during the test.  Unfortunately this data
 was not kept for the previous run.  One issue that caused problems in the

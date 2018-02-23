@@ -171,6 +171,7 @@ refactoring has the following notable changes:</p>
   <li>Code for launching Fluo applications in YARN was moved to its <a href="https://github.com/apache/fluo-yarn">own project</a> that has its own
 <a href="https://fluo.apache.org/release/fluo-yarn-1.0.0">release</a> tarball. The Fluo tarball can still be used to launch Fluo applications
 in YARN if a <code class="highlighter-rouge">fluo.properties</code> is created from <code class="highlighter-rouge">fluo.properties.deprecated</code>.</li>
+  <li>Fluo application jars are now stored in HDFS and application configuration is now stored in Zookeeper.  This information used to be stored in a local directory.  This change made running Fluo different ways (like YARN or Docker) possible.</li>
 </ul>
 
 <p>Read the <a href="https://fluo.apache.org/docs/fluo/1.2/getting-started/quick-start">quickstart documentation</a> to learn how to run Fluo applications using these new methods.</p>
