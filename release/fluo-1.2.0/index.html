@@ -176,6 +176,82 @@ in YARN if a <code class="highlighter-rouge">fluo.properties</code> is created f
 
 <p>Read the <a href="https://fluo.apache.org/docs/fluo/1.2/getting-started/quick-start">quickstart documentation</a> to learn how to run Fluo applications using these new methods.</p>
 
+<h3 id="fluo-now-supports-read-locks">Fluo now supports read locks.</h3>
+
+<p>The Percolator paper stated that read locks were expensive and usually not
+needed.  Therefore in Percolator reads did not acquire a read lock.  This
+assessment is correct, not every read should acquire a read lock.  However,
+offering the ability to optionally obtain a read lock makes writing certain
+applications much simpler.  So in this release of Fluo, optional read locks
+were added. Below is an example of how to acquire read locks.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="nf">addEdge</span><span class="o">(</span><span class="n">FluoClient</span> <span class="n">client</span><span class="o">,</span> <span class="n">String</span> <span class="n">node1</span><span class="o">,</span> <span class="n">String</span> <span class="n">node2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span><span class="o">(</span><span class="n">Transaction</span> <span class="n">tx</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newTransaction</span><span class="o">())</span> <span class="o">{</span>
+
+      <span class="c1">// These reads acquire a read lock.  Any concurrent changes will cause this</span>
+      <span class="c1">// transaction to fail.</span>
+      <span class="n">String</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="na">withReadLock</span><span class="o">().</span><span class="na">gets</span><span class="o">(</span><span class="n">node1</span><span class="o">,</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"node"</span><span class="o">,</span><span class="s">"alias"</span><span class="o">));</span>
+      <span class="n">String</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="na">withReadLock</span><span class="o">().</span><span class="na">gets</span><span class="o">(</span><span class="n">node2</span><span class="o">,</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"node"</span><span class="o">,</span><span class="s">"alias"</span><span class="o">));</span>
+
+      <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">"e:"</span><span class="o">+</span><span class="n">a1</span><span class="o">+</span><span class="s">":"</span><span class="o">+</span><span class="n">a2</span><span class="o">,</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"edge"</span><span class="o">,</span> <span class="s">"exists"</span><span class="o">),</span> <span class="s">"Y"</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="kt">void</span> <span class="nf">setAlias</span><span class="o">(</span><span class="n">FluoClient</span> <span class="n">client</span><span class="o">,</span> <span class="n">String</span> <span class="n">node</span><span class="o">,</span> <span class="n">String</span> <span class="n">newAlias</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span><span class="o">(</span><span class="n">Transaction</span> <span class="n">tx</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newTransaction</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">oldAlias</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="na">gets</span><span class="o">(</span><span class="n">node</span><span class="o">,</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"node"</span><span class="o">,</span><span class="s">"alias"</span><span class="o">));</span>
+      <span class="n">tx</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">node</span><span class="o">,</span> <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"node"</span><span class="o">,</span><span class="s">"alias"</span><span class="o">),</span> <span class="n">newAlias</span><span class="o">);</span>
+
+      <span class="n">updateExistingEdges</span><span class="o">(</span><span class="n">oldAlias</span><span class="o">,</span> <span class="n">newAlias</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Concurrent calls to <code class="highlighter-rouge">addEdge(client,"n1","n2")</code> and <code class="highlighter-rouge">addEdge(client,"n1","n3")</code>
+can run without issue.  However, concurrent calls to
+<code class="highlighter-rouge">addEdge(client,"n1","n2")</code> and <code class="highlighter-rouge">setAlias(client, "n1","a5")</code> will result in a
+collision.  If <code class="highlighter-rouge">addEdge</code> did not obtain a read lock, then it would not collide
+with <code class="highlighter-rouge">setAlias</code>.  If <code class="highlighter-rouge">addEdge</code> obtained a write lock, then concurrent calls to
+<code class="highlighter-rouge">addEdge</code> could needlessly collide.</p>
+
+<p>See the <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/TransactionBase.html#withReadLock--">withReadLock javadoc</a> for more information.</p>
+
+<h3 id="asynchronous-commit-code-refactored-for-readability">Asynchronous commit code refactored for readability.</h3>
+
+<p>Fluo’s commit code is asynchronous in order to support high throughput.
+Before this release the high level commit logic was spread far and wide in the
+code.  For this release the commit code was transitioned from Guava’s
+ListenableFutre to Java 8’s CompletableFuture in <a href="https://github.com/apache/fluo/issues/722">#722</a>.  This transition laid
+the ground work for <a href="https://github.com/apache/fluo/issues/978">#978</a> which centralized the commit logic.  Now the high
+level logic for the commit code is all in one place, making it much easier to
+understand.</p>
+
+<h3 id="addition-of-fluo-remove-command">Addition of Fluo remove command.</h3>
+
+<p>Fluo now offers a command to remove an applications data in Zookeeper and
+Accumulo. Work on this issue was done in <a href="https://github.com/apache/fluo/issues/991">#991</a>.</p>
+
+<h3 id="shading-libthrift">Shading libthrift</h3>
+
+<p>Fluo uses Apache Thrift for remote procedure calls.  Projects using Thrift use
+its compiler to generate code.  This generated Java code make calls to
+libthrift which is an artifact release by the Thrift project.  The code
+generated by a specific version of Thrift is only guaranteed to work with the
+same version of libthrift.  For example, code generated by the Thrift 0.9.1
+compiler is only guaranteed to work with libthrift 0.9.1.</p>
+
+<p>Accumulo also uses Thrift for its RPCs.  When Accumulo and Fluo use different
+versions of thrift it can cause serious problems. To avoid these problems,
+in <a href="https://github.com/apache/fluo/issues/995">#995</a> libthrift was shaded and relocated into the fluo-core jar eliminating Fluo’s
+external dependency on libthrift.  This means that no matter which version
+Accumulo uses, it will not conflict with Fluo’s version.</p>
+
+<h3 id="minimum-accumulo-version">Minimum Accumulo version.</h3>
+
+<p>In <a href="https://github.com/apache/fluo/issues/960">#960</a> Fluo started using some Accumulo APIs introduced in 1.7.0.  Therefore
+Accumulo 1.7.0 is the minimum supported version of Accumulo.</p>
+
 <h2 id="testing">Testing</h2>
 
 
