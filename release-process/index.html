@@ -65,7 +65,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Docs<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/docs/fluo/1.1.0-incubating/">Fluo</a></li>
+                <li><a href="/docs/fluo/1.2/">Fluo</a></li>
                 <li><a href="/docs/fluo-recipes/1.1.0-incubating/">Fluo Recipes</a></li>
               </ul>
             </li>
@@ -265,6 +265,115 @@ hashes and signatures.  This step publishes the files to the ASF mirrors.</p>
   </li>
   <li>
     <p>Send an email to <code class="highlighter-rouge">dev@fluo.apache.org</code> announcing new release.</p>
+  </li>
+</ol>
+
+<h3 id="test-a-fluo-release">Test a Fluo release</h3>
+
+<h4 id="set-up-environment-for-all-tests">Set up environment for all tests</h4>
+
+<ol>
+  <li>Set the release version, ID for staging repo, and alias to configure Maven with temporary settings:
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">RC_VERSION</span><span class="o">=</span>1.2.0
+<span class="nb">export </span><span class="nv">RC_STAGING</span><span class="o">=</span>1023
+<span class="nb">alias </span><span class="nv">mvn</span><span class="o">=</span><span class="s1">'mvn -s /tmp/fluo-rc-maven.xml'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create temporary Maven settings
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt;/tmp/fluo-rc-maven.xml
+&lt;settings&gt;
+  &lt;profiles&gt;
+    &lt;profile&gt;
+      &lt;id&gt;fluoRC&lt;/id&gt;
+      &lt;repositories&gt;
+        &lt;repository&gt;
+          &lt;id&gt;fluorc&lt;/id&gt;
+          &lt;name&gt;fluorc&lt;/name&gt;
+          &lt;url&gt;https://repository.apache.org/content/repositories/orgapachefluo-\</span><span class="k">${</span><span class="nv">env</span><span class="p">.RC_STAGING</span><span class="k">}</span><span class="sh">/&lt;/url&gt;
+        &lt;/repository&gt;
+      &lt;/repositories&gt;
+      &lt;pluginRepositories&gt;
+        &lt;pluginRepository&gt;
+          &lt;id&gt;fluorcp&lt;/id&gt;
+          &lt;name&gt;fluorcp&lt;/name&gt;
+          &lt;url&gt;https://repository.apache.org/content/repositories/orgapachefluo-\</span><span class="k">${</span><span class="nv">env</span><span class="p">.RC_STAGING</span><span class="k">}</span><span class="sh">/&lt;/url&gt;
+        &lt;/pluginRepository&gt;
+      &lt;/pluginRepositories&gt;
+    &lt;/profile&gt;
+  &lt;/profiles&gt;
+  &lt;activeProfiles&gt;
+    &lt;activeProfile&gt;fluoRC&lt;/activeProfile&gt;
+  &lt;/activeProfiles&gt;
+&lt;/settings&gt;
+</span><span class="no">EOF
+</span></code></pre></div>    </div>
+  </li>
+  <li>If a new release candidate is made, update your staging repo ID.
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">export </span><span class="nv">RC_STAGING</span><span class="o">=</span>1024
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="run-the-integration-tests-of-projects-that-use-fluo">Run the integration tests of projects that use Fluo</h4>
+
+<ol>
+  <li>Clone the <a href="https://github.com/apache/fluo-recipes">Fluo Recipes</a> project:
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>git clone https://github.com/apache/fluo-recipes.git
+</code></pre></div>    </div>
+  </li>
+  <li>Run the integration test
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>mvn clean verify <span class="nt">-Dfluo</span>.version<span class="o">=</span><span class="nv">$RC_VERSION</span>
+</code></pre></div>    </div>
+    <p>Below are more projects with integration tests:</p>
+    <ul>
+      <li><a href="https://github.com/astralway/phrasecount">Phrasecount</a> - <code class="highlighter-rouge">https://github.com/astralway/phrasecount.git</code></li>
+      <li><a href="https://github.com/astralway/stresso">Stresso</a> - <code class="highlighter-rouge">https://github.com/astralway/stresso.git</code></li>
+      <li><a href="https://github.com/astralway/webindex">Webindex</a> - <code class="highlighter-rouge">https://github.com/astralway/webindex.git</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="setup-uno-to-run-fluo-example-applications">Setup Uno to run Fluo example applications</h4>
+
+<ol>
+  <li>Clone <a href="https://github.com/astralway/uno">Uno</a> and fetch Fluo dependencies
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/astralway/uno.git
+<span class="nb">cd </span>uno
+./bin/uno fetch fluo
+</code></pre></div>    </div>
+  </li>
+  <li>Download release tarball
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-P</span> downloads/ https://repository.apache.org/content/repositories/orgapachefluo-<span class="k">${</span><span class="nv">RC_STAGING</span><span class="k">}</span>/org/apache/fluo/fluo/<span class="k">${</span><span class="nv">RC_VERSION</span><span class="k">}</span>/fluo-<span class="k">${</span><span class="nv">RC_VERSION</span><span class="k">}</span><span class="nt">-bin</span>.tar.gz
+</code></pre></div>    </div>
+  </li>
+  <li>Set <code class="highlighter-rouge">FLUO_VERSION</code> and <code class="highlighter-rouge">FLUO_HASH</code> in <code class="highlighter-rouge">conf/uno.conf</code>.
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed <span class="nt">-i</span> <span class="s2">"s/export FLUO_VERSION=[^ ]*/export FLUO_VERSION=</span><span class="nv">$RC_VERSION</span><span class="s2">/"</span> conf/uno.conf
+sed <span class="nt">-i</span> <span class="s2">"s/export FLUO_HASH=[^ ]*/export FLUO_HASH=</span><span class="k">$(</span>shasum <span class="nt">-a</span> 256 downloads/fluo-<span class="k">${</span><span class="nv">RC_VERSION</span><span class="k">}</span><span class="nt">-bin</span>.tar.gz | cut <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 1<span class="k">)</span><span class="s2">/"</span> conf/uno.conf
+</code></pre></div>    </div>
+  </li>
+  <li>Set up Fluo and your shell
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/uno setup fluo
+<span class="nb">eval</span> <span class="s2">"</span><span class="k">$(</span>./bin/uno env<span class="k">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="run-phrasecount-example">Run phrasecount example</h4>
+
+<ol>
+  <li>Clone project
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/astralway/phrasecount.git
+<span class="nb">cd </span>phrasecount
+</code></pre></div>    </div>
+  </li>
+  <li>Create sample data
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir data
+cp README.md data/README.txt
+</code></pre></div>    </div>
+  </li>
+  <li>Run phrasecount
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/run.sh data/
+</code></pre></div>    </div>
   </li>
 </ol>
 

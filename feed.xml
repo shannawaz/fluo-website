@@ -2,13 +2,197 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apache Fluo</title>
-    <description>Mirror of Apache Fluo Website (Incubator)</description>
+    <description>Mirror of Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 26 Feb 2018 22:58:31 +0000</pubDate>
-    <lastBuildDate>Mon, 26 Feb 2018 22:58:31 +0000</lastBuildDate>
+    <pubDate>Wed, 28 Feb 2018 14:58:59 +0000</pubDate>
+    <lastBuildDate>Wed, 28 Feb 2018 14:58:59 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
+    
+      <item>
+        <title>Apache Fluo 1.2.0 released</title>
+        <description>&lt;p&gt;Below are resources for this release:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download a release tarball and verify by these &lt;a href=&quot;https://www.apache.org/info/verification&quot;&gt;procedures&lt;/a&gt; using these &lt;a href=&quot;https://www.apache.org/dist/fluo/KEYS&quot;&gt;KEYS&lt;/a&gt;&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz&quot;&gt;fluo-1.2.0-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz.md5&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz.sha&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz&quot;&gt;fluo-1.2.0-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz.md5&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz.sha&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;View the &lt;a href=&quot;/docs/fluo/1.2/&quot;&gt;documentation&lt;/a&gt; for this release.&lt;/li&gt;
+  &lt;li&gt;Read the &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-api/1.2.0/&quot;&gt;Javadocs&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Apache Fluo follows &lt;a href=&quot;http://semver.org/&quot;&gt;semver&lt;/a&gt; for its API . The API consists
+of everything under the &lt;code class=&quot;highlighter-rouge&quot;&gt;org.apache.fluo.api&lt;/code&gt; package. Code outside of this
+package can change at any time. If your project is using Fluo code that falls
+outside of the API, then consider &lt;a href=&quot;/getinvolved/&quot;&gt;initiating a discussion&lt;/a&gt;
+about adding it to the API.&lt;/p&gt;
+
+&lt;h2 id=&quot;notable-changes&quot;&gt;Notable changes&lt;/h2&gt;
+
+&lt;p&gt;The major changes in 1.2.0 are highlighted here, for the complete list of changes, see the &lt;a href=&quot;https://github.com/apache/fluo/milestone/6?closed=1&quot;&gt;1.2.0
+Milestone&lt;/a&gt; on Github.&lt;/p&gt;
+
+&lt;h3 id=&quot;multiple-ways-of-running-applications&quot;&gt;Multiple ways of running applications&lt;/h3&gt;
+
+&lt;p&gt;Before 1.2.0, Fluo applications could only be run in YARN or as local processes. For 1.2.0, the Fluo tarball
+was refactored to support other ways of running Fluo applications such as Docker, Kubernetes &amp;amp; Marathon. This
+refactoring has the following notable changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The Fluo tarball is now designed for only initializing Fluo and running local processes.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;fluo.properties&lt;/code&gt; configuration file was deprecated and was replaced by &lt;code class=&quot;highlighter-rouge&quot;&gt;fluo-conn.properties&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;fluo-app.properties&lt;/code&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fluo-conn.properties&lt;/code&gt; contains connection properties and is shared by Fluo applications&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fluo-app.properites&lt;/code&gt; contains application-specific properties and is only used during initialization of Fluo applications.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Code for launching Fluo applications in YARN was moved to its &lt;a href=&quot;https://github.com/apache/fluo-yarn&quot;&gt;own project&lt;/a&gt; that has its own
+&lt;a href=&quot;https://fluo.apache.org/release/fluo-yarn-1.0.0&quot;&gt;release&lt;/a&gt; tarball. The Fluo tarball can still be used to launch Fluo applications
+in YARN if a &lt;code class=&quot;highlighter-rouge&quot;&gt;fluo.properties&lt;/code&gt; is created from &lt;code class=&quot;highlighter-rouge&quot;&gt;fluo.properties.deprecated&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Fluo application jars are now stored in HDFS and application configuration is now stored in Zookeeper.  This information used to be stored in a local directory.  This change made running Fluo different ways (like YARN or Docker) possible.  The &lt;code class=&quot;highlighter-rouge&quot;&gt;fluo get-jars&lt;/code&gt; command (added in &lt;a href=&quot;https://github.com/apache/fluo/commit/db0bdad&quot;&gt;db0bdad&lt;/a&gt;) can be used to retrieve application jars.&lt;/li&gt;
+  &lt;li&gt;Fluo configuration options can now be specified on the command line with &lt;code class=&quot;highlighter-rouge&quot;&gt;-o&lt;/code&gt; option.  This enables passing Fluo options on the Docker command line.&lt;/li&gt;
+  &lt;li&gt;Fluo scripts now support passing Java options.  In Docker, its useful to have control over the amount of memory Java uses.  This can be done by setting the &lt;code class=&quot;highlighter-rouge&quot;&gt;FLUO_JAVA_OPTS&lt;/code&gt; env variable on the Docker command line.  This was added in commit &lt;a href=&quot;https://github.com/apache/fluo/commit/4207df4&quot;&gt;4207df4&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Read the &lt;a href=&quot;https://fluo.apache.org/docs/fluo/1.2/getting-started/quick-start&quot;&gt;quickstart documentation&lt;/a&gt; to learn how to run Fluo applications using these new methods.&lt;/p&gt;
+
+&lt;h3 id=&quot;read-locks&quot;&gt;Read locks.&lt;/h3&gt;
+
+&lt;p&gt;The Percolator paper stated that read locks were expensive and usually not
+needed.  Therefore in Percolator reads did not acquire a read lock.  This
+assessment is correct, not every read should acquire a read lock.  However,
+offering the ability to optionally obtain a read lock makes writing certain
+applications much simpler.  So in this release of Fluo, optional read locks
+were added. Below is an example of how to acquire read locks.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FluoClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Transaction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+      &lt;span class=&quot;c1&quot;&gt;// These reads acquire a read lock.  Any concurrent changes will cause this&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// transaction to fail.&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withReadLock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;node&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alias&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withReadLock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;node&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alias&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;e:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;edge&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;exists&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Y&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setAlias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FluoClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newAlias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Transaction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oldAlias&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;node&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alias&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;node&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alias&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newAlias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;updateExistingEdges&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;oldAlias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newAlias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Concurrent calls to &lt;code class=&quot;highlighter-rouge&quot;&gt;addEdge(client,&quot;n1&quot;,&quot;n2&quot;)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;addEdge(client,&quot;n1&quot;,&quot;n3&quot;)&lt;/code&gt;
+can run without issue.  However, concurrent calls to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;addEdge(client,&quot;n1&quot;,&quot;n2&quot;)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;setAlias(client, &quot;n1&quot;,&quot;a5&quot;)&lt;/code&gt; will result in a
+collision.  If &lt;code class=&quot;highlighter-rouge&quot;&gt;addEdge&lt;/code&gt; did not obtain a read lock, then it would not collide
+with &lt;code class=&quot;highlighter-rouge&quot;&gt;setAlias&lt;/code&gt;.  If &lt;code class=&quot;highlighter-rouge&quot;&gt;addEdge&lt;/code&gt; obtained a write lock, then concurrent calls to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;addEdge&lt;/code&gt; could needlessly collide.&lt;/p&gt;
+
+&lt;p&gt;See the &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/TransactionBase.html#withReadLock--&quot;&gt;withReadLock javadoc&lt;/a&gt; for more information.&lt;/p&gt;
+
+&lt;h3 id=&quot;simplified-scanner-api&quot;&gt;Simplified Scanner API&lt;/h3&gt;
+
+&lt;p&gt;Range scanning API was simplified in &lt;a href=&quot;https://github.com/apache/fluo/commit/c737df6&quot;&gt;c737df6&lt;/a&gt;.  Before, scanning over a row was :&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CellScanner&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scanner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;over&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Span&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exact&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After this change, it can be written as :&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CellScanner&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scanner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;over&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;streams&quot;&gt;Streams&lt;/h3&gt;
+
+&lt;p&gt;In &lt;a href=&quot;https://github.com/apache/fluo/commit/2f11089&quot;&gt;2f11089&lt;/a&gt; support for Java 8 streams was added.  The following
+computes unique columns in rows with the prefix &lt;code class=&quot;highlighter-rouge&quot;&gt;abc&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cols&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;overPrefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;abc&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;RowColumnValue:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getColumn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;collect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Collectors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;remove-command&quot;&gt;Remove command.&lt;/h3&gt;
+
+&lt;p&gt;Can now remove applications data in Zookeeper and
+Accumulo. Work on this issue was done in &lt;a href=&quot;https://github.com/apache/fluo/issues/991&quot;&gt;#999&lt;/a&gt;.  Before
+data had to be manually removed from Zookeeper and Accumulo.&lt;/p&gt;
+
+&lt;h3 id=&quot;fluoconfiguration-javadoc&quot;&gt;FluoConfiguration Javadoc&lt;/h3&gt;
+
+&lt;p&gt;Most of the methods in &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/config/FluoConfiguration.html&quot;&gt;FluoConfiguration&lt;/a&gt; get or a set a specific property.
+Before it was not easy to know which property. In &lt;a href=&quot;https://github.com/apache/fluo/commit/cbe44b1&quot;&gt;cbe44b1&lt;/a&gt; the
+javadoc was updated to mention the properties.&lt;/p&gt;
+
+&lt;h3 id=&quot;shaded-libthrift&quot;&gt;Shaded libthrift&lt;/h3&gt;
+
+&lt;p&gt;Fluo uses Apache Thrift for remote procedure calls.  Projects using Thrift use
+its compiler to generate code.  This generated Java code make calls to
+libthrift which is an artifact release by the Thrift project.  The code
+generated by a specific version of Thrift is only guaranteed to work with the
+same version of libthrift.  For example, code generated by the Thrift 0.9.1
+compiler is only guaranteed to work with libthrift 0.9.1.&lt;/p&gt;
+
+&lt;p&gt;Accumulo also uses Thrift for its RPCs.  When Accumulo and Fluo use different
+versions of thrift it can cause serious problems. To avoid these problems,
+in &lt;a href=&quot;https://github.com/apache/fluo/commit/082ee8e&quot;&gt;082ee8e&lt;/a&gt; libthrift was shaded and relocated into the fluo-core jar eliminating Fluo’s
+external dependency on libthrift.  This means that no matter which version
+Accumulo uses, it will not conflict with Fluo’s version.&lt;/p&gt;
+
+&lt;h3 id=&quot;asynchronous-commit-refactored&quot;&gt;Asynchronous commit refactored&lt;/h3&gt;
+
+&lt;p&gt;Fluo’s commit code is asynchronous in order to support high throughput.
+Before this release the high level commit logic was spread far and wide in the
+code.  For this release the commit code was transitioned from Guava’s
+ListenableFutre to Java 8’s CompletableFuture in &lt;a href=&quot;https://github.com/apache/fluo/commit/ca63aaf&quot;&gt;ca63aaf&lt;/a&gt;.  This transition laid
+the ground work for &lt;a href=&quot;https://github.com/apache/fluo/commit/6bf604f&quot;&gt;6bf604f&lt;/a&gt; which centralized the commit logic.  Now the high
+level logic for the commit code is all in one place, making it much easier to
+understand.&lt;/p&gt;
+
+&lt;h3 id=&quot;other-notable-changes&quot;&gt;Other notable changes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/fluo/commit/7c16599&quot;&gt;7c16599&lt;/a&gt; Added a method for efficiently comparing Byte and byte[]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/fluo/commit/151c565&quot;&gt;151c565&lt;/a&gt; Added fluo status command.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/fluo/issues/960&quot;&gt;#960&lt;/a&gt; Fluo started using some Accumulo APIs introduced in 1.7.0.  Therefore 1.7.0 is now the minimum version of Accumulo.&lt;/li&gt;
+  &lt;li&gt;A few of Fluo’s internal caches were made configurable in &lt;a href=&quot;https://github.com/apache/fluo/commit/650f044&quot;&gt;650f044&lt;/a&gt;, &lt;a href=&quot;https://github.com/apache/fluo/commit/9e87f47&quot;&gt;9e87f47&lt;/a&gt;, and &lt;a href=&quot;https://github.com/apache/fluo/commit/955c86f&quot;&gt;955c86f&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Optimized Fluo’s server side code that runs in Accumulo tablet servers in &lt;a href=&quot;https://github.com/apache/fluo/commit/202fe08&quot;&gt;202fe08&lt;/a&gt; and &lt;a href=&quot;https://github.com/apache/fluo/commit/51dc912&quot;&gt;51dc912&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Added method to merge Fluo configuration objects in &lt;a href=&quot;https://github.com/apache/fluo/commit/a349a9d&quot;&gt;a349a9d&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+
+&lt;p&gt;The Fluo stress test was run twice as documented &lt;a href=&quot;https://twitter.com/ApacheFluo/status/951112777212530689&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://lists.apache.org/thread.html/023ebf28a2ebbed88cfbd25f09cc6f4e4a1ba685f22c217ebc238025@%3Cdev.fluo.apache.org%3E&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 26 Feb 2018 15:00:00 +0000</pubDate>
+        <link>https://fluo.apache.org//release/fluo-1.2.0/</link>
+        <guid isPermaLink="true">https://fluo.apache.org//release/fluo-1.2.0/</guid>
+        
+        
+        <category>release</category>
+        
+      </item>
     
       <item>
         <title>Fluo graduates from the Apache incubator!</title>
@@ -504,11 +688,11 @@ related data. This blog post offers some tips to help you get started writing to
 
 &lt;p&gt;Spark automatically serializes Java objects that are needed for remote execution.  When trying to
 use Fluo with Spark its important to understand what will serialize properly and what will not.
-Classes used to load data into Fluo like &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/FluoClient.html&quot;&gt;FluoClient&lt;/a&gt; and &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/LoaderExecutor.html&quot;&gt;LoaderExecutor&lt;/a&gt; are not suitable for
+Classes used to load data into Fluo like &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/FluoClient.html&quot;&gt;FluoClient&lt;/a&gt; and &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/LoaderExecutor.html&quot;&gt;LoaderExecutor&lt;/a&gt; are not suitable for
 serialization.  These classes may have thread pools, resources in Zookeeper, transactions that are
 committing in the background, etc .  Therefore these classes must be instantiated at each remote process
 Spark creates.  One way to do this is with Spark’s &lt;code class=&quot;highlighter-rouge&quot;&gt;foreachParition&lt;/code&gt; method.  This method will
-execute code locally at each RDD partition. Within each partition, a &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/LoaderExecutor.html&quot;&gt;LoaderExecutor&lt;/a&gt;
+execute code locally at each RDD partition. Within each partition, a &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/LoaderExecutor.html&quot;&gt;LoaderExecutor&lt;/a&gt;
 can be created.  That’s what the example below shows.&lt;/p&gt;
 
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 
@@ -737,8 +921,8 @@ modified any of the key values.&lt;/p&gt;
 
 &lt;p&gt;While designing the Fluo API we were uncertain about making Fluo’s basic &lt;a href=&quot;/tour/data-pojos/&quot;&gt;POJOs&lt;/a&gt; mutable or
 immutable.  In the end we decided to go with immutable types to make writing correct Fluo code
-easier.  One of the POJOs we created was &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/data/Bytes.html&quot;&gt;Bytes&lt;/a&gt;,  an immutable wrapper around a byte array.  We
-also created &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/data/Bytes.BytesBuilder.html&quot;&gt;BytesBuilder&lt;/a&gt;, which is analogous to StringBuilder, and makes it easy and efficient
+easier.  One of the POJOs we created was &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/data/Bytes.html&quot;&gt;Bytes&lt;/a&gt;,  an immutable wrapper around a byte array.  We
+also created &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/data/Bytes.BytesBuilder.html&quot;&gt;BytesBuilder&lt;/a&gt;, which is analogous to StringBuilder, and makes it easy and efficient
 to construct Bytes.&lt;/p&gt;
 
 &lt;h3 id=&quot;what-about-the-copies&quot;&gt;What about the copies?&lt;/h3&gt;
@@ -1111,311 +1295,6 @@ available.&lt;/p&gt;
         <pubDate>Thu, 02 Jun 2016 11:43:00 +0000</pubDate>
         <link>https://fluo.apache.org//blog/2016/06/02/fluo-moving-to-apache/</link>
         <guid isPermaLink="true">https://fluo.apache.org//blog/2016/06/02/fluo-moving-to-apache/</guid>
-        
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title>Running Webindex for 3 days on EC2 Again</title>
-        <description>&lt;p&gt;Another long run of &lt;a href=&quot;https://github.com/fluo-io/webindex&quot;&gt;Webindex&lt;/a&gt; was done to test changes made since beta-2
-and it went well.  This run performed much better than the previous the
-&lt;a href=&quot;/blog/2016/01/11/webindex-long-run/&quot;&gt;previous long run of Webindex&lt;/a&gt;.  The experiment was run on 21 EC2
-m3-xlarge nodes (20 worker nodes).  Each node has 4 cores and 15G of RAM.
-273.6 million web pages and 3.54 billion links were processed from 8,000 common
-crawl files (each file is around 330M).  It took around 80 hours to load the
-files resulting in a rate of ~950 web page/sec and ~12,292 links/sec.&lt;/p&gt;
-
-&lt;p&gt;This blog post outlines the changes to Fluo, Fluo Recipes, and Webindex that
-made this long run so much better than the last one.  For anyone writing
-applications on Fluo, the changes to Webindex that resulted in improvements may
-be of interest.  Unreleased versions of Fluo and Fluo Recipes were used for
-this test, so the improvements are not easily available to users yet.  However
-we hope to release new versions soon.&lt;/p&gt;
-
-&lt;h2 id=&quot;rate-limited-page-loading&quot;&gt;Rate limited page loading&lt;/h2&gt;
-
-&lt;p&gt;The plot below shows how many transactions per second were executed by
-different observers.  Please refer to the &lt;a href=&quot;/blog/2016/01/11/webindex-long-run/#webindex-overview&quot;&gt;overview in the last
-post&lt;/a&gt; for a description of the observers and see the &lt;a href=&quot;/blog/2016/01/11/webindex-long-run/#grafana-plots&quot;&gt;previous
-plots&lt;/a&gt;.  The transactions per second is very even compared to the
-last run.   The document load rate was limited to a maximum of 1,000 pages per
-second.  There was no limit in the last run, it just ran as fast as it could.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/resources/blog/webindex_run_201605/wilr2-tps.png&quot; alt=&quot;Transactions per second plot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The PageLoader is not show in the plot above because of a bug with it in the
-historical view.  In the recent Grafana view it plotted fine and basically
-mirrored the PageObserver.&lt;/p&gt;
-
-&lt;p&gt;The ability to rate limit page loading was added in &lt;a href=&quot;https://github.com/fluo-io/webindex/issues/70&quot;&gt;webindex-70&lt;/a&gt;.  For this
-test run 20 Spark load task were run, each limited to 50 pages per second.  The
-latest code can sustain much higher rates initially (see &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/593#issuecomment-213630145&quot;&gt;this
-comment&lt;/a&gt;).  However once a lot of data builds up,
-compactions and scans in Accumulo start taking more CPU.  A rate of 1,000 pages
-per second was chosen as something that could be sustained over multiple days.
-The CPU plots below show that in the beginning there is idle CPU to spare, but
-that does not last.&lt;/p&gt;
-
-&lt;h2 id=&quot;cpu-utilization&quot;&gt;CPU Utilization&lt;/h2&gt;
-
-&lt;p&gt;In order to get higher throughput changes were made to reduce CPU usage and
-evenly spread CPU usage across the cluster.  The following plot shows the CPU
-usage of all nodes across the cluster during the test.  Unfortunately this data
-was not kept for the previous run.  One issue that caused problems in the
-previous run was hotpots, where one node was swamped while others were under
-utilized.  In this run the utilization across the cluster was fairly uniform.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/resources/blog/webindex_run_201605/wilr2-cpu.png&quot; alt=&quot;CPU usage plots&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The following evenly spread computation :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A short hash was appended to URLs used as the row key for pages.  This
-spread web pages evenly across the cluster.  These changes were made in
-&lt;a href=&quot;https://github.com/fluo-io/webindex/issues/49&quot;&gt;webindex-49&lt;/a&gt; and &lt;a href=&quot;https://github.com/fluo-io/fluo-recipes/issues/45&quot;&gt;fluo-recipes-45&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;The webindex query table schema was changed in &lt;a href=&quot;https://github.com/fluo-io/webindex/issues/71&quot;&gt;webindex-71&lt;/a&gt; to allow large
-rows to split.  Before this change compactions of large tablets that could
-not split were causing uneven CPU utilization.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The following reduced CPU usage :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The two Accumulo tables (Fluo and query table) were configured to use Snappy
-instead of GZip.&lt;/li&gt;
-  &lt;li&gt;In &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/623&quot;&gt;fluo-623&lt;/a&gt; the Fluo iterators that run in Accumulo were optimized to
-sometimes seek.  This resulted in scanning less data in Accumulo to execute
-transactions and find notifications.&lt;/li&gt;
-  &lt;li&gt;In &lt;a href=&quot;https://github.com/fluo-io/webindex/issues/54&quot;&gt;webindex-54&lt;/a&gt; parsing links was sped up, using less CPU.&lt;/li&gt;
-  &lt;li&gt;Accumulo 1.7.1 was used which has &lt;a href=&quot;https://issues.apache.org/jira/browse/ACCUMULO-4066&quot;&gt;ACCUMULO-4066&lt;/a&gt;.  This made processing
-conditional mutations less CPU intensive.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There were 20 worker nodes and 1 master node.  The master node was running the
-namenode, zookeeper, resource manager, Accumulo master, Grafana, and InfluxDB.
-The master node was normally lightly loaded.  However, at one point InfluxDB
-was burning lots of CPU for an extended period.  This impacted the namenode,
-which impacted the entire cluster.  Not sure what InfluxDB was doing, maybe
-something like a compaction.  May put it on its own node in future test.&lt;/p&gt;
-
-&lt;p&gt;The following table shows how the 8,000 files were loaded by 5 spark jobs.
-After each Spark job completed the two tables were compacted.  Compacting the
-query table prevented expensive compactions from occurring during the next load.
-Compacting the Fluo table cleaned up transaction bookkeeping data.  The
-compactions explain why the CPU utilization is low when the jobs first start.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Num files&lt;/th&gt;
-      &lt;th&gt;Start time&lt;/th&gt;
-      &lt;th&gt;Duration&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2000&lt;/td&gt;
-      &lt;td&gt;5/11 22:32:41&lt;/td&gt;
-      &lt;td&gt;20.8h&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2000&lt;/td&gt;
-      &lt;td&gt;5/12 19:34:38&lt;/td&gt;
-      &lt;td&gt;20.7h&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2000&lt;/td&gt;
-      &lt;td&gt;5/13 18:19:09&lt;/td&gt;
-      &lt;td&gt;17.7h&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1000&lt;/td&gt;
-      &lt;td&gt;5/14 15:09:43&lt;/td&gt;
-      &lt;td&gt;10.5h&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1000&lt;/td&gt;
-      &lt;td&gt;5/14 03:10:13&lt;/td&gt;
-      &lt;td&gt;10.5h&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;preventing-yarn-from-killing-workers&quot;&gt;Preventing YARN from killing workers&lt;/h2&gt;
-
-&lt;p&gt;In the previous run Fluo worker processes were constantly being killed by YARN
-for exceeding memory limits.  This would cause transactions to have to be
-rolled back.  With the new asynchronous commit changes discussed below a lot of
-committing transactions could be in flight.  Frequently killing processes with
-lots of committing transactions would cause lots of rollbacks.&lt;/p&gt;
-
-&lt;p&gt;This problem was remedied in &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/593&quot;&gt;fluo-593&lt;/a&gt; and &lt;a href=&quot;https://github.com/fluo-io/zetten/pull/139&quot;&gt;zetten-139&lt;/a&gt;.  For this run the
-workers were given 5.5G with 1.5G reserved.  With these settings no workers
-were killed by YARN.  When workers are killed it causes upward spikes in the
-memory plots.  There are no spikes of individual workers like this in the
-memory plots below.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/resources/blog/webindex_run_201605/wilr2-memory.png&quot; alt=&quot;Memory usage plots&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Twill reserved memory was set by adding the following to yarn-site.xml.
-&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/671&quot;&gt;fluo-671&lt;/a&gt; was opened to investigate a better way of setting this.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &amp;lt;property&amp;gt;
-    &amp;lt;name&amp;gt;twill.java.reserved.memory.mb&amp;lt;/name&amp;gt;
-    &amp;lt;value&amp;gt;1536&amp;lt;/value&amp;gt;
-  &amp;lt;/property&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The following was set in fluo.properties.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  io.fluo.worker.max.memory.mb=5632
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This resulted in workers running with a max heap size of 4096M.  The processes
-will grow larger than 4096M, but will not be killed by YARN unless exceeding
-5632M.&lt;/p&gt;
-
-&lt;h2 id=&quot;asynchronous-commits&quot;&gt;Asynchronous commits&lt;/h2&gt;
-
-&lt;p&gt;In &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/593&quot;&gt;fluo-593&lt;/a&gt; commit processing was rewritten using an asynchronous model.
-There is no longer a single thread walking each transaction through the commit
-steps.  Instead many transactions are put on a queue for each step and
-processed by a few threads.  This allows many more transactions to be
-concurrently committing.   With this model a temporary pause or high CPU load
-on a tablet server does not lower throughput.  Before this change, when
-tservers spiked to 100% this would impact many committing transactions and the
-threads running those transactions.  Those threads would wait.  This would lead
-to lower utilization across the cluster.&lt;/p&gt;
-
-&lt;p&gt;The plot below shows the number of transactions committing.  As the CPU
-utilization increase, so does the number of committing transactions.  With the
-high CPU utilization it takes longer for individual transactions to commit, but
-throughput is maintained.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/resources/blog/webindex_run_201605/wilr2-committing.png&quot; alt=&quot;Committing transactions plot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Unfortunately the plot does not have all data because it was based on recent
-data which ages off.  The historical plots for committing transactions is not
-yet implemented.  See &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/653&quot;&gt;fluo-653&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Asynchronous commits offer higher throughput but also increase the commit time
-of individual transactions.  As outlined in &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/650&quot;&gt;fluo-650&lt;/a&gt; this can lead to
-increased lock wait time when one transaction is waiting on another.  This
-problem was partially solved by &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/654&quot;&gt;fluo-654&lt;/a&gt; which executes older notifications
-first.  For Webindex, executing older transactions first works well for the
-page data.  However for the Collision Free Maps and Export Queue buckets that
-are always being updated, it does not work so well.   A transaction processing
-these buckets will usually have lock wait.  The number of buckets was set at
-half the total number of worker threads with the thought that this would
-usually leave some threads to process pages.  Not sure if this was helpful.  A
-better solution to &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/650&quot;&gt;fluo-650&lt;/a&gt; is needed.  Below is a plot of lock wait time.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/resources/blog/webindex_run_201605/wilr2-lockwait.png&quot; alt=&quot;Lock wait time plot&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;read-and-write-plots&quot;&gt;Read and Write plots&lt;/h2&gt;
-
-&lt;p&gt;Below are plots of the amount data read and written per second by different
-Observers.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/resources/blog/webindex_run_201605/wilr2-erps.png&quot; alt=&quot;Cells read per second&quot; /&gt;
-&lt;img src=&quot;/resources/blog/webindex_run_201605/wilr2-esps.png&quot; alt=&quot;Cells written per second&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;accumulo-settings&quot;&gt;Accumulo Settings&lt;/h2&gt;
-
-&lt;p&gt;The following were executed in the Accumulo shell after initializing Fluo but
-before starting the first Spark load job.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;config -t webindex -s table.compaction.major.ratio=1.75
-config -t webindex -s table.file.compress.blocksize.index=256K
-config -t webindex -s table.file.compress.blocksize=64K
-config -t webindex -s table.file.compress.type=snappy
-config -t webindex_search -s table.file.compress.type=snappy
-config -t webindex_search -s table.split.threshold=512M
-config -t accumulo.metadata -s table.durability=flush
-config -t accumulo.root -s table.durability=flush
-config -s tserver.wal.replication=2
-config -s table.file.replication=2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Fluo used the &lt;code class=&quot;highlighter-rouge&quot;&gt;webindex&lt;/code&gt; table.  A blocksize of 64k was selected to speed up
-random lookups a bit.  A compaction ratio of 1.75 was chosen so that the Fluo
-table would compact more frequently.  Compactions of the Fluo table run the
-Fluo garbage collection iterator.&lt;/p&gt;
-
-&lt;p&gt;Webindex uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;webindex_search&lt;/code&gt; table for queries and Fluo exports to it.
-This table uses real data like domain names and URLs, therefore the data does
-not spread evenly.  Lowering the split from the default of 1G to 512M makes
-tablets with popular domains or URLs split and spread across the cluster
-sooner.&lt;/p&gt;
-
-&lt;p&gt;Data replication was set to 2 because the cluster did not have a lot of space
-and the default of 3 may have filled it up.&lt;/p&gt;
-
-&lt;p&gt;The Accumulo tserver were configured with a data cache of 3G and an index cache
-of 512M.&lt;/p&gt;
-
-&lt;p&gt;At some point later in the test, the number of compaction threads in Accumulo was
-adjusted from 3 to 2.  This was done because there were only 4 cores and having
-compactions use most of them could be disruptive.&lt;/p&gt;
-
-&lt;h2 id=&quot;fluo-settings&quot;&gt;Fluo Settings&lt;/h2&gt;
-
-&lt;p&gt;Fluo was configured with 128 threads per worker and 20 workers.&lt;/p&gt;
-
-&lt;p&gt;For the test the following was set in fluo.properties.  This settings
-determines the maximum amount of transactions that will be held in memory to
-commit asynchronously.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;io.fluo.impl.tx.commit.memory=104857600
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;webindex-settings&quot;&gt;Webindex settings&lt;/h2&gt;
-
-&lt;p&gt;Webindex was configured with the following settings.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;numTablets: 60
-numBuckets: 1020
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Each type of data started with 60 tablets.  The types of data are page data,
-url inlink counts, domain url counts, and the export queue.  1,020 is multiple
-of 60 giving each tablet the same number of buckets.  With 60 tablets, each
-tablet server started off with 3 tablets per data type.   Some of the data
-types split as the test ran.&lt;/p&gt;
-
-&lt;h2 id=&quot;final-data-size&quot;&gt;Final Data Size&lt;/h2&gt;
-
-&lt;p&gt;After loading all of the data the two tables were compacted.  The size of the
-tables is shown below.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@instance16&amp;gt; du webindex
-         291,525,943,501 [webindex]
-root@instance16&amp;gt; du webindex_search
-         271,106,371,976 [webindex_search]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Postmortem analysis of the RFiles from this test run lead to work on
-&lt;a href=&quot;https://issues.apache.org/jira/browse/ACCUMULO-1124&quot;&gt;ACCUMULO-1124&lt;/a&gt; and &lt;a href=&quot;https://issues.apache.org/jira/browse/ACCUMULO-4314&quot;&gt;ACCUMULO-4314&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;software-used&quot;&gt;Software used&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Centos 7&lt;/li&gt;
-  &lt;li&gt;Hadoop 2.6.3&lt;/li&gt;
-  &lt;li&gt;Zookeeper 3.4.8&lt;/li&gt;
-  &lt;li&gt;Accumulo 1.7.1&lt;/li&gt;
-  &lt;li&gt;Fluo &lt;a href=&quot;https://github.com/fluo-io/fluo/commit/82301a143140a55dae52f308e218e69edc7ec963&quot;&gt;82301a1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Fluo Recipes &lt;a href=&quot;https://github.com/fluo-io/fluo-recipes/commit/dd1c37313d272ff7647040e43ed4261c70939a9b&quot;&gt;dd1c373&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Webindex &lt;a href=&quot;https://github.com/fluo-io/webindex/commit/1f9462d0938c7ca98d26de911ddb57e270a6a75f&quot;&gt;1f9462d&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Zetten &lt;a href=&quot;https://github.com/fluo-io/zetten/commit/43e9cdea8d3c37d532796a994011e579f7495767&quot;&gt;43e9cde&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 17 May 2016 08:44:00 +0000</pubDate>
-        <link>https://fluo.apache.org//blog/2016/05/17/webindex-long-run-2/</link>
-        <guid isPermaLink="true">https://fluo.apache.org//blog/2016/05/17/webindex-long-run-2/</guid>
         
         
         <category>blog</category>

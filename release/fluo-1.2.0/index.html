@@ -65,7 +65,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Docs<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/docs/fluo/1.1.0-incubating/">Fluo</a></li>
+                <li><a href="/docs/fluo/1.2/">Fluo</a></li>
                 <li><a href="/docs/fluo-recipes/1.1.0-incubating/">Fluo Recipes</a></li>
               </ul>
             </li>
@@ -109,12 +109,10 @@
           <div class="col-sm-12">
             <div class="post-header">
   <h2>Apache Fluo 1.2.0 released</h2>
-  <p class="text-muted">22 Sep 2017</p>
+  <p class="text-muted">26 Feb 2018</p>
   <p><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Apache Fluo 1.2.0 released&url=https://fluo.apache.org//release/fluo-1.2.0/&via=ApacheFluo&related=ApacheFluo" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a></p>
 </div>
 
-
-<div class="alert alert-danger" style="margin-bottom: 0px;" role="alert">These are draft release notes for a future release! <a href="/release/">View the latest releases</a>.</div>
 
 
 
@@ -149,12 +147,12 @@ package can change at any time. If your project is using Fluo code that falls
 outside of the API, then consider <a href="/getinvolved/">initiating a discussion</a>
 about adding it to the API.</p>
 
-<h2 id="significant-changes">Significant changes</h2>
+<h2 id="notable-changes">Notable changes</h2>
 
 <p>The major changes in 1.2.0 are highlighted here, for the complete list of changes, see the <a href="https://github.com/apache/fluo/milestone/6?closed=1">1.2.0
 Milestone</a> on Github.</p>
 
-<h3 id="fluo-now-supports-multiple-ways-for-running-fluo-applications">Fluo now supports multiple ways for running Fluo applications</h3>
+<h3 id="multiple-ways-of-running-applications">Multiple ways of running applications</h3>
 
 <p>Before 1.2.0, Fluo applications could only be run in YARN or as local processes. For 1.2.0, the Fluo tarball
 was refactored to support other ways of running Fluo applications such as Docker, Kubernetes &amp; Marathon. This
@@ -171,12 +169,14 @@ refactoring has the following notable changes:</p>
   <li>Code for launching Fluo applications in YARN was moved to its <a href="https://github.com/apache/fluo-yarn">own project</a> that has its own
 <a href="https://fluo.apache.org/release/fluo-yarn-1.0.0">release</a> tarball. The Fluo tarball can still be used to launch Fluo applications
 in YARN if a <code class="highlighter-rouge">fluo.properties</code> is created from <code class="highlighter-rouge">fluo.properties.deprecated</code>.</li>
-  <li>Fluo application jars are now stored in HDFS and application configuration is now stored in Zookeeper.  This information used to be stored in a local directory.  This change made running Fluo different ways (like YARN or Docker) possible.</li>
+  <li>Fluo application jars are now stored in HDFS and application configuration is now stored in Zookeeper.  This information used to be stored in a local directory.  This change made running Fluo different ways (like YARN or Docker) possible.  The <code class="highlighter-rouge">fluo get-jars</code> command (added in <a href="https://github.com/apache/fluo/commit/db0bdad">db0bdad</a>) can be used to retrieve application jars.</li>
+  <li>Fluo configuration options can now be specified on the command line with <code class="highlighter-rouge">-o</code> option.  This enables passing Fluo options on the Docker command line.</li>
+  <li>Fluo scripts now support passing Java options.  In Docker, its useful to have control over the amount of memory Java uses.  This can be done by setting the <code class="highlighter-rouge">FLUO_JAVA_OPTS</code> env variable on the Docker command line.  This was added in commit <a href="https://github.com/apache/fluo/commit/4207df4">4207df4</a>.</li>
 </ul>
 
 <p>Read the <a href="https://fluo.apache.org/docs/fluo/1.2/getting-started/quick-start">quickstart documentation</a> to learn how to run Fluo applications using these new methods.</p>
 
-<h3 id="fluo-now-supports-read-locks">Fluo now supports read locks.</h3>
+<h3 id="read-locks">Read locks.</h3>
 
 <p>The Percolator paper stated that read locks were expensive and usually not
 needed.  Therefore in Percolator reads did not acquire a read lock.  This
@@ -215,24 +215,42 @@ collision.  If <code class="highlighter-rouge">addEdge</code> did not obtain a r
 with <code class="highlighter-rouge">setAlias</code>.  If <code class="highlighter-rouge">addEdge</code> obtained a write lock, then concurrent calls to
 <code class="highlighter-rouge">addEdge</code> could needlessly collide.</p>
 
-<p>See the <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/TransactionBase.html#withReadLock--">withReadLock javadoc</a> for more information.</p>
+<p>See the <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/TransactionBase.html#withReadLock--">withReadLock javadoc</a> for more information.</p>
 
-<h3 id="asynchronous-commit-code-refactored-for-readability">Asynchronous commit code refactored for readability.</h3>
+<h3 id="simplified-scanner-api">Simplified Scanner API</h3>
 
-<p>Fluo’s commit code is asynchronous in order to support high throughput.
-Before this release the high level commit logic was spread far and wide in the
-code.  For this release the commit code was transitioned from Guava’s
-ListenableFutre to Java 8’s CompletableFuture in <a href="https://github.com/apache/fluo/issues/722">#722</a>.  This transition laid
-the ground work for <a href="https://github.com/apache/fluo/issues/978">#978</a> which centralized the commit logic.  Now the high
-level logic for the commit code is all in one place, making it much easier to
-understand.</p>
+<p>Range scanning API was simplified in <a href="https://github.com/apache/fluo/commit/c737df6">c737df6</a>.  Before, scanning over a row was :</p>
 
-<h3 id="addition-of-fluo-remove-command">Addition of Fluo remove command.</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CellScanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="na">scanner</span><span class="o">().</span><span class="na">over</span><span class="o">(</span><span class="n">Span</span><span class="o">.</span><span class="na">exact</span><span class="o">(</span><span class="s">"row"</span><span class="o">)).</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div></div>
 
-<p>Fluo now offers a command to remove an applications data in Zookeeper and
-Accumulo. Work on this issue was done in <a href="https://github.com/apache/fluo/issues/991">#991</a>.</p>
+<p>After this change, it can be written as :</p>
 
-<h3 id="shading-libthrift">Shading libthrift</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CellScanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="na">scanner</span><span class="o">().</span><span class="na">over</span><span class="o">(</span><span class="s">"row"</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h3 id="streams">Streams</h3>
+
+<p>In <a href="https://github.com/apache/fluo/commit/2f11089">2f11089</a> support for Java 8 streams was added.  The following
+computes unique columns in rows with the prefix <code class="highlighter-rouge">abc</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Set</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="na">scanner</span><span class="o">().</span><span class="na">overPrefix</span><span class="o">(</span><span class="s">"abc"</span><span class="o">).</span><span class="na">build</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="nl">RowColumnValue:</span><span class="o">:</span><span class="n">getColumn</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toSet</span><span class="o">());</span>
+</code></pre></div></div>
+
+<h3 id="remove-command">Remove command.</h3>
+
+<p>Can now remove applications data in Zookeeper and
+Accumulo. Work on this issue was done in <a href="https://github.com/apache/fluo/issues/991">#999</a>.  Before
+data had to be manually removed from Zookeeper and Accumulo.</p>
+
+<h3 id="fluoconfiguration-javadoc">FluoConfiguration Javadoc</h3>
+
+<p>Most of the methods in <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> get or a set a specific property.
+Before it was not easy to know which property. In <a href="https://github.com/apache/fluo/commit/cbe44b1">cbe44b1</a> the
+javadoc was updated to mention the properties.</p>
+
+<h3 id="shaded-libthrift">Shaded libthrift</h3>
 
 <p>Fluo uses Apache Thrift for remote procedure calls.  Projects using Thrift use
 its compiler to generate code.  This generated Java code make calls to
@@ -243,16 +261,34 @@ compiler is only guaranteed to work with libthrift 0.9.1.</p>
 
 <p>Accumulo also uses Thrift for its RPCs.  When Accumulo and Fluo use different
 versions of thrift it can cause serious problems. To avoid these problems,
-in <a href="https://github.com/apache/fluo/issues/995">#995</a> libthrift was shaded and relocated into the fluo-core jar eliminating Fluo’s
+in <a href="https://github.com/apache/fluo/commit/082ee8e">082ee8e</a> libthrift was shaded and relocated into the fluo-core jar eliminating Fluo’s
 external dependency on libthrift.  This means that no matter which version
 Accumulo uses, it will not conflict with Fluo’s version.</p>
 
-<h3 id="minimum-accumulo-version">Minimum Accumulo version.</h3>
+<h3 id="asynchronous-commit-refactored">Asynchronous commit refactored</h3>
 
-<p>In <a href="https://github.com/apache/fluo/issues/960">#960</a> Fluo started using some Accumulo APIs introduced in 1.7.0.  Therefore
-Accumulo 1.7.0 is the minimum supported version of Accumulo.</p>
+<p>Fluo’s commit code is asynchronous in order to support high throughput.
+Before this release the high level commit logic was spread far and wide in the
+code.  For this release the commit code was transitioned from Guava’s
+ListenableFutre to Java 8’s CompletableFuture in <a href="https://github.com/apache/fluo/commit/ca63aaf">ca63aaf</a>.  This transition laid
+the ground work for <a href="https://github.com/apache/fluo/commit/6bf604f">6bf604f</a> which centralized the commit logic.  Now the high
+level logic for the commit code is all in one place, making it much easier to
+understand.</p>
+
+<h3 id="other-notable-changes">Other notable changes</h3>
+
+<ul>
+  <li><a href="https://github.com/apache/fluo/commit/7c16599">7c16599</a> Added a method for efficiently comparing Byte and byte[]</li>
+  <li><a href="https://github.com/apache/fluo/commit/151c565">151c565</a> Added fluo status command.</li>
+  <li><a href="https://github.com/apache/fluo/issues/960">#960</a> Fluo started using some Accumulo APIs introduced in 1.7.0.  Therefore 1.7.0 is now the minimum version of Accumulo.</li>
+  <li>A few of Fluo’s internal caches were made configurable in <a href="https://github.com/apache/fluo/commit/650f044">650f044</a>, <a href="https://github.com/apache/fluo/commit/9e87f47">9e87f47</a>, and <a href="https://github.com/apache/fluo/commit/955c86f">955c86f</a>.</li>
+  <li>Optimized Fluo’s server side code that runs in Accumulo tablet servers in <a href="https://github.com/apache/fluo/commit/202fe08">202fe08</a> and <a href="https://github.com/apache/fluo/commit/51dc912">51dc912</a></li>
+  <li>Added method to merge Fluo configuration objects in <a href="https://github.com/apache/fluo/commit/a349a9d">a349a9d</a></li>
+</ul>
 
 <h2 id="testing">Testing</h2>
+
+<p>The Fluo stress test was run twice as documented <a href="https://twitter.com/ApacheFluo/status/951112777212530689">here</a> and <a href="https://lists.apache.org/thread.html/023ebf28a2ebbed88cfbd25f09cc6f4e4a1ba685f22c217ebc238025@%3Cdev.fluo.apache.org%3E">here</a>.</p>
 
 
 </div>

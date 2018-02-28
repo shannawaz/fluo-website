@@ -65,7 +65,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Docs<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/docs/fluo/1.1.0-incubating/">Fluo</a></li>
+                <li><a href="/docs/fluo/1.2/">Fluo</a></li>
                 <li><a href="/docs/fluo-recipes/1.1.0-incubating/">Fluo Recipes</a></li>
               </ul>
             </li>
@@ -194,7 +194,7 @@
     <p>Fluo 1.2.0 documentation &nbsp;&gt;&gt;&nbsp; Administration &nbsp;&gt;&gt;&nbsp; Run Fluo in Docker</p>
     
 
-    <div class="alert alert-warning" style="margin-bottom: 0px;" role="alert">This documentation is for a future release of Apache Fluo! <a href="/docs/fluo/1.1.0-incubating/">View documentation for the latest release</a>.</div>
+    <!--div class="alert alert-warning" style="margin-bottom: 0px;" role="alert">This documentation is for a future release of Apache Fluo! <a href="/docs/fluo/1.2/">View documentation for the latest release</a>.</div>-->
 
     
     <div class="row">
@@ -256,10 +256,35 @@ docker run apache/fluo version
 docker run apache/fluo classpath
 </code></pre></div></div>
 
+<h2 id="initialize-application">Initialize application</h2>
+
+<p>Before starting a Fluo oracle and worker using the Fluo Docker image,
+<a href="/docs/fluo/1.2/administration/initialize">initialize your Fluo application</a>.  Initialization can also be
+done using Docker.  To do this, the applications jars and config file need to
+be mapped into the docker container.  To understand how to do this, assume the
+following setup for local files outside of Docker.</p>
+
+<ul>
+  <li>Application jars in <code class="highlighter-rouge">/home/user1/myapp/lib</code></li>
+  <li><code class="highlighter-rouge">fluo-app.properties</code> in <code class="highlighter-rouge">/home/user1/myapp/conf</code></li>
+  <li><code class="highlighter-rouge">fluo.observer.init.dir=/opt/myapp/lib</code> is set in <code class="highlighter-rouge">fluo-app.properties</code> along with any other properties needed</li>
+</ul>
+
+<p>With this setup, the following Docker command will initialize <code class="highlighter-rouge">myapp</code>. Fluo
+init runs in docker as root, so <code class="highlighter-rouge">HADOOP_USER_NAME</code> is set in order to avoid
+copying into HDFS as root.  The Docker run option <code class="highlighter-rouge">-v
+/home/user1/myapp:/opt/myapp</code> maps the local directory <code class="highlighter-rouge">/home/user1/myapp</code> into
+the container at <code class="highlighter-rouge">/opt/myapp</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--network</span><span class="o">=</span><span class="s2">"host"</span> <span class="nt">-v</span> /home/user1/myapp:/opt/myapp <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">HADOOP_USER_NAME</span><span class="o">=</span><span class="sb">`</span>whoami<span class="sb">`</span> <span class="se">\</span>
+           apache/fluo init <span class="nt">-a</span> myapp <span class="nt">-f</span> <span class="nt">-p</span> /opt/myapp/conf/fluo-app.properties <span class="se">\</span>
+                            <span class="nt">-o</span> fluo.connection.zookeepers<span class="o">=</span>zkhost/fluo
+</code></pre></div></div>
+
 <h2 id="run-application-in-docker">Run application in Docker</h2>
 
-<p>Before starting a Fluo oracle and worker using the Fluo Docker image, <a href="/docs/fluo/1.2/administration/initialize">initialize your Fluo application</a>. 
-Next, choose a method below to run the oracle and worker(s) of your Fluo application. In the examples below, the Fluo
+<p>After initializing, choose a method below to run the oracle and worker(s) of your Fluo application. In the examples below, the Fluo
 application is named <code class="highlighter-rouge">myapp</code> and was initialized using a Zookeeper node on <code class="highlighter-rouge">zkhost</code>.</p>
 
 <h3 id="docker-engine">Docker engine</h3>

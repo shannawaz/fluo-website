@@ -8,10 +8,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/fluo.css">
-    <link rel="canonical" href="https://fluo.apache.org//release/">
+    <link rel="canonical" href="https://fluo.apache.org//release/fluo-yarn-1.0.0/">
     <link rel="icon" type="image/png" href="/resources/favicon.png">
     
-    <title>Releases | Apache Fluo</title>
+    <title>Apache Fluo YARN 1.0.0 released | Apache Fluo</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -107,37 +107,61 @@
     <div class="container">
       <div class="row">
           <div class="col-sm-12">
-            <div class="page">
+            <div class="post-header">
+  <h2>Apache Fluo YARN 1.0.0 released</h2>
+  <p class="text-muted">27 Feb 2018</p>
+  <p><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Apache Fluo YARN 1.0.0 released&url=https://fluo.apache.org//release/fluo-yarn-1.0.0/&via=ApacheFluo&related=ApacheFluo" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a></p>
+</div>
 
-  <header class="post-header">
-    <h2 class="post-title">Releases</h2>
-  </header>
 
-  <article id="page-content">
-    <p>Apache Fluo has several projects that are released separately on their own schedule.</p>
+<div class="alert alert-danger" style="margin-bottom: 0px;" role="alert">These are draft release notes for a future release! <a href="/release/">View the latest releases</a>.</div>
+
+
+
+
+<div class="post-content">
+  <p>This is the first release of the <a href="https://github.com/apache/fluo-yarn">Apache Fluo YARN launcher</a> which runs Fluo applications in
+<a href="https://hadoop.apache.org/docs/r2.8.0/hadoop-yarn/hadoop-yarn-site/YARN.html">Hadooop YARN</a>. The YARN launcher was originally distributed with <a href="https://github.com/apache/fluo">Fluo</a>. It has been
+moved to its <a href="https://github.com/apache/fluo-yarn">own project</a> as Fluo has multiple application launchers. Moving the code out
+simplified Fluo and reduced its dependencies.</p>
+
+<p>This release of the Fluo YARN launcher requires Fluo 1.2.0 or above. Future releases of Fluo should
+work with this release as the YARN launcher uses minimal Fluo API. If not, a new release will be made. However,
+new releases of the YARN launcher will likely be due to new releases of <a href="https://hadoop.apache.org/docs/r2.8.0/hadoop-yarn/hadoop-yarn-site/YARN.html">Hadoop YARN</a> and <a href="http://twill.apache.org/">Apache Twill</a>.</p>
+
+<p>Below are resources for this release:</p>
 
 <ul>
   <li>
-    <p><a href="/release/fluo-1.2.0/">fluo-1.2.0</a> - 26 Feb 2018</p>
+    <p>Download a release tarball and verify by these <a href="https://www.apache.org/info/verification">procedures</a> using these <a href="https://www.apache.org/dist/fluo/KEYS">KEYS</a></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://www.apache.org/dyn/closer.lua/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz">fluo-yarn-1.0.0-bin.tar.gz</a></td>
+          <td><a href="https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.asc">ASC</a> <a href="https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.md5">MD5</a> <a href="https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.sha">SHA</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.apache.org/dyn/closer.lua/fluo/fluo/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz">fluo-yarn-1.0.0-source-release.tar.gz</a></td>
+          <td><a href="https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.asc">ASC</a> <a href="https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.md5">MD5</a> <a href="https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.sha">SHA</a></td>
+        </tr>
+      </tbody>
+    </table>
   </li>
   <li>
-    <p><a href="/release/fluo-recipes-1.1.0-incubating/">fluo-recipes-1.1.0-incubating</a> - 22 Jun 2017</p>
-  </li>
-  <li>
-    <p><a href="/release/fluo-1.1.0-incubating/">fluo-1.1.0-incubating</a> - 12 Jun 2017</p>
-  </li>
-  <li>
-    <p><a href="/release/fluo-recipes-1.0.0-incubating/">fluo-recipes-1.0.0-incubating</a> - 28 Oct 2016</p>
-  </li>
-  <li>
-    <p><a href="/release/fluo-1.0.0-incubating/">fluo-1.0.0-incubating</a> - 14 Oct 2016</p>
+    <p>View <a href="/docs/fluo/1.2/administration/run-fluo-in-yarn">documentation</a> for to learn how to run Fluo application in YARN.</p>
   </li>
 </ul>
 
-<p>Releases before joining Apache have been <a href="/pre-asf-release/">archived</a>.</p>
+<h3 id="testing">Testing</h3>
 
-  </article>
+<p>While testing Fluo 1.2.0, two stress test runs used an unreleased version of Fluo YARN.</p>
 
+
+</div>
+
+<div>
+  <p class="text-muted">View all releases in the <a href="/release/">release archive</a></p>
 </div>
 
           </div>

@@ -65,7 +65,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Docs<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/docs/fluo/1.1.0-incubating/">Fluo</a></li>
+                <li><a href="/docs/fluo/1.2/">Fluo</a></li>
                 <li><a href="/docs/fluo-recipes/1.1.0-incubating/">Fluo Recipes</a></li>
               </ul>
             </li>
@@ -194,7 +194,7 @@
     <p>Fluo 1.2.0 documentation &nbsp;&gt;&gt;&nbsp; Getting started &nbsp;&gt;&gt;&nbsp; Create Application</p>
     
 
-    <div class="alert alert-warning" style="margin-bottom: 0px;" role="alert">This documentation is for a future release of Apache Fluo! <a href="/docs/fluo/1.1.0-incubating/">View documentation for the latest release</a>.</div>
+    <!--div class="alert alert-warning" style="margin-bottom: 0px;" role="alert">This documentation is for a future release of Apache Fluo! <a href="/docs/fluo/1.2/">View documentation for the latest release</a>.</div>-->
 
     
     <div class="row">
@@ -228,25 +228,25 @@ allow the scripts to use the versions of Hadoop, Accumulo, and Zookeeper install
 
 <h2 id="creating-a-fluo-client">Creating a Fluo client</h2>
 
-<p>To create a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/FluoClient.html">FluoClient</a>, you will need to provide it with a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object that is
+<p>To create a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/FluoClient.html">FluoClient</a>, you will need to provide it with a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object that is
 configured to connect to your Fluo instance.</p>
 
 <p>If you have access to the <a href="https://github.com/apache/fluo/blob/master/modules/distribution/src/main/config/fluo-conn.properties">fluo-conn.properties</a> file that was used to configure your Fluo instance, you
-can use it to build a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object with all necessary properties:</p>
+can use it to build a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object with all necessary properties:</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"fluo-conn.properties"</span><span class="o">));</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setApplicationName</span><span class="o">(</span><span class="s">"myapp"</span><span class="o">);</span>
 </code></pre></div></div>
 
-<p>You can also create an empty <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object and set properties using Java:</p>
+<p>You can also create an empty <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object and set properties using Java:</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FluoConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FluoConfiguration</span><span class="o">();</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setInstanceZookeepers</span><span class="o">(</span><span class="s">"localhost/fluo"</span><span class="o">);</span>
 <span class="n">config</span><span class="o">.</span><span class="na">setApplicationName</span><span class="o">(</span><span class="s">"myapp"</span><span class="o">);</span>
 </code></pre></div></div>
 
-<p>Once you have <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object, pass it to the <code class="highlighter-rouge">newClient()</code> method of <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/FluoFactory.html">FluoFactory</a> to
-create a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/client/FluoClient.html">FluoClient</a>:</p>
+<p>Once you have <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/config/FluoConfiguration.html">FluoConfiguration</a> object, pass it to the <code class="highlighter-rouge">newClient()</code> method of <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/FluoFactory.html">FluoFactory</a> to
+create a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/FluoClient.html">FluoClient</a>:</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="o">(</span><span class="n">FluoClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">FluoFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">(</span><span class="n">config</span><span class="o">)){</span>
 
@@ -269,7 +269,7 @@ create a <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incub
 
 <ol>
   <li>
-    <p>Create one or more classes that extend <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/observer/Observer.html">Observer</a> like the example below. It is a good idea to
+    <p>Create one or more classes that extend <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/observer/Observer.html">Observer</a> like the example below. It is a good idea to
 use <a href="http://www.slf4j.org/">slf4j</a> for any logging in observers as <a href="http://www.slf4j.org/">slf4j</a> supports multiple logging implementations.</p>
 
     <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InvertObserver</span> <span class="kd">implements</span> <span class="n">Observer</span> <span class="o">{</span>
@@ -285,7 +285,7 @@ use <a href="http://www.slf4j.org/">slf4j</a> for any logging in observers as <a
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>Create a class that implements <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.1.0-incubating/org/apache/fluo/api/observer/ObserverProvider.html">ObserverProvider</a> like the example below.  The purpose of this
+    <p>Create a class that implements <a href="https://static.javadoc.io/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/observer/ObserverProvider.html">ObserverProvider</a> like the example below.  The purpose of this
 class is associate a set Observers with columns that trigger the observers.  The class can
 register multiple observers.</p>
 
