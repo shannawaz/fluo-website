@@ -284,6 +284,7 @@ understand.</p>
   <li>A few of Fluo’s internal caches were made configurable in <a href="https://github.com/apache/fluo/commit/650f044">650f044</a>, <a href="https://github.com/apache/fluo/commit/9e87f47">9e87f47</a>, and <a href="https://github.com/apache/fluo/commit/955c86f">955c86f</a>.</li>
   <li>Optimized Fluo’s server side code that runs in Accumulo tablet servers in <a href="https://github.com/apache/fluo/commit/202fe08">202fe08</a> and <a href="https://github.com/apache/fluo/commit/51dc912">51dc912</a></li>
   <li>Added method to merge Fluo configuration objects in <a href="https://github.com/apache/fluo/commit/a349a9d">a349a9d</a></li>
+  <li>Initialization from Java API and command line now behave the same. Before 1.2, only command line initialization copied Fluo’s server side code to HDFS.  Now the Java API also does this and it controlled by configuration.</li>
 </ul>
 
 <h2 id="testing">Testing</h2>
