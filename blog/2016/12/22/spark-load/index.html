@@ -66,7 +66,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Docs<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/docs/fluo/1.2/">Fluo</a></li>
-                <li><a href="/docs/fluo-recipes/1.1.0-incubating/">Fluo Recipes</a></li>
+                <li><a href="/docs/fluo-recipes/1.2/">Fluo Recipes</a></li>
               </ul>
             </li>
             <li><a href="/api/">API</a></li>
@@ -182,7 +182,7 @@ partitioning methods in Spark will not accomplish this.</p>
 <p>When following the bulk load approach, you would write <a href="http://accumulo.apache.org/1.8/apidocs/org/apache/accumulo/core/data/Key.html">Key</a> and <a href="http://accumulo.apache.org/1.8/apidocs/org/apache/accumulo/core/data/Value.html">Value</a> objects using the
 <a href="http://accumulo.apache.org/1.8/apidocs/org/apache/accumulo/core/client/mapred/AccumuloFileOutputFormat.html">AccumuloFileOutputFormat</a>. Fluo provides the <a href="https://github.com/apache/incubator-fluo/blob/rel/fluo-1.0.0-incubating/modules/mapreduce/src/main/java/org/apache/fluo/mapreduce/FluoKeyValueGenerator.java">FluoKeyValueGenerator</a> to create key/values in the
 Fluo data format.  Fluo Recipes builds on this and provides code that makes it easy to bulk import
-into Accumulo.  The <a href="https://javadoc.io/page/org.apache.fluo/fluo-recipes-spark/1.1.0-incubating/org/apache/fluo/recipes/spark/FluoSparkHelper.html#bulkImportRcvToFluo-org.apache.spark.api.java.JavaPairRDD-org.apache.fluo.recipes.spark.FluoSparkHelper.BulkImportOptions-">FluoSparkHelper.bulkImportRcvToFluo()</a> method will do the following :</p>
+into Accumulo.  The <a href="https://javadoc.io/page/org.apache.fluo/fluo-recipes-spark/1.2.0/org/apache/fluo/recipes/spark/FluoSparkHelper.html#bulkImportRcvToFluo-org.apache.spark.api.java.JavaPairRDD-org.apache.fluo.recipes.spark.FluoSparkHelper.BulkImportOptions-">FluoSparkHelper.bulkImportRcvToFluo()</a> method will do the following :</p>
 
 <ul>
   <li>Repartition data using the split points in the Fluo table</li>
@@ -192,8 +192,8 @@ into Accumulo.  The <a href="https://javadoc.io/page/org.apache.fluo/fluo-recipe
 </ul>
 
 <p>The <a href="https://github.com/astralway/webindex">Webindex</a> example uses bulk load to initialize its Fluo table using the code in Fluo Recipes.
-Webindex uses multiple <a href="/docs/fluo-recipes/1.1.0-incubating/cfm/">Collision Free Maps</a> and initializes them using
-<a href="https://javadoc.io/page/org.apache.fluo/fluo-recipes-core/1.1.0-incubating/org/apache/fluo/recipes/core/map/CollisionFreeMap.html#getInitializer-java.lang.String-int-org.apache.fluo.recipes.core.serialization.SimpleSerializer-">CollisionFreeMap.getInitializer()</a>.  Webindex uses Spark to initialize the Fluo table with
+Webindex uses multiple <a href="/docs/fluo-recipes/1.2.0/cfm/">Collision Free Maps</a> and initializes them using
+<a href="https://javadoc.io/page/org.apache.fluo/fluo-recipes-core/1.2.0/org/apache/fluo/recipes/core/map/CollisionFreeMap.html#getInitializer-java.lang.String-int-org.apache.fluo.recipes.core.serialization.SimpleSerializer-">CollisionFreeMap.getInitializer()</a>.  Webindex uses Spark to initialize the Fluo table with
 historical data.  Webindex also uses Spark to execute load transactions in parallel for
 incrementally loading data.</p>
 

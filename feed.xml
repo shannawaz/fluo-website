@@ -2,13 +2,111 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apache Fluo</title>
-    <description>Mirror of Apache Fluo Website (Incubator)</description>
+    <description>Mirror of Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 28 Feb 2018 20:05:04 +0000</pubDate>
-    <lastBuildDate>Wed, 28 Feb 2018 20:05:04 +0000</lastBuildDate>
+    <pubDate>Tue, 06 Mar 2018 23:14:56 +0000</pubDate>
+    <lastBuildDate>Tue, 06 Mar 2018 23:14:56 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
+    
+      <item>
+        <title>Apache Fluo YARN 1.0.0 released</title>
+        <description>&lt;p&gt;This is the first release of the &lt;a href=&quot;https://github.com/apache/fluo-yarn&quot;&gt;Apache Fluo YARN launcher&lt;/a&gt; which runs Fluo applications in
+&lt;a href=&quot;https://hadoop.apache.org/docs/r2.8.0/hadoop-yarn/hadoop-yarn-site/YARN.html&quot;&gt;Hadoop YARN&lt;/a&gt;. The YARN launcher was originally distributed with &lt;a href=&quot;https://github.com/apache/fluo&quot;&gt;Fluo&lt;/a&gt;. It has been
+moved to its &lt;a href=&quot;https://github.com/apache/fluo-yarn&quot;&gt;own project&lt;/a&gt; as Fluo has multiple application launchers. Moving the code out
+simplified Fluo and reduced its dependencies.&lt;/p&gt;
+
+&lt;p&gt;This release of the Fluo YARN launcher requires Fluo 1.2.0 or above. Future releases of Fluo should
+work with this release as the YARN launcher uses minimal Fluo API. If not, a new release will be made. However,
+new releases of the YARN launcher will likely be due to new releases of &lt;a href=&quot;https://hadoop.apache.org/docs/r2.8.0/hadoop-yarn/hadoop-yarn-site/YARN.html&quot;&gt;Hadoop YARN&lt;/a&gt; and &lt;a href=&quot;http://twill.apache.org/&quot;&gt;Apache Twill&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Below are resources for this release:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download a release tarball and verify by these &lt;a href=&quot;https://www.apache.org/info/verification&quot;&gt;procedures&lt;/a&gt; using these &lt;a href=&quot;https://www.apache.org/dist/fluo/KEYS&quot;&gt;KEYS&lt;/a&gt;&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz&quot;&gt;fluo-yarn-1.0.0-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.sha512&quot;&gt;SHA-512&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz&quot;&gt;fluo-yarn-1.0.0-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.sha512&quot;&gt;SHA-512&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;View &lt;a href=&quot;/docs/fluo/1.2/administration/run-fluo-in-yarn&quot;&gt;documentation&lt;/a&gt; for to learn how to run Fluo application in YARN.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
+
+&lt;p&gt;While testing Fluo 1.2.0, two stress test runs used an unreleased version of Fluo YARN.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+        <link>https://fluo.apache.org//release/fluo-yarn-1.0.0/</link>
+        <guid isPermaLink="true">https://fluo.apache.org//release/fluo-yarn-1.0.0/</guid>
+        
+        
+        <category>release</category>
+        
+      </item>
+    
+      <item>
+        <title>Apache Fluo Recipes 1.2.0 released</title>
+        <description>&lt;p&gt;Apache Fluo Recipes builds on the Apache Fluo API to provide libraries of common code for Fluo developers.
+The 1.2.0 release is the first release of Fluo Recipes since Fluo graduated from Apache incubation. It has very
+few changes from the 1.1.0-incubating release. If you are new to Fluo Recipes, you should use this release. If you
+are already using Fluo Recipes 1.1.0-incubating, there is no reason to upgrade immediately.&lt;/p&gt;
+
+&lt;p&gt;Below are resources for this release:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Release artifacts have been pushed to &lt;a href=&quot;http://search.maven.org/#search|ga|1|fluo-recipes&quot;&gt;Maven Central&lt;/a&gt;. They can be used by updating your pom.xml:
+    &lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.fluo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;fluo-recipes-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.2.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A source release tarball is available. It can be verified by these &lt;a href=&quot;https://www.apache.org/info/verification&quot;&gt;procedures&lt;/a&gt; using these &lt;a href=&quot;https://www.apache.org/dist/fluo/KEYS&quot;&gt;KEYS&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz&quot;&gt;fluo-recipes-1.2.0-source-release.tar.gz&lt;/a&gt; - &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz.sha512&quot;&gt;SHA-512&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;View the &lt;a href=&quot;/docs/fluo-recipes/1.2/&quot;&gt;documentation&lt;/a&gt; for this release&lt;/li&gt;
+  &lt;li&gt;Read the javadocs: &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-core/1.2.0/&quot; target=&quot;_blank&quot;&gt;core&lt;/a&gt;, &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-accumulo/1.2.0/&quot; target=&quot;_blank&quot;&gt;accumulo&lt;/a&gt;, &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-kryo/1.2.0/&quot; target=&quot;_blank&quot;&gt;kryo&lt;/a&gt;, &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-spark/1.2.0/&quot; target=&quot;_blank&quot;&gt;spark&lt;/a&gt;, &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-test/1.2.0/&quot; target=&quot;_blank&quot;&gt;test&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;View &lt;a href=&quot;https://github.com/apache/fluo-recipes/milestone/2?closed=1&quot;&gt;all changes&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;notable-changes&quot;&gt;Notable Changes&lt;/h2&gt;
+
+&lt;h3 id=&quot;documentation-moved-to-project-website&quot;&gt;Documentation moved to project website&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&quot;/docs/fluo-recipes/1.2/&quot;&gt;documentation&lt;/a&gt; for Fluo Recipes now lives on the project website. In &lt;a href=&quot;https://github.com/apache/fluo-recipes/pull/144&quot;&gt;#144&lt;/a&gt;, it was removed from the Fluo Recipes repo
+and moved to Fluo Website repo.&lt;/p&gt;
+
+&lt;h3 id=&quot;updated-versions&quot;&gt;Updated versions&lt;/h3&gt;
+
+&lt;p&gt;Fluo Recipes was updated (in &lt;a href=&quot;https://github.com/apache/fluo-recipes/pull/146&quot;&gt;#146&lt;/a&gt;) to build using Fluo 1.2.0 and Accumulo 1.7.3&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+        <link>https://fluo.apache.org//release/fluo-recipes-1.2.0/</link>
+        <guid isPermaLink="true">https://fluo.apache.org//release/fluo-recipes-1.2.0/</guid>
+        
+        
+        <category>release</category>
+        
+      </item>
     
       <item>
         <title>Apache Fluo 1.2.0 released</title>
@@ -746,7 +844,7 @@ partitioning methods in Spark will not accomplish this.&lt;/p&gt;
 &lt;p&gt;When following the bulk load approach, you would write &lt;a href=&quot;http://accumulo.apache.org/1.8/apidocs/org/apache/accumulo/core/data/Key.html&quot;&gt;Key&lt;/a&gt; and &lt;a href=&quot;http://accumulo.apache.org/1.8/apidocs/org/apache/accumulo/core/data/Value.html&quot;&gt;Value&lt;/a&gt; objects using the
 &lt;a href=&quot;http://accumulo.apache.org/1.8/apidocs/org/apache/accumulo/core/client/mapred/AccumuloFileOutputFormat.html&quot;&gt;AccumuloFileOutputFormat&lt;/a&gt;. Fluo provides the &lt;a href=&quot;https://github.com/apache/incubator-fluo/blob/rel/fluo-1.0.0-incubating/modules/mapreduce/src/main/java/org/apache/fluo/mapreduce/FluoKeyValueGenerator.java&quot;&gt;FluoKeyValueGenerator&lt;/a&gt; to create key/values in the
 Fluo data format.  Fluo Recipes builds on this and provides code that makes it easy to bulk import
-into Accumulo.  The &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-recipes-spark/1.1.0-incubating/org/apache/fluo/recipes/spark/FluoSparkHelper.html#bulkImportRcvToFluo-org.apache.spark.api.java.JavaPairRDD-org.apache.fluo.recipes.spark.FluoSparkHelper.BulkImportOptions-&quot;&gt;FluoSparkHelper.bulkImportRcvToFluo()&lt;/a&gt; method will do the following :&lt;/p&gt;
+into Accumulo.  The &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-recipes-spark/1.2.0/org/apache/fluo/recipes/spark/FluoSparkHelper.html#bulkImportRcvToFluo-org.apache.spark.api.java.JavaPairRDD-org.apache.fluo.recipes.spark.FluoSparkHelper.BulkImportOptions-&quot;&gt;FluoSparkHelper.bulkImportRcvToFluo()&lt;/a&gt; method will do the following :&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Repartition data using the split points in the Fluo table&lt;/li&gt;
@@ -756,8 +854,8 @@ into Accumulo.  The &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/flu
 &lt;/ul&gt;
 
 &lt;p&gt;The &lt;a href=&quot;https://github.com/astralway/webindex&quot;&gt;Webindex&lt;/a&gt; example uses bulk load to initialize its Fluo table using the code in Fluo Recipes.
-Webindex uses multiple &lt;a href=&quot;/docs/fluo-recipes/1.1.0-incubating/cfm/&quot;&gt;Collision Free Maps&lt;/a&gt; and initializes them using
-&lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-recipes-core/1.1.0-incubating/org/apache/fluo/recipes/core/map/CollisionFreeMap.html#getInitializer-java.lang.String-int-org.apache.fluo.recipes.core.serialization.SimpleSerializer-&quot;&gt;CollisionFreeMap.getInitializer()&lt;/a&gt;.  Webindex uses Spark to initialize the Fluo table with
+Webindex uses multiple &lt;a href=&quot;/docs/fluo-recipes/1.2.0/cfm/&quot;&gt;Collision Free Maps&lt;/a&gt; and initializes them using
+&lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-recipes-core/1.2.0/org/apache/fluo/recipes/core/map/CollisionFreeMap.html#getInitializer-java.lang.String-int-org.apache.fluo.recipes.core.serialization.SimpleSerializer-&quot;&gt;CollisionFreeMap.getInitializer()&lt;/a&gt;.  Webindex uses Spark to initialize the Fluo table with
 historical data.  Webindex also uses Spark to execute load transactions in parallel for
 incrementally loading data.&lt;/p&gt;
 
@@ -1153,152 +1251,6 @@ release for the project.&lt;/p&gt;
         
         
         <category>release</category>
-        
-      </item>
-    
-      <item>
-        <title>Apache Fluo 1.0.0-incubating released</title>
-        <description>&lt;p&gt;Apache Fluo 1.0.0-incubating is the first release of Fluo as an Apache project and the fourth
-release for the project. Below are resources for this release:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Download a release tarball and verify by these &lt;a href=&quot;https://www.apache.org/info/verification&quot;&gt;procedures&lt;/a&gt; using these &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/KEYS&quot;&gt;KEYS&lt;/a&gt;&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-bin.tar.gz&quot;&gt;fluo-1.0.0-incubating-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/MD5SUM&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/SHA1SUM&quot;&gt;SHA1&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-source-release.tar.gz&quot;&gt;fluo-1.0.0-incubating-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/fluo-1.0.0-incubating-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/MD5SUM&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://archive.apache.org/dist/incubator/fluo/fluo/1.0.0-incubating/SHA1SUM&quot;&gt;SHA1&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-  &lt;li&gt;View the &lt;a href=&quot;/docs/fluo/1.0.0-incubating/&quot;&gt;documentation&lt;/a&gt; for this release.&lt;/li&gt;
-  &lt;li&gt;Read the &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-api/1.0.0-incubating/&quot;&gt;Javadocs&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Starting with 1.0.0-incubating, Apache Fluo will follow &lt;a href=&quot;http://semver.org/&quot;&gt;semver&lt;/a&gt; for all future API
-changes. The API consists of everything under the &lt;code class=&quot;highlighter-rouge&quot;&gt;org.apache.fluo.api&lt;/code&gt; package. Code outside of this
-package can change at any time. If your project is using Fluo code that falls outside of the API,
-then consider &lt;a href=&quot;/contactus/&quot;&gt;initiating a discussion&lt;/a&gt; about adding it to the API.&lt;/p&gt;
-
-&lt;h2 id=&quot;significant-changes&quot;&gt;Significant changes&lt;/h2&gt;
-
-&lt;p&gt;The 1.0.0-incubating release includes &lt;a href=&quot;https://github.com/apache/incubator-fluo/compare/1.0.0-beta-2...e1dbc60&quot;&gt;167 commits&lt;/a&gt; that were made since the last release 
-(1.0.0-beta-2).  The significant changes are summarized below. For information about changes
-before this release, see the &lt;a href=&quot;/pre-asf-release/&quot;&gt;archive&lt;/a&gt; of Fluo releases before becoming an Apache
-project.&lt;/p&gt;
-
-&lt;h4 id=&quot;stabilized-api&quot;&gt;Stabilized API&lt;/h4&gt;
-
-&lt;p&gt;Starting with this release, Apache Fluo’s API will follow &lt;a href=&quot;http://semver.org/&quot;&gt;semver&lt;/a&gt;.  The API is defined as
-everything under the org.apache.fluo.api Java package.  Given that the plan is to support this API
-for a long time, a lot of API improvements were made since the beta-2 release.  The following is a
-list of significant API changes since beta-2.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/772&quot;&gt;#772&lt;/a&gt; : Get with default&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/770&quot;&gt;#770&lt;/a&gt; : Use varargs for Columns&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/768&quot;&gt;#768&lt;/a&gt; : Made Obsever and Application configuration consistent&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/743&quot;&gt;#743&lt;/a&gt; : Make data classes final&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/723&quot;&gt;#723&lt;/a&gt; : Removed FluoAdmin.InitOps()&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/714&quot;&gt;#714&lt;/a&gt; : Use Charsequence in API&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/695&quot;&gt;#695&lt;/a&gt; : Removed all 3rd party types from API&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/680&quot;&gt;#680&lt;/a&gt; : Changed package prefix from io.fluo to org.apache&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/647&quot;&gt;#647&lt;/a&gt; : Added Oracle and Worker to API&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/639&quot;&gt;#639&lt;/a&gt; : Improved scanning API&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/626&quot;&gt;#626&lt;/a&gt; : Added operation to get row+column pairs.  Further improved by &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/758&quot;&gt;#758&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/119&quot;&gt;#119&lt;/a&gt; - Consistently offer String in API&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;configurable-classpath&quot;&gt;Configurable classpath&lt;/h4&gt;
-
-&lt;p&gt;The previous releases of Fluo contained specific versions of Accumulo, Hadoop, Zookeeper, and other
-Fluo dependencies.  However, the actual dependencies needed should be determined by the existing
-version of software where Fluo is run.  Fluo changed to a model of making its classpath be
-completely configurable by an administrator.  Example classpath configuration and download scripts
-ship with Fluo to help make setup easier.  These script were only tested with specific versions of
-Hadoop and Accumulo and may not work with all versions.  These changes were made in &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/706&quot;&gt;#706&lt;/a&gt; and
-&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/687&quot;&gt;#687&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;new-fluo-version-command&quot;&gt;New Fluo version command&lt;/h4&gt;
-
-&lt;p&gt;Added a version command to the Fluo scripts in &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/779&quot;&gt;#779&lt;/a&gt;.  This makes it easy to automatically
-build shaded jars with the correct version of Fluo for use in Spark and Map Reduce.&lt;/p&gt;
-
-&lt;h4 id=&quot;user-and-historical-metrics&quot;&gt;User and historical metrics&lt;/h4&gt;
-
-&lt;p&gt;Two major improvements related to metrics were made.  Support for user metrics was added by
-&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/767&quot;&gt;#767&lt;/a&gt;.  This allows observers to easily report application specific metrics.  In &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/635&quot;&gt;#635&lt;/a&gt;
-the example InfluxDB and Grafana configurations were updated to show historical metrics.&lt;/p&gt;
-
-&lt;h4 id=&quot;improved-transaction-processing&quot;&gt;Improved transaction processing&lt;/h4&gt;
-
-&lt;p&gt;Transaction processing throughput was increased by changes in &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/593&quot;&gt;#593&lt;/a&gt; and some subsequent bug
-fixes.   These changes moved commit processing from the threads executing user code to an
-asynchronous background process.  This allows user threads to queue a transaction for commit an
-immediately start working on another notification.  This new process allows many more transactions
-to be working through the commit process concurrently.  Before the change a worker could only be
-committing up to a few hundred transactions at any time.   After the change, a single worker could
-easily be committing tens of thousands of transactions at a time.  These changes increase the latency of 
-individual transactions, which can have some drawbacks &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/650&quot;&gt;#650&lt;/a&gt;.   For this release changes were
-made in &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/654&quot;&gt;#654&lt;/a&gt; to use a priority queue for notifications in the worker.  The changes in
-&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/654&quot;&gt;#654&lt;/a&gt; partially solves the lock wait problem identified in &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/650&quot;&gt;#650&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;improved-accumulo-scanning&quot;&gt;Improved Accumulo scanning&lt;/h4&gt;
-
-&lt;p&gt;Fluo utilizes server side Accumulo iterators.  For this release these iterators were modified to
-leverage seeking on the sever side.  Before these changes the iterators used to sequentially scan
-data.  For popular cells that had a lot versions, this could be slow.  These changes were made in
-&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/623&quot;&gt;#623&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;other-changes-of-interest&quot;&gt;Other changes of interest&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/668&quot;&gt;#668&lt;/a&gt; - Added method to append byte to BytesBuilder&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/648&quot;&gt;#648&lt;/a&gt; - Added documentation to help users if YARN is killing containers&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fluo-io/fluo/issues/619&quot;&gt;#619&lt;/a&gt; &lt;a href=&quot;https://github.com/fluo-io/fluo/issues/621&quot;&gt;#621&lt;/a&gt; - Created Fluo logo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
-
-&lt;p&gt;A two day run of Webindex was started on September 7th using the latest snapshot version of Fluo.
-This test used 11 EC2 m3.xlarge nodes.  The test ran without problem.   A good bit before that a &lt;a href=&quot;/blog/2016/05/17/webindex-long-run-2/&quot;&gt;3
-day run&lt;/a&gt; of Webindex was conducted.&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 14 Oct 2016 15:00:00 +0000</pubDate>
-        <link>https://fluo.apache.org//release/fluo-1.0.0-incubating/</link>
-        <guid isPermaLink="true">https://fluo.apache.org//release/fluo-1.0.0-incubating/</guid>
-        
-        
-        <category>release</category>
-        
-      </item>
-    
-      <item>
-        <title>Fluo is moving to Apache</title>
-        <description>&lt;p&gt;Fluo was recently &lt;a href=&quot;https://wiki.apache.org/incubator/FluoProposal&quot;&gt;proposed&lt;/a&gt; as an Apache Podling.  The &lt;a href=&quot;https://lists.apache.org/thread.html/Zt804544sb0m1wi&quot;&gt;vote&lt;/a&gt; passed and
-now we are in the process of moving to Apache.  See &lt;a href=&quot;https://issues.apache.org/jira/browse/INFRA-11900&quot;&gt;INFRA-11900&lt;/a&gt; for more
-details.&lt;/p&gt;
-
-&lt;p&gt;Currently the only thing setup in Apache land is the mailing list.  If you
-would like to subscribe to the new list, send an email to
-&lt;a href=&quot;mailto:dev-subscribe@fluo.incubator.apache.org&quot;&gt;dev-subscribe@fluo.incubator.apache.org&lt;/a&gt;.  &lt;a href=&quot;https://lists.apache.org/list.html?dev@fluo.apache.org&quot;&gt;Archives&lt;/a&gt; of the list are also
-available.&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 02 Jun 2016 11:43:00 +0000</pubDate>
-        <link>https://fluo.apache.org//blog/2016/06/02/fluo-moving-to-apache/</link>
-        <guid isPermaLink="true">https://fluo.apache.org//blog/2016/06/02/fluo-moving-to-apache/</guid>
-        
-        
-        <category>blog</category>
         
       </item>
     

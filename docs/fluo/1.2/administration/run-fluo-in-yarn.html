@@ -66,7 +66,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Docs<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/docs/fluo/1.2/">Fluo</a></li>
-                <li><a href="/docs/fluo-recipes/1.1.0-incubating/">Fluo Recipes</a></li>
+                <li><a href="/docs/fluo-recipes/1.2/">Fluo Recipes</a></li>
               </ul>
             </li>
             <li><a href="/api/">API</a></li>
@@ -206,7 +206,7 @@
 
 <h2 id="requirements">Requirements</h2>
 
-<p>The Fluo YARN launcher requires <a href="https://fluo.apache.org/">Apache Fluo</a> and <a href="https://hadoop.apache.org/">Hadoop YARN</a> to be installed:</p>
+<p>To launch a Fluo application in <a href="https://hadoop.apache.org/">YARN</a>, you’ll need the following software installed.</p>
 
 <table>
   <thead>
@@ -218,9 +218,14 @@
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://fluo.apache.org/">Fluo</a></td>
+      <td><a href="/release/">Fluo</a></td>
       <td>1.2.0</td>
       <td>1.2.0</td>
+    </tr>
+    <tr>
+      <td><a href="/release/">Fluo YARN</a></td>
+      <td>1.0.0</td>
+      <td>1.0.0</td>
     </tr>
     <tr>
       <td><a href="https://hadoop.apache.org/">YARN</a></td>
@@ -230,7 +235,8 @@
   </tbody>
 </table>
 
-<p>See the <a href="/related-projects/">related projects page</a> for external projects that may help in setting up these dependencies.</p>
+<p>Instructions for installing Fluo YARN can be found below. See the <a href="/related-projects/">related projects page</a> for external projects
+that may help in setting up all of these dependencies.</p>
 
 <h2 id="set-up-your-fluo-application">Set up your Fluo application</h2>
 
@@ -241,9 +247,9 @@ and worker processes if you are running in YARN.</p>
 
 <h2 id="install-and-configure-fluo-yarn-launcher">Install and Configure Fluo YARN launcher</h2>
 
-<p>Before you can install the Fluo YARN launcher, you will need to obtain a distribution tarball (<strong>fluo-yarn is not yet released, this should happen soon</strong>). It is
-recommended that you download the <a href="/download/">latest release</a>. You can also build a distribution from the
-master branch by following these steps which create a tarball in <code class="highlighter-rouge">distribution/target</code>:</p>
+<p>To install the Fluo YARN launcher, you will need to obtain a distribution tarball. It is recommended that you
+download the <a href="/release/fluo-yarn-1.0.0/">latest release</a>. You can also build a distribution from the master branch by following these steps
+which create a tarball in <code class="highlighter-rouge">distribution/target</code>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/apache/fluo-yarn.git
 cd fluo-yarn/
