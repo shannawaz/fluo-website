@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apache Fluo</title>
-    <description>Mirror of Apache Fluo Website</description>
+    <description>Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 06 Mar 2018 23:14:56 +0000</pubDate>
-    <lastBuildDate>Tue, 06 Mar 2018 23:14:56 +0000</lastBuildDate>
+    <pubDate>Wed, 07 Mar 2018 15:27:05 +0000</pubDate>
+    <lastBuildDate>Wed, 07 Mar 2018 15:27:05 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
     
@@ -31,11 +31,11 @@ new releases of the YARN launcher will likely be due to new releases of &lt;a hr
       &lt;tbody&gt;
         &lt;tr&gt;
           &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz&quot;&gt;fluo-yarn-1.0.0-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.sha512&quot;&gt;SHA-512&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-bin.tar.gz.sha512&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz&quot;&gt;fluo-yarn-1.0.0-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.sha512&quot;&gt;SHA-512&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-yarn/1.0.0/fluo-yarn-1.0.0-source-release.tar.gz.sha512&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
@@ -79,7 +79,7 @@ are already using Fluo Recipes 1.1.0-incubating, there is no reason to upgrade i
   &lt;/li&gt;
   &lt;li&gt;A source release tarball is available. It can be verified by these &lt;a href=&quot;https://www.apache.org/info/verification&quot;&gt;procedures&lt;/a&gt; using these &lt;a href=&quot;https://www.apache.org/dist/fluo/KEYS&quot;&gt;KEYS&lt;/a&gt;
     &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz&quot;&gt;fluo-recipes-1.2.0-source-release.tar.gz&lt;/a&gt; - &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz.sha512&quot;&gt;SHA-512&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz&quot;&gt;fluo-recipes-1.2.0-source-release.tar.gz&lt;/a&gt; - &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo-recipes/1.2.0/fluo-recipes-1.2.0-source-release.tar.gz.sha512&quot;&gt;SHA&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;View the &lt;a href=&quot;/docs/fluo-recipes/1.2/&quot;&gt;documentation&lt;/a&gt; for this release&lt;/li&gt;
@@ -120,11 +120,11 @@ and moved to Fluo Website repo.&lt;/p&gt;
       &lt;tbody&gt;
         &lt;tr&gt;
           &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz&quot;&gt;fluo-1.2.0-bin.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz.md5&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz.sha&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-bin.tar.gz.sha512&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz&quot;&gt;fluo-1.2.0-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz.md5&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz.sha&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/fluo/fluo/1.2.0/fluo-1.2.0-source-release.tar.gz.sha512&quot;&gt;SHA&lt;/a&gt;&lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
