@@ -5,13 +5,13 @@
     <description>Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 07 Mar 2018 15:27:05 +0000</pubDate>
-    <lastBuildDate>Wed, 07 Mar 2018 15:27:05 +0000</lastBuildDate>
+    <pubDate>Mon, 12 Mar 2018 15:17:47 +0000</pubDate>
+    <lastBuildDate>Mon, 12 Mar 2018 15:17:47 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
     
       <item>
-        <title>Apache Fluo YARN 1.0.0 released</title>
+        <title>Apache Fluo YARN 1.0.0</title>
         <description>&lt;p&gt;This is the first release of the &lt;a href=&quot;https://github.com/apache/fluo-yarn&quot;&gt;Apache Fluo YARN launcher&lt;/a&gt; which runs Fluo applications in
 &lt;a href=&quot;https://hadoop.apache.org/docs/r2.8.0/hadoop-yarn/hadoop-yarn-site/YARN.html&quot;&gt;Hadoop YARN&lt;/a&gt;. The YARN launcher was originally distributed with &lt;a href=&quot;https://github.com/apache/fluo&quot;&gt;Fluo&lt;/a&gt;. It has been
 moved to its &lt;a href=&quot;https://github.com/apache/fluo-yarn&quot;&gt;own project&lt;/a&gt; as Fluo has multiple application launchers. Moving the code out
@@ -60,7 +60,7 @@ new releases of the YARN launcher will likely be due to new releases of &lt;a hr
       </item>
     
       <item>
-        <title>Apache Fluo Recipes 1.2.0 released</title>
+        <title>Apache Fluo Recipes 1.2.0</title>
         <description>&lt;p&gt;Apache Fluo Recipes builds on the Apache Fluo API to provide libraries of common code for Fluo developers.
 The 1.2.0 release is the first release of Fluo Recipes since Fluo graduated from Apache incubation. It has very
 few changes from the 1.1.0-incubating release. If you are new to Fluo Recipes, you should use this release. If you
@@ -109,7 +109,7 @@ and moved to Fluo Website repo.&lt;/p&gt;
       </item>
     
       <item>
-        <title>Apache Fluo 1.2.0 released</title>
+        <title>Apache Fluo 1.2.0</title>
         <description>&lt;p&gt;Below are resources for this release:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -318,7 +318,7 @@ Software Foundation. For more information, see the following press announcements
       </item>
     
       <item>
-        <title>Apache Fluo Recipes 1.1.0-incubating released</title>
+        <title>Apache Fluo Recipes 1.1.0-incubating</title>
         <description>&lt;p&gt;Apache Fluo Recipes builds on the Apache Fluo API to provide libraries of common code for Fluo developers.&lt;/p&gt;
 
 &lt;p&gt;Below are resources for this release:&lt;/p&gt;
@@ -580,7 +580,7 @@ EXPORT x=5:t=27        old: 1 new: -   seq: 106
       </item>
     
       <item>
-        <title>Apache Fluo 1.1.0-incubating released</title>
+        <title>Apache Fluo 1.1.0-incubating</title>
         <description>&lt;p&gt;Below are resources for this release:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1201,7 +1201,7 @@ would not be needed.&lt;/p&gt;
       </item>
     
       <item>
-        <title>Apache Fluo Recipes 1.0.0-incubating released</title>
+        <title>Apache Fluo Recipes 1.0.0-incubating</title>
         <description>&lt;p&gt;Apache Fluo Recipes builds on the Apache Fluo API to provide libraries of common code for Fluo developers.&lt;/p&gt;
 
 &lt;p&gt;Apache Fluo Recipes 1.0.0-incubating is the first release of Fluo Recipes as an Apache project and the third
