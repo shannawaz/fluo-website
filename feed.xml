@@ -5,8 +5,8 @@
     <description>Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 13 Mar 2018 21:11:10 +0000</pubDate>
-    <lastBuildDate>Tue, 13 Mar 2018 21:11:10 +0000</lastBuildDate>
+    <pubDate>Tue, 13 Mar 2018 21:36:22 +0000</pubDate>
+    <lastBuildDate>Tue, 13 Mar 2018 21:36:22 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
     
@@ -110,7 +110,13 @@ and moved to Fluo Website repo.&lt;/p&gt;
     
       <item>
         <title>Apache Fluo 1.2.0</title>
-        <description>&lt;p&gt;Below are resources for this release:&lt;/p&gt;
+        <description>&lt;p&gt;Apache Fluo is a distributed processing system built on Apache Accumulo.
+Fluo users can easily setup workflows that execute cross node transactions
+when data changes. These workflows enable users to continuously join new
+data into large existing data sets with low latency while avoiding
+reprocessing all data.&lt;/p&gt;
+
+&lt;p&gt;Below are resources for this release:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
