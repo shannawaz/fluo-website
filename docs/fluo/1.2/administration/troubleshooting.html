@@ -8,10 +8,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/fluo.css">
-    <link rel="canonical" href="https://fluo.apache.org//docs/fluo-recipes/1.2/tools/spark">
+    <link rel="canonical" href="https://fluo.apache.org//docs/fluo/1.2/administration/troubleshooting">
     <link rel="icon" type="image/png" href="/resources/favicon.png">
     
-    <title>Spark Helper | Apache Fluo</title>
+    <title>Troubleshooting | Apache Fluo</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -116,6 +116,8 @@
       
         
           
+        
+          
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsegetting-started" aria-expanded="false" aria-controls="collapsegetting-started">
@@ -127,45 +129,13 @@
               <div class="panel-body">
                 
                 
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/getting-started/overview">Overview</a></div>
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/getting-started/design">Design</a></div>
                 
-              </div>
-            </div>
-          
-        
-          
-        
-          
-        
-          
-        
-      
-        
-          
-        
-          
-        
-          
-            <div class="panel-heading" role="tab" id="headingOne">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapserecipes" aria-expanded="false" aria-controls="collapserecipes">
-                  Recipes
-                </a>
-              </h4>
-            </div>
-            <div id="collapserecipes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/getting-started/quick-start">Quick Start</a></div>
                 
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/getting-started/install-fluo">Install Fluo</a></div>
                 
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/recipes/combine-queue">Combine Queue</a></div>
-                
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/recipes/export-queue">Export Queue</a></div>
-                
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/recipes/accumulo-export">Accumulo Export</a></div>
-                
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/recipes/row-hasher">Row Hash Prefix</a></div>
-                
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/recipes/recording-tx">Recording Transaction</a></div>
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/getting-started/create-application">Create Application</a></div>
                 
               </div>
             </div>
@@ -181,30 +151,40 @@
         
           
         
+      
+        
           
             <div class="panel-heading" role="tab" id="headingOne">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsetools" aria-expanded="true" aria-controls="collapsetools">
-                  Tools
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseadministration" aria-expanded="true" aria-controls="collapseadministration">
+                  Administration
                 </a>
               </h4>
             </div>
-            <div id="collapsetools" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div id="collapseadministration" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
                 
                 
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/tools/serialization">Serializing Data</a></div>
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/administration/initialize">Initialize Application</a></div>
                 
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/tools/transient">Transient Data</a></div>
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/administration/run-fluo-processes">Run Fluo processes</a></div>
                 
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/tools/table-optimization">Table Optimization</a></div>
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/administration/run-fluo-in-yarn">Run Fluo in YARN</a></div>
                 
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/tools/spark">Spark Helper</a></div>
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/administration/run-fluo-in-docker">Run Fluo in Docker</a></div>
                 
-                <div class="row doc-sidebar-link"><a href="/docs/fluo-recipes/1.2/tools/testing">Testing</a></div>
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/administration/manage-applications">Manage Applications</a></div>
+                
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/administration/metrics">Metrics</a></div>
+                
+                <div class="row doc-sidebar-link"><a href="/docs/fluo/1.2/administration/troubleshooting">Troubleshooting</a></div>
                 
               </div>
             </div>
+          
+        
+          
+        
           
         
       
@@ -213,31 +193,75 @@
   </div>
   <div class="col-md-10">
     
-    <p>Fluo Recipes 1.2.0 documentation &nbsp;&gt;&gt;&nbsp; Tools &nbsp;&gt;&gt;&nbsp; Spark Helper</p>
+    <p>Fluo 1.2.0 documentation &nbsp;&gt;&gt;&nbsp; Administration &nbsp;&gt;&gt;&nbsp; Troubleshooting</p>
     
 
-    <!--div class="alert alert-danger" style="margin-bottom: 0px;" role="alert">This documentation is for a future release of Fluo Recipes! <a href="/docs/fluo-recipes/1.2/">View documentation for the latest release</a>.</div>-->
+    <!--div class="alert alert-warning" style="margin-bottom: 0px;" role="alert">This documentation is for a future release of Apache Fluo! <a href="/docs/fluo/1.2/">View documentation for the latest release</a>.</div>-->
 
     
     <div class="row">
-      <div class="col-md-10"><h1>Spark Helper</h1></div>
-      <div class="col-md-2"><a class="pull-right" style="margin-top: 25px;" href="https://github.com/apache/fluo-website/edit/master/_recipes-1-2/tools/spark.md" role="button"><i class="glyphicon glyphicon-pencil"></i> <small>Edit this page</small></a></div>
+      <div class="col-md-10"><h1>Troubleshooting</h1></div>
+      <div class="col-md-2"><a class="pull-right" style="margin-top: 25px;" href="https://github.com/apache/fluo-website/edit/master/_fluo-1-2/administration/troubleshooting.md" role="button"><i class="glyphicon glyphicon-pencil"></i> <small>Edit this page</small></a></div>
     </div>  
     
-    <p>Fluo Recipes has some helper code for <a href="https://spark.apache.org">Apache Spark</a>.  Most of the helper code is currently
-related to bulk importing data into Accumulo.  This is useful for initializing a new Fluo table with
-historical data via Spark.  The Spark helper code is found in the <a href="https://javadoc.io/doc/org.apache.fluo/fluo-recipes-spark/1.2.0">fluo-recipes-spark module</a>.</p>
+    <p>Steps for troubleshooting problems with Fluo applications.</p>
 
-<p>For information on using Spark to load data into Fluo, check out this <a href="https://fluo.apache.org/blog/2016/12/22/spark-load/">blog post</a>.</p>
+<h2 id="fluo-application-stops-processing-data">Fluo application stops processing data</h2>
 
-<p>If you know of other Spark+Fluo integration code that would be useful, then please consider <a href="https://github.com/apache/fluo-recipes/issues/new">opening
-an issue</a>.</p>
+<ol>
+  <li>Confirm that your application is running with the expected number of workers.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>fluo list
+ Fluo instance <span class="o">(</span>localhost/fluo<span class="o">)</span> contains 1 application<span class="o">(</span>s<span class="o">)</span>
+
+ Application     Status     <span class="c"># Workers</span>
+ <span class="nt">-----------</span>     <span class="nt">------</span>     <span class="nt">---------</span>
+ webindex        RUNNING        3
+</code></pre></div>    </div>
+    <p>Look for errors in the logs of any oracle or worker that has died.</p>
+  </li>
+  <li>Run the <code class="highlighter-rouge">fluo wait</code> command to see if you application is processing notifications.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>fluo <span class="nb">wait</span> <span class="nt">-a</span> webindex
+ <span class="o">[</span>command.FluoWait] INFO : The <span class="nb">wait command </span>will <span class="nb">exit </span>when all notifications are processed
+ <span class="o">[</span>command.FluoWait] INFO : 140 notifications are still outstanding.  Will try again <span class="k">in </span>10 seconds...
+ <span class="o">[</span>command.FluoWait] INFO : 140 notifications are still outstanding.  Will try again <span class="k">in </span>10 seconds...
+ <span class="o">[</span>command.FluoWait] INFO : 140 notifications are still outstanding.  Will try again <span class="k">in </span>10 seconds...
+ <span class="o">[</span>command.FluoWait] INFO : 96 notifications are still outstanding.  Will try again <span class="k">in </span>10 seconds...
+ <span class="o">[</span>command.FluoWait] INFO : 70 notifications are still outstanding.  Will try again <span class="k">in </span>10 seconds...
+ <span class="o">[</span>command.FluoWait] INFO : 31 notifications are still outstanding.  Will try again <span class="k">in </span>10 seconds...
+ <span class="o">[</span>command.FluoWait] INFO : All processing has finished!
+</code></pre></div>    </div>
+    <p>The number of notifications will increase as data is added to the application but they should eventually decrease
+to zero and processing should finish.</p>
+  </li>
+  <li>
+    <p>Look for errors or exceptions in the logs of all oracle and worker processes. Processing can stop if all threads
+in a worker process were consumed by exceptions thrown in Fluo application’s observer code. These exceptions
+are often due to parsing issues or corner cases not seen during development or using small data sets.</p>
+  </li>
+  <li>
+    <p>If you are using a cluster manager (i.e Marathon, YARN etc) to run your Fluo application, look for errors in the logs of
+your cluster manager or application manager.  Below are some common errors:</p>
+
+    <ul>
+      <li>Cluster managers sometimes fail to start all process of Fluo application due to lack of container slots or resources (CPU, memory, etc).
+This can be fixed by giving more resources to your cluster manager or decrease the number/resources of Fluo workers.</li>
+      <li>Cluster managers can kill Fluo processes if they use too much memory. This can be fixed by allocating more memory to your workers.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Run <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstack.html">jstack</a> to get stack traces of threads in your Fluo application processes and look for any stuck threads.</p>
+  </li>
+  <li>Consider configuring your Fluo application to <a href="/docs/fluo/1.2/administration/metrics">report metrics</a> so that they are viewable in Grafana/InfluxDB. Metrics
+can are helpfu in debugging performance issues.</li>
+</ol>
+
+<p>If you are still having trouble, feel free to email <code class="highlighter-rouge">dev@fluo.apache.org</code> for help.</p>
 
 
 
     <div class="row" style="margin-top: 20px;">
       <div class="col-md-10"><strong>Find documentation for all Fluo releases in the <a href="/docs/">archive</strong></div>
-      <div class="col-md-2"><a class="pull-right" href="https://github.com/apache/fluo-website/edit/master/_recipes-1-2/tools/spark.md" role="button"><i class="glyphicon glyphicon-pencil"></i> <small>Edit this page</small></a></div>
+      <div class="col-md-2"><a class="pull-right" href="https://github.com/apache/fluo-website/edit/master/_fluo-1-2/administration/troubleshooting.md" role="button"><i class="glyphicon glyphicon-pencil"></i> <small>Edit this page</small></a></div>
     </div>  
   </div>
 </div>
