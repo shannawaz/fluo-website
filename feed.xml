@@ -5,8 +5,8 @@
     <description>Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 14 Mar 2018 17:36:24 +0000</pubDate>
-    <lastBuildDate>Wed, 14 Mar 2018 17:36:24 +0000</lastBuildDate>
+    <pubDate>Wed, 14 Mar 2018 20:39:33 +0000</pubDate>
+    <lastBuildDate>Wed, 14 Mar 2018 20:39:33 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
     
@@ -114,9 +114,7 @@ and moved to Fluo Website repo.&lt;/p&gt;
 updates to large data sets.  With Apache Fluo, users can set up workflows that
 execute cross node transactions when data changes. These workflows enable users
 to continuously join new data into large existing data sets without
-reprocessing all data.  Apache Fluo is an open source implementation
-&lt;a href=&quot;https://research.google.com/pubs/pub36726.html&quot;&gt;Percolator&lt;/a&gt; (which populates Google’s search index) that is built on &lt;a href=&quot;https://accumulo.apache.org/&quot;&gt;Apache
-Accumulo&lt;/a&gt;.&lt;/p&gt;
+reprocessing all data.  Apache Fluo is built on &lt;a href=&quot;https://accumulo.apache.org/&quot;&gt;Apache Accumulo&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Below are resources for this release:&lt;/p&gt;
 
