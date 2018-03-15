@@ -5,8 +5,8 @@
     <description>Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 15 Mar 2018 16:04:51 +0000</pubDate>
-    <lastBuildDate>Thu, 15 Mar 2018 16:04:51 +0000</lastBuildDate>
+    <pubDate>Thu, 15 Mar 2018 17:18:25 +0000</pubDate>
+    <lastBuildDate>Thu, 15 Mar 2018 17:18:25 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
     
@@ -860,7 +860,7 @@ into Accumulo.  The &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/flu
 &lt;/ul&gt;
 
 &lt;p&gt;The &lt;a href=&quot;https://github.com/astralway/webindex&quot;&gt;Webindex&lt;/a&gt; example uses bulk load to initialize its Fluo table using the code in Fluo Recipes.
-Webindex uses multiple &lt;a href=&quot;/docs/fluo-recipes/1.2.0/cfm/&quot;&gt;Collision Free Maps&lt;/a&gt; and initializes them using
+Webindex uses multiple &lt;a href=&quot;/docs/fluo-recipes/1.0.0-incubating/cfm/&quot;&gt;Collision Free Maps&lt;/a&gt; and initializes them using
 &lt;a href=&quot;https://javadoc.io/page/org.apache.fluo/fluo-recipes-core/1.2.0/org/apache/fluo/recipes/core/map/CollisionFreeMap.html#getInitializer-java.lang.String-int-org.apache.fluo.recipes.core.serialization.SimpleSerializer-&quot;&gt;CollisionFreeMap.getInitializer()&lt;/a&gt;.  Webindex uses Spark to initialize the Fluo table with
 historical data.  Webindex also uses Spark to execute load transactions in parallel for
 incrementally loading data.&lt;/p&gt;
