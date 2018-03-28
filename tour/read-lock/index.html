@@ -8,10 +8,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/fluo.css">
-    <link rel="canonical" href="https://fluo.apache.org//tour/tx-logging/">
+    <link rel="canonical" href="https://fluo.apache.org//tour/read-lock/">
     <link rel="icon" type="image/png" href="/resources/favicon.png">
     
-    <title>Transaction Logging | Apache Fluo</title>
+    <title>Read Locks | Apache Fluo</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -111,58 +111,47 @@
 
 
 <div id="tour-header">
-  <h2><a href="/tour/">Fluo Tour</a>: Transaction Logging</h2>
-  <p class="text-muted">Tour page 10 of 28</p>
+  <h2><a href="/tour/">Fluo Tour</a>: Read Locks</h2>
+  <p class="text-muted">Tour page 13 of 28</p>
 </div>
 <div id="tour-content">
-  <p>Fluo can produce detailed logs about transactions if configured to do so.
-This can be useful for debugging.  Modify <code class="highlighter-rouge">./src/main/resources/log4j.properties</code>
-and remove <code class="highlighter-rouge">#</code> on the line <code class="highlighter-rouge">#log4j.logger.fluo.tx=TRACE</code>.  After doing this,
-rerun the collision exercise on the previous page.</p>
+  <p>By default, reads do not acquire a lock which makes normal reads faster.
+Read locks can optionally be acquired via the <a href="https://javadoc.io/page/org.apache.fluo/fluo-api/1.2.0/org/apache/fluo/api/client/TransactionBase.html#withReadLock--">withReadLock</a> method. For
+example, if <code class="highlighter-rouge">tx</code> is a transaction then <code class="highlighter-rouge">tx.withReadLock().get(row,col)</code>
+reads with a lock.</p>
 
-<p>With this configuration change, you should see output like the following.
-Notice the logging shows what was read, set, and the collision information.</p>
+<ul>
+  <li><strong>Create transaction</strong> <em>tx1</em></li>
+  <li><strong>Using</strong> <em>tx1</em> <strong>set</strong> <em>kerbalnaut0001:stat:weight</em> <strong>to</strong> <em>90</em></li>
+  <li><strong>Using</strong> <em>tx1</em> <strong>set</strong> <em>kerbalnaut0002:stat:weight</em> <strong>to</strong> <em>70</em></li>
+  <li><strong>Using</strong> <em>tx1</em> <strong>set</strong> <em>kerbalnaut0003:stat:weight</em> <strong>to</strong> <em>80</em></li>
+  <li><strong>Commit</strong> <em>tx1</em></li>
+  <li><strong>Create transaction</strong> <em>tx2</em></li>
+  <li><strong>Create transaction</strong> <em>tx3</em></li>
+  <li><strong>Create transaction</strong> <em>tx4</em></li>
+  <li><strong>Using</strong> <em>tx2</em> <strong>set</strong> <em>flight0001:stat:weight</em> <strong>to the read locked values of</strong> <em>kerbalnaut0001:stat:weight</em> <strong>plus</strong> <em>kerbalnaut0003:stat:weight</em></li>
+  <li><strong>Using</strong> <em>tx3</em> <strong>set</strong> <em>flight0002:stat:weight</em> <strong>to the read locked values of</strong> <em>kerbalnaut0001:stat:weight</em> <strong>plus</strong> <em>kerbalnaut0002:stat:weight</em></li>
+  <li><strong>Using</strong> <em>tx4</em> <strong>set</strong> <em>kerbalnaut0001:stat:weight</em> <strong>to</strong> <em>95</em></li>
+  <li><strong>Commit</strong> <em>tx2</em></li>
+  <li><strong>Commit</strong> <em>tx3</em></li>
+  <li><strong>Commit</strong> <em>tx4</em></li>
+</ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting MiniFluo ... started.
-TRACE: txid: 3 begin() thread: 10
-TRACE: txid: 3 set(kerbalnaut0001, name last , Kerma)
-TRACE: txid: 3 commit() -&gt; SUCCESSFUL commitTs: 4
-TRACE: txid: 3 close()
-TRACE: txid: 3 thread : 10 time: ... #ret: 0 #set: 1 #collisions: 0 waitTime: 0 committed: true class: N/A
-TRACE: txid: 5 begin() thread: 10
-TRACE: txid: 6 begin() thread: 10
-TRACE: txid: 5 get(kerbalnaut0001, name last ) -&gt; Kerma
-TRACE: txid: 5 set(kerbalnaut0001, name last , Kerman)
-TRACE: txid: 6 get(kerbalnaut0001, name last ) -&gt; Kerma
-TRACE: txid: 6 set(kerbalnaut0001, name last , KermaN)
-TRACE: txid: 5 commit() -&gt; SUCCESSFUL commitTs: 7
-TRACE: txid: 6 commit() -&gt; UNSUCCESSFUL commitTs: -1
-TRACE: txid: 6 collisions: {kerbalnaut0001=[name last ]}
-tx3 commit exception : org.apache.fluo.api.exceptions.CommitException
-TRACE: txid: 6 close()
-TRACE: txid: 6 thread : 10 time: ... #ret: 1 #set: 1 #collisions: 1 waitTime: 0 committed: false class: N/A
-TRACE: txid: 5 close()
-TRACE: txid: 5 thread : 10 time: ... #ret: 1 #set: 1 #collisions: 0 waitTime: 0 committed: true class: N/A
-TRACE: txid: 8 begin() thread: 10
-TRACE: txid: 8 get(kerbalnaut0001, name last ) -&gt; Kerman
-Kerman
-TRACE: txid: 8 close()
-TRACE: txid: 8 thread : 10 time: ... #ret: 1 #set: 0 #collisions: 0 waitTime: 0 committed: false class: N/A
-</code></pre></div></div>
+<p>Both <em>tx2</em> and <em>tx3</em> get a read lock on <em>kerbalnaut0001:stat:weight</em> without
+interfering with each other.  The read locks prevent <em>tx4</em> from committing.
+Try reordering the commits for <em>tx2</em>, <em>tx3</em>, and <em>tx4</em>.</p>
 
-<p>More information about configuring logging is available in <a href="/docs/fluo/1.2/administration/manage-applications#debugging-applications">the logging
-documentation</a>.</p>
 
 </div>
 
 <script>
 document.body.onkeyup = function(e){
 
-if (e.keyCode == '37') { window.location = '/tour/collision-code/'; }
+if (e.keyCode == '37') { window.location = '/tour/write-skew-code/'; }
 
 
 
-if (e.keyCode == '39') { window.location = '/tour/write-skew/'; }
+if (e.keyCode == '39') { window.location = '/tour/read-lock-code/'; }
 
 };
 </script>
@@ -171,12 +160,12 @@ if (e.keyCode == '39') { window.location = '/tour/write-skew/'; }
  
   <h2> 
     
-    <a href="/tour/collision-code/">&lt;</a> 
+    <a href="/tour/write-skew-code/">&lt;</a> 
     
 
-    10 / 28 
+    13 / 28 
     
-    <a href="/tour/write-skew/">&gt;</a> 
+    <a href="/tour/read-lock-code/">&gt;</a> 
     
   </h2>
 </div>
