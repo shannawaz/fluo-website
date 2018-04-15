@@ -331,7 +331,10 @@ running on your local machine or cluster.</p>
 can download the <a href="https://github.com/fluo-io/fluo/releases/tag/1.0.0-alpha-1">1.0.0-alpha-1 tarball</a>. Otherwise, you will need to clone the Fluo repo and build a distribution tarball
 of 1.0.0-alpha-1 for your environment:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/fluo-io/fluo.git<br data-jekyll-commonmark-ghpages="" /><span class="nb">cd </span>fluo/<br data-jekyll-commonmark-ghpages="" />git checkout 1.0.0-alpha-1<br data-jekyll-commonmark-ghpages="" />mvn package <span class="nt">-Daccumulo</span>.version<span class="o">=</span>1.6.1-SNAPSHOT <span class="nt">-Dhadoop</span>.version<span class="o">=</span>2.4.0</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/fluo-io/fluo.git
+<span class="nb">cd </span>fluo/
+git checkout 1.0.0-alpha-1
+mvn package <span class="nt">-Daccumulo</span>.version<span class="o">=</span>1.6.1-SNAPSHOT <span class="nt">-Dhadoop</span>.version<span class="o">=</span>2.4.0</code></pre></figure>
 
 <p>The distribution tarball will be created in <code class="highlighter-rouge">modules/distribution/target</code></p>
 
@@ -348,7 +351,17 @@ clients and observers. If you are new to Fluo, consider first building and runni
 instance.  Otherwise, you will need to include the following in your Maven pom and follow the steps below to create your own
 Fluo client or observer:</p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span><br data-jekyll-commonmark-ghpages="" />  <span class="nt">&lt;groupId&gt;</span>io.fluo<span class="nt">&lt;/groupId&gt;</span><br data-jekyll-commonmark-ghpages="" />  <span class="nt">&lt;artifactId&gt;</span>fluo-api<span class="nt">&lt;/artifactId&gt;</span><br data-jekyll-commonmark-ghpages="" />  <span class="nt">&lt;version&gt;</span>1.0.0-alpha-1<span class="nt">&lt;/version&gt;</span><br data-jekyll-commonmark-ghpages="" /><span class="nt">&lt;/dependency&gt;</span><br data-jekyll-commonmark-ghpages="" /><span class="nt">&lt;dependency&gt;</span><br data-jekyll-commonmark-ghpages="" />  <span class="nt">&lt;groupId&gt;</span>io.fluo<span class="nt">&lt;/groupId&gt;</span><br data-jekyll-commonmark-ghpages="" />  <span class="nt">&lt;artifactId&gt;</span>fluo-core<span class="nt">&lt;/artifactId&gt;</span><br data-jekyll-commonmark-ghpages="" />  <span class="nt">&lt;version&gt;</span>1.0.0-alpha-1<span class="nt">&lt;/version&gt;</span><br data-jekyll-commonmark-ghpages="" />  <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span><br data-jekyll-commonmark-ghpages="" /><span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>io.fluo<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>fluo-api<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.0.0-alpha-1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>io.fluo<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>fluo-core<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.0.0-alpha-1<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 
 <h3 id="creating-a-fluo-client">Creating a Fluo client</h3>
 
