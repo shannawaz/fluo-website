@@ -186,7 +186,7 @@ shortened to <code class="highlighter-rouge">i.f</code>.</p>
 <p>Since multiple processes can report the same metrics to services like Graphite
 or Ganglia, each process adds a unique id.  When running in yarn, this id is of
 the format <code class="highlighter-rouge">worker-&lt;instance id&gt;</code> or <code class="highlighter-rouge">oracle-&lt;instance id&gt;</code>.  When not running
-from yarn, this id consist of a hostname and a base36 long thats unique across
+from yarn, this id consist of a hostname and a base36 long that’s unique across
 all fluo processes.  In the table below this composite id is represented with
 <code class="highlighter-rouge">&lt;pid&gt;</code>.</p>
 
@@ -222,7 +222,7 @@ all fluo processes.  In the table below this composite id is represented with
     <tr>
       <td>i.f.&lt;pid&gt;.tx.read.&lt;cn&gt;</td>
       <td><a href="https://dropwizard.github.io/metrics/3.1.0/getting-started/#histograms">Histogram</a></td>
-      <td><em>WHEN:</em> After each transaction. <em>WHAT:</em> Number of row/columns read by transaction that existed.  There is currently no count of all reads (including non-existant data)</td>
+      <td><em>WHEN:</em> After each transaction. <em>WHAT:</em> Number of row/columns read by transaction that existed.  There is currently no count of all reads (including nonexistent data)</td>
     </tr>
     <tr>
       <td>i.f.&lt;pid&gt;.tx.locks.timedout.&lt;cn&gt;</td>

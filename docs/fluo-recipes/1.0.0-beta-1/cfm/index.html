@@ -305,7 +305,7 @@ old value if needed.</p>
       <span class="o">}</span>
 
       <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">//returning absent will cause the collision free map to delte the current key</span>
+        <span class="c1">//returning absent will cause the collision free map to delete the current key</span>
         <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">absent</span><span class="o">();</span>
       <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">sum</span><span class="o">);</span>
@@ -346,7 +346,7 @@ calls <code class="highlighter-rouge">updatingValues()</code> on an <code class=
 
 <ul>
   <li>The new value reported for an update will be derived from combining all
-updates that were committed before the transaction thats processing updates
+updates that were committed before the transaction that’s processing updates
 started.  The implementation may have to make multiple passes over queued
 updates to achieve this.  In the situation where TX1 queues a <code class="highlighter-rouge">+1</code> and later
 TX2 queues a <code class="highlighter-rouge">-1</code> for the same key, there is no need to worry about only seeing

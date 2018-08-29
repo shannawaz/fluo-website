@@ -5,8 +5,8 @@
     <description>Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 09 May 2018 21:43:43 +0000</pubDate>
-    <lastBuildDate>Wed, 09 May 2018 21:43:43 +0000</lastBuildDate>
+    <pubDate>Wed, 29 Aug 2018 14:31:58 +0000</pubDate>
+    <lastBuildDate>Wed, 29 Aug 2018 14:31:58 +0000</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
     
@@ -268,7 +268,7 @@ Accumulo uses, it will not conflict with Fluo’s version.&lt;/p&gt;
 &lt;p&gt;Fluo’s commit code is asynchronous in order to support high throughput.
 Before this release the high level commit logic was spread far and wide in the
 code.  For this release the commit code was transitioned from Guava’s
-ListenableFutre to Java 8’s CompletableFuture in &lt;a href=&quot;https://github.com/apache/fluo/commit/ca63aaf&quot;&gt;ca63aaf&lt;/a&gt;.  This transition laid
+ListenableFuture to Java 8’s CompletableFuture in &lt;a href=&quot;https://github.com/apache/fluo/commit/ca63aaf&quot;&gt;ca63aaf&lt;/a&gt;.  This transition laid
 the ground work for &lt;a href=&quot;https://github.com/apache/fluo/commit/6bf604f&quot;&gt;6bf604f&lt;/a&gt; which centralized the commit logic.  Now the high
 level logic for the commit code is all in one place, making it much easier to
 understand.&lt;/p&gt;

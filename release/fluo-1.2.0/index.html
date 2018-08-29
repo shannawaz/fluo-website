@@ -278,7 +278,7 @@ Accumulo uses, it will not conflict with Fluo’s version.</p>
 <p>Fluo’s commit code is asynchronous in order to support high throughput.
 Before this release the high level commit logic was spread far and wide in the
 code.  For this release the commit code was transitioned from Guava’s
-ListenableFutre to Java 8’s CompletableFuture in <a href="https://github.com/apache/fluo/commit/ca63aaf">ca63aaf</a>.  This transition laid
+ListenableFuture to Java 8’s CompletableFuture in <a href="https://github.com/apache/fluo/commit/ca63aaf">ca63aaf</a>.  This transition laid
 the ground work for <a href="https://github.com/apache/fluo/commit/6bf604f">6bf604f</a> which centralized the commit logic.  Now the high
 level logic for the commit code is all in one place, making it much easier to
 understand.</p>
