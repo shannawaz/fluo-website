@@ -193,7 +193,7 @@ into Accumulo.  The <a href="https://javadoc.io/page/org.apache.fluo/fluo-recipe
   <li>Bulk import the RFiles into the Fluo table</li>
 </ul>
 
-<p>The <a href="https://github.com/astralway/webindex">Webindex</a> example uses bulk load to initialize its Fluo table using the code in Fluo Recipes.
+<p>The <a href="https://github.com/apache/fluo-examples/tree/master/webindex">Webindex</a> example uses bulk load to initialize its Fluo table using the code in Fluo Recipes.
 Webindex uses multiple <a href="/docs/fluo-recipes/1.0.0-incubating/cfm/">Collision Free Maps</a> and initializes them using
 <a href="https://javadoc.io/page/org.apache.fluo/fluo-recipes-core/1.2.0/org/apache/fluo/recipes/core/map/CollisionFreeMap.html#getInitializer-java.lang.String-int-org.apache.fluo.recipes.core.serialization.SimpleSerializer-">CollisionFreeMap.getInitializer()</a>.  Webindex uses Spark to initialize the Fluo table with
 historical data.  Webindex also uses Spark to execute load transactions in parallel for

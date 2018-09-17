@@ -234,7 +234,7 @@ evenly, it can cause some tservers to execute more conditional mutations than
 others.  These tservers doing more work can become a bottleneck.  Most real
 world data is not uniform and can cause this problem.</p>
 
-<p>Before the Fluo <a href="https://github.com/astralway/webindex">Webindex example</a> started using this recipe it suffered
+<p>Before the Fluo <a href="https://github.com/apache/fluo-examples/tree/master/webindex">Webindex example</a> started using this recipe it suffered
 from this problem.  The example was using reverse dns encoded URLs for row keys
 like <code class="highlighter-rouge">p:com.cnn/story1.html</code>.  This made certain portions of the table more
 popular, which in turn made some tservers do much more work.  This uneven

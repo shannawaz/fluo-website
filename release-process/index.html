@@ -326,11 +326,11 @@ hashes and signatures.  This step publishes the files to the ASF mirrors.</p>
   <li>Run the integration test
     <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>mvn clean verify <span class="nt">-Dfluo</span>.version<span class="o">=</span><span class="nv">$RC_VERSION</span>
 </code></pre></div>    </div>
-    <p>Below are more projects with integration tests:</p>
+    <p>Below are more projects with integration tests which can be found at - <code class="highlighter-rouge">https://github.com/apache/fluo-examples.git</code>:</p>
     <ul>
-      <li><a href="https://github.com/astralway/phrasecount">Phrasecount</a> - <code class="highlighter-rouge">https://github.com/astralway/phrasecount.git</code></li>
-      <li><a href="https://github.com/astralway/stresso">Stresso</a> - <code class="highlighter-rouge">https://github.com/astralway/stresso.git</code></li>
-      <li><a href="https://github.com/astralway/webindex">Webindex</a> - <code class="highlighter-rouge">https://github.com/astralway/webindex.git</code></li>
+      <li><a href="https://github.com/apache/fluo-examples/tree/master/phrasecount">Phrasecount</a></li>
+      <li><a href="https://github.com/apache/fluo-examples/tree/master/stresso">Stresso</a></li>
+      <li><a href="https://github.com/apache/fluo-examples/tree/master/webindex">Webindex</a></li>
     </ul>
   </li>
 </ol>
@@ -338,8 +338,8 @@ hashes and signatures.  This step publishes the files to the ASF mirrors.</p>
 <h4 id="setup-uno-to-run-fluo-example-applications">Setup Uno to run Fluo example applications</h4>
 
 <ol>
-  <li>Clone <a href="https://github.com/astralway/uno">Uno</a> and fetch Fluo dependencies
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/astralway/uno.git
+  <li>Clone <a href="https://github.com/apache/fluo-uno">Uno</a> and fetch Fluo dependencies
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/apache/fluo-uno.git
 <span class="nb">cd </span>uno
 ./bin/uno fetch fluo
 </code></pre></div>    </div>
@@ -364,7 +364,7 @@ sed <span class="nt">-i</span> <span class="s2">"s/export FLUO_HASH=[^ ]*/export
 
 <ol>
   <li>Clone project
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/astralway/phrasecount.git
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/apache/fluo-examples.git
 <span class="nb">cd </span>phrasecount
 </code></pre></div>    </div>
   </li>

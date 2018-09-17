@@ -229,7 +229,7 @@
     <h2 id="background">Background</h2>
 
 <p>When many transactions try to modify the same keys, collisions will occur.  Too many collisions
-cause transactions to fail and throughput to nose dive.  For example, consider <a href="https://github.com/astralway/phrasecount">phrasecount</a>
+cause transactions to fail and throughput to nose dive.  For example, consider <a href="https://github.com/apache/fluo-examples/tree/master/phrasecount">phrasecount</a>
 which has many transactions processing documents.  Each transaction counts the phrases in a document
 and then updates global phrase counts.  Since transaction attempts to update many phrases
 , the probability of collisions is high.</p>
