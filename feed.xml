@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apache Fluo</title>
-    <description></description>
+    <description>Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 10 Jan 2019 19:50:20 +0000</pubDate>
-    <lastBuildDate>Thu, 10 Jan 2019 19:50:20 +0000</lastBuildDate>
+    <pubDate>Fri, 26 Apr 2019 18:19:41 +0000</pubDate>
+    <lastBuildDate>Fri, 26 Apr 2019 18:19:41 +0000</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
     
