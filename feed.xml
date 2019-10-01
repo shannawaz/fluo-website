@@ -5,10 +5,78 @@
     <description>Apache Fluo Website</description>
     <link>https://fluo.apache.org//</link>
     <atom:link href="https://fluo.apache.org//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 09 Aug 2019 21:38:47 +0000</pubDate>
-    <lastBuildDate>Fri, 09 Aug 2019 21:38:47 +0000</lastBuildDate>
-    <generator>Jekyll v3.7.4</generator>
+    <pubDate>Tue, 01 Oct 2019 20:18:23 +0000</pubDate>
+    <lastBuildDate>Tue, 01 Oct 2019 20:18:23 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
+    
+      <item>
+        <title>How Fluo Leveraged Scan Executors</title>
+        <description>&lt;p&gt;Accumulo 2.0 introduced &lt;a href=&quot;https://accumulo.apache.org/docs/2.x/administration/scan-executors&quot;&gt;Scan Executors&lt;/a&gt; giving control over processing of
+scans in Accumulo tablet servers. Fluo has a good use case for scan executors:
+notification scans.  Fluo workers continually scan for notifications to find
+transactions to execute. All workers continually scanning for notifications
+puts load on Accumulo tablet servers which could negatively impact
+transactions.  Scan executors provides a way to limit this load.&lt;/p&gt;
+
+&lt;p&gt;Fluo utilizes this feature by &lt;a href=&quot;https://github.com/apache/fluo/blob/57b154e13c5c0877bb565fcabf620aa0f30c9f24/modules/core/src/main/java/org/apache/fluo/core/worker/finder/hash/ScanTask.java#L197&quot;&gt;setting scan hints&lt;/a&gt; for notification scans
+indicating &lt;code class=&quot;highlighter-rouge&quot;&gt;scan_type=fluo-ntfy&lt;/code&gt;.  These hints are passed to Accumulo tablet
+servers and are ignored by default. For these scan types, Accumulo could be
+configured to either send them to a special thread pool and/or prioritize them
+differently within a thread pool.  Below is an example of Accumulo shell
+commands that set up a special executor for notification scans.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;config -s tserver.scan.executors.fnotify.threads=1
+config -t fluo_table -s table.scan.dispatcher=org.apache.accumulo.core.spi.scan.SimpleScanDispatcher
+config -t fluo_table -s table.scan.dispatcher.opts.executor.fluo-ntfy=fnotify
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The system setting &lt;code class=&quot;highlighter-rouge&quot;&gt;tserver.scan.executors.fnotify.threads=1&lt;/code&gt; creates a single-threaded
+scan executor in each tablet server named &lt;code class=&quot;highlighter-rouge&quot;&gt;fnotify&lt;/code&gt;. The two per-table
+settings configure a scan dispatcher (the &lt;code class=&quot;highlighter-rouge&quot;&gt;SimpleScanDispatcher&lt;/code&gt; is built into
+Accumulo) on the table &lt;code class=&quot;highlighter-rouge&quot;&gt;fluo_table&lt;/code&gt;.  The scan dispatcher is configured such that when
+a scan hint of &lt;code class=&quot;highlighter-rouge&quot;&gt;scan_type=fluo-ntfy&lt;/code&gt; is seen, it runs on the executor &lt;code class=&quot;highlighter-rouge&quot;&gt;fnotify&lt;/code&gt;.
+All other scans will run on the default executor. This has the effect running
+all notification scans on a single dedicated thread in each tablet server.&lt;/p&gt;
+
+&lt;p&gt;The above setting were tested in a scenario where 20 Fluo worker were run
+against a single tablet server with 20 tablets.  The Fluo stress test was run
+with a low ingest rate, resulting in continual notification scanning by the 20
+workers.  While the test was running, &lt;code class=&quot;highlighter-rouge&quot;&gt;jstack&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;top&lt;/code&gt; were used to inspect the
+tablet server. This inspection revealed that notification scans were all
+running in a single thread which was using 100% of a single core.  This left all
+of the other cores free to process transactions.  Further testing to see how
+this impacts throughput is needed. Observing the worker debug logs, all of them
+seemed to complete notification scans, quickly finding new work.&lt;/p&gt;
+
+&lt;p&gt;Fluo took a descriptive approach to using scan hints, where it described to Accumulo
+the type of scan it was running.  However, Fluo does not care what, if
+anything, Accumulo does with that information.  This allows administrators to
+configure Accumulo in many different ways to handle notification scans, without
+any changes to Fluo.&lt;/p&gt;
+
+&lt;p&gt;For my first pass at using scan executors, I tried a prescriptive approach. I
+attempted to use scan hints to explicitly name an executor for notification
+scans.  I realized this would require Fluo configuration to provide the name of
+the scan executor. Forcing a user to specify Accumulo and Fluo configuration
+was very cumbersome so I abandoned the prescriptive approach.  The descriptive
+approach I settled on in its place is less cumbersome (it only requires Accumulo
+config) and more flexible (it supports executors and/or prioritization instead
+of only executors).&lt;/p&gt;
+
+&lt;p&gt;At the time of this writing, no released version of Fluo supports Accumulo 2.0.
+Once Fluo 1.3.0 is released with Accumulo 2.0, Hadoop 3.0, and Java 11 support,
+it will include support for scan executors.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 30 Sep 2019 11:50:00 +0000</pubDate>
+        <link>https://fluo.apache.org//blog/2019/09/30/scan-executors/</link>
+        <guid isPermaLink="true">https://fluo.apache.org//blog/2019/09/30/scan-executors/</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Apache Fluo YARN 1.0.0</title>
@@ -1203,60 +1271,6 @@ would not be needed.&lt;/p&gt;
         
         
         <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title>Apache Fluo Recipes 1.0.0-incubating</title>
-        <description>&lt;p&gt;Apache Fluo Recipes builds on the Apache Fluo API to provide libraries of common code for Fluo developers.&lt;/p&gt;
-
-&lt;p&gt;Apache Fluo Recipes 1.0.0-incubating is the first release of Fluo Recipes as an Apache project and the third
-release for the project.&lt;/p&gt;
-
-&lt;p&gt;Below are resources for this release:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Download a release tarball and verify by these &lt;a href=&quot;https://www.apache.org/info/verification&quot;&gt;procedures&lt;/a&gt; using these &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/KEYS&quot;&gt;KEYS&lt;/a&gt;&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dyn/closer.lua/incubator/fluo/fluo-recipes/1.0.0-incubating/fluo-recipes-1.0.0-incubating-source-release.tar.gz&quot;&gt;fluo-recipes-1.0.0-incubating-source-release.tar.gz&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo-recipes/1.0.0-incubating/fluo-recipes-1.0.0-incubating-source-release.tar.gz.asc&quot;&gt;ASC&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo-recipes/1.0.0-incubating/MD5SUM&quot;&gt;MD5&lt;/a&gt; &lt;a href=&quot;https://www.apache.org/dist/incubator/fluo/fluo-recipes/1.0.0-incubating/SHA1SUM&quot;&gt;SHA1&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-  &lt;li&gt;View the &lt;a href=&quot;/docs/fluo-recipes/1.0.0-incubating&quot;&gt;documentation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Read the javadocs: &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-core/1.0.0-incubating/&quot; target=&quot;_blank&quot;&gt;core&lt;/a&gt;, &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-accumulo/1.0.0-incubating/&quot; target=&quot;_blank&quot;&gt;accumulo&lt;/a&gt;, &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-kryo/1.0.0-incubating/&quot; target=&quot;_blank&quot;&gt;kryo&lt;/a&gt;, &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-spark/1.0.0-incubating/&quot; target=&quot;_blank&quot;&gt;spark&lt;/a&gt;, &lt;a href=&quot;https://javadoc.io/doc/org.apache.fluo/fluo-recipes-test/1.0.0-incubating/&quot; target=&quot;_blank&quot;&gt;test&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Jars are available in &lt;a href=&quot;http://search.maven.org/#search|ga|1|fluo-recipes&quot;&gt;Maven Central&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;changes-of-interest-since-last-release&quot;&gt;Changes of interest since last release&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/112&quot;&gt;#112&lt;/a&gt; - Avoid allocating collection in AccumuloExporter&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/107&quot;&gt;#107&lt;/a&gt; - Added standard way to setup per exporter configuration&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/102&quot;&gt;#102&lt;/a&gt; - Simplified Accumulo export queue recipe&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/92&quot;&gt;#92&lt;/a&gt; - Added dependency analysis plugin&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/82&quot;&gt;#82&lt;/a&gt; - Moved TypeLayer from Fluo API to Fluo Recipes&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/76&quot;&gt;#76&lt;/a&gt; - Made compact transient command retry when calling compact throws an exception&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/75&quot;&gt;#75&lt;/a&gt; - Construct export queue row that falls in bucket&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/73&quot;&gt;#73&lt;/a&gt; - Make compact transient sleep for each range&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/70&quot;&gt;#70&lt;/a&gt; - Collision Free Map not behaving well when processing backs up&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/69&quot;&gt;#69&lt;/a&gt; - Compact transient command has negative impact when processing falls behind&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/67&quot;&gt;#67&lt;/a&gt; - Added option to control number of buckets per tablet&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/incubator-fluo-recipes/issues/50&quot;&gt;#50&lt;/a&gt; - Renamed Pirto to TableOptimizations&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Fri, 28 Oct 2016 10:30:00 +0000</pubDate>
-        <link>https://fluo.apache.org//release/fluo-recipes-1.0.0-incubating/</link>
-        <guid isPermaLink="true">https://fluo.apache.org//release/fluo-recipes-1.0.0-incubating/</guid>
-        
-        
-        <category>release</category>
         
       </item>
     
