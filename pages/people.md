@@ -43,8 +43,10 @@ based on commits.
 | [Nikhil Manchanda](https://github.com/slicknik)             | [Microsoft][msft]                   | [PT][pt]   |
 | [Ravikrishna Adepu](https://github.com/adepuravikrishna)    | [SAP Labs LLC](https://sap.com)     | [PT][pt]   |
 | [Russell Carter Jr](https://github.com/rcarterjr)           | [ASRC Federal](https://www.asrc.com)| [ET][et]   |
+| [Shan Nawaz](https://github.com/shannawaz)                  | [Microsoft][msft]                   | [ET][et]   |
 | [Sri Kailash](https://github.com/srikailash)                | [Booking.com](https://booking.com)  | [CEST][cst]|
 | [Tanisha Faulkner](https://github.com/plainolneesh)         | [ASRC Federal](https://www.asrc.com)| [ET][et]   |
+
 
 [Committers]: https://www.apache.org/foundation/how-it-works.html#committers
 [tc]: http://www.tetraconcepts.com/
